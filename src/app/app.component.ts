@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app component works!';
-  
+  title = 'DevMountain Scheduler';
+
 
   constructor() { }
 

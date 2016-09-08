@@ -8,6 +8,7 @@ import { Sidebar } from './sidebar/sidebar.component';
 import { LocationHeader } from './location-header/location-header.component';
 import { ScheduleHeader } from './schedule-header/schedule-header.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
+import { ContentContainerComponent } from './content-container/content-container.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CalendarHeader } from './calendar-header/calendar-header.component';
     Sidebar,
     LocationHeader,
     ScheduleHeader,
-    CalendarHeader
+    CalendarHeader,
+    ContentContainerComponent
   ],
   imports: [
     BrowserModule,

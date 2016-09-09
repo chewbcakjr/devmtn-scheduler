@@ -4,15 +4,13 @@ var cors = require('cors');
 var session = require('express-session');
 var passport = require('passport');
 var gcal = require('google-calendar');
-// var util = require('util');
 var config = require('./config');
 var google = require('googleapis');
-
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
+console.log(calendar);
 
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(config.consumer_key, config.consumer_secret, '/auth/google/callback');
@@ -65,6 +63,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 	res.redirect('/');
 });
 
+// -------------------------------CALENDARS-------------------------------- //
 // GET A LIST OF THE USER'S CALENDARS
 app.get('/calendars', function (req, res, next) {
 	calendar.calendarList.list({
@@ -99,6 +98,24 @@ app.post('/calendars', function (req, res) {
 	});
 });
 
+// DELETE A CALENDAR
+app.delete('/calendars', function(req, res) {
+	calendar.calendars.delete({
+		auth: oauth2Client,
+		calendarId: 'miskoj51ort203omh5ubss59tg@group.calendar.google.com'
+	}, function (err, resp) {
+		if (err) {
+			console.log('error deleting: ' + err);
+			res.send('err');
+		} else {
+			res.send(resp);
+		}
+	})
+})
+// -------------------------------CALENDARS-------------------------------- //
+
+
+// ---------------------------------EVENTS---------------------------------- //
 // CREATE A NEW EVENT
 app.post('/events', function (req, res, next) {
 	var newEvent = {
@@ -157,7 +174,10 @@ app.post('/events', function (req, res, next) {
 		}
 	});
 });
+// ---------------------------------EVENTS---------------------------------- //
 
+
+// ------------------------------TASK LISTS-------------------------------- //
 // GET A LIST OF THE USER'S TASK LISTS
 app.get('/tasklists', function (req, res, next) {
 	tasks.tasklists.list({
@@ -188,7 +208,10 @@ app.post('/tasklists', function (req, res, next) {
 		}
 	});
 });
+// ------------------------------TASK LISTS-------------------------------- //
 
+
+// ---------------------------------TASKS----------------------------------- //
 // GET A LIST OF TASKS
 app.get('/tasks', function (req, res, next) {
 	tasks.tasks.list({
@@ -223,6 +246,7 @@ app.post('/tasks', function (req, res, next) {
 		}
 	});
 });
+// ---------------------------------TASKS----------------------------------- //
 
 //Listen
 app.listen(port, function () {

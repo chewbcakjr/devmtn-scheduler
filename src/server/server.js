@@ -246,6 +246,22 @@ app.post('/tasks', function (req, res, next) {
 		}
 	});
 });
+
+// DELETE TASK
+app.delete('/calendars', function(req, res) {
+	calendar.calendars.delete({
+		auth: oauth2Client,
+		tasklist: 'MTU0OTY5Njk1NTM4NzgwNjY5MDg6MTQ2MzkwODU6MA',
+		task: 'item 1'
+	}, function (err, resp) {
+		if (err) {
+			console.log('error deleting task: ' + err);
+			res.send('err');
+		} else {
+			res.send(resp);
+		}
+	})
+})
 // ---------------------------------TASKS----------------------------------- //
 
 //Listen

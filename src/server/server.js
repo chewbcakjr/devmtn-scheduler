@@ -143,13 +143,13 @@ app.put('/calendars', function(req, res) {
 
 // ---------------------------------EVENTS---------------------------------- //
 
-// 5. GET A LIST OF EVENTS ON SPECIFIED CALENDAR (needs post)
-app.post('/events', function(req, res) {
+// 5. GET A LIST OF EVENTS ON SPECIFIED CALENDAR (needs QUERY!)
+app.get('/events', function(req, res) {
 	// command: calendar.events.list
 	// need: calendar id
 	calendar.events.list({
 		auth: oauth2Client,
-		calendarId: req.body.calendarId
+		calendarId: req.query.calendarId
 	}, function (err, events) {
 		if (err) {
 			console.log('error returning events: ' + err);
@@ -157,8 +157,6 @@ app.post('/events', function(req, res) {
 		} else {
 			res.send(events);
 		}
-	}
-
 	})
 })
 

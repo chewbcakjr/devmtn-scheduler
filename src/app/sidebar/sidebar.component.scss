@@ -1,7 +1,9 @@
 @import 'src/sass/components/_variables.scss';
+@import 'src/sass/components/_global.scss';
 // @import 'src/styles.scss';
 
 .sidebar {
+  @extend .z-depth-3;
   background-color: $primaryBlueColor;
   font-family: $primary-font;
   height: 100vh;

@@ -81,8 +81,8 @@ app.get('/calendars', function (req, res, next) {
 // CREATE A NEW CALENDAR
 app.post('/calendars', function (req, res) {
 	var newCalendar = {
-		// summary: 'DevMountain Cohort Schedule 3'
-		summary: 'New Calendar'
+		// summary: 'New Calendar'
+		summary: req.body.name
 	};
 
 	calendar.calendars.insert({
@@ -102,7 +102,8 @@ app.post('/calendars', function (req, res) {
 app.delete('/calendars', function(req, res) {
 	calendar.calendars.delete({
 		auth: oauth2Client,
-		calendarId: 'miskoj51ort203omh5ubss59tg@group.calendar.google.com'
+		// calendarId: 'miskoj51ort203omh5ubss59tg@group.calendar.google.com'
+		calendarId: req.body.id
 	}, function (err, resp) {
 		if (err) {
 			console.log('error deleting: ' + err);

@@ -17,4 +17,8 @@ $secondaryFontColor: #909090;
 ////////
 ///FONTS
 ////////
-$primaryFont: 
+@font-face {
+  font-family: proximanova-webfont;
+  src: url(fonts/proximanova/proximanova-webfont.ttf);
+}
+$primaryFont: proximanova-webfont, sans-serif;

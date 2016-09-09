@@ -64,7 +64,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 
 // -------------------------------CALENDARS-------------------------------- //
 // 1. GET A LIST OF THE USER'S CALENDARS
-app.get('/calendars', function (req, res, next) {
+app.get('/calendars', function (req, res) {
 	calendar.calendarList.list({
 		auth: oauth2Client
 	}, function (err, calendars) {
@@ -89,7 +89,7 @@ app.post('/calendars', function (req, res) {
 		resource: newCalendar
 	}, function (err, calendar) {
 		if (err) {
-			console.log('There was an error contacting the Calendar service: ' + err);
+			console.log('error creating calendar: ' + err);
 			// return;
 			res.send('err');
 		}
@@ -98,26 +98,8 @@ app.post('/calendars', function (req, res) {
 	});
 });
 
-// 3. DELETE A CALENDAR
-app.delete('/calendars', function(req, res) {
-	calendar.calendars.delete({
-		auth: oauth2Client,
-		calendarId: req.body.calendarId
-	}, function (err, resp) {
-		if (err) {
-			console.log('error deleting: ' + err);
-			res.send('err');
-		} else {
-			res.send(resp);
-		}
-	})
-})
-
-// 4. MODIFY A CALENDAR
+// 3. MODIFY A CALENDAR
 app.put('/calendars', function(req, res) {
-	// command: calendar.calendars.patch
-	// need: calendar id
-	// params: description, location, summary (name), timeZone
 	var modifiedCalendar = {
 		summary: req.body.summary, 
 		description: req.body.description,
@@ -129,12 +111,27 @@ app.put('/calendars', function(req, res) {
 		auth: oauth2Client,
 		calendarId: req.body.calendarId,
 		resource: modifiedCalendar
-	}, function(err, modifiedCal) {
+	}, function(err, calendar) {
 		if (err) {
 			console.log('error modifying calendar: ' + err);
 			res.send('err');
 		} else {
-			res.send(modifiedCal);
+			res.send(calendar);
+		}
+	})
+})
+
+// 4. DELETE A CALENDAR
+app.delete('/calendars', function(req, res) {
+	calendar.calendars.delete({
+		auth: oauth2Client,
+		calendarId: req.body.calendarId
+	}, function (err, result) {
+		if (err) {
+			console.log('error deleting calendar: ' + err);
+			res.send('err');
+		} else {
+			res.send(result);
 		}
 	})
 })
@@ -142,7 +139,6 @@ app.put('/calendars', function(req, res) {
 
 
 // ---------------------------------EVENTS---------------------------------- //
-
 // 5. GET A LIST OF EVENTS ON SPECIFIED CALENDAR (needs QUERY!)
 app.get('/events', function(req, res) {
 	// command: calendar.events.list
@@ -162,31 +158,33 @@ app.get('/events', function(req, res) {
 
 
 // 6. CREATE A NEW EVENT
-app.post('/events', function (req, res, next) {
+app.post('/events', function (req, res) {
 	
+	// put this in the service or something
 	var attendees = [];
 	req.body.attendees.forEach( function(email) {
 		attendees.push({email: email})
 	});
 
 	var newEvent = {
-		'summary': req.body.name,
-		'location': req.body.location,
-		'description': req.body.description,
-		'start': {
-			'dateTime': req.body.start,
-			'timeZone': req.body.timeZone
+		summary: req.body.name,
+		location: req.body.location,
+		description: req.body.description,
+		start: {
+			dateTime: req.body.start,
+			timeZone: req.body.timeZone
 		},
-		'end': {
-			'dateTime': req.body.end,
-			'timeZone': req.body.timeZone
+		guestsCanModify: true,
+		end: {
+			dateTime: req.body.end,
+			timeZone: req.body.timeZone
 		},
-		'attendees': attendees,
-		'reminders': {
-			'useDefault': false,
-			'overrides': [{
-				'method': 'email',
-				'minutes': 24 * 60
+		attendees: attendees,
+		reminders: {
+			useDefault: false,
+			overrides: [{
+				method: 'email',
+				minutes: 24 * 60
 			}]
 		},
 		// sequence: 1
@@ -199,7 +197,7 @@ app.post('/events', function (req, res, next) {
 		sendNotifications: false
 	}, function (err, event) {
 		if (err) {
-			console.log('There was an error contacting the Calendar service: ' + err);
+			console.log('error creating event: ' + err);
 			// return;
 			res.send(err);
 		} else {
@@ -209,24 +207,65 @@ app.post('/events', function (req, res, next) {
 	});
 });
 
-//  7. DELETE AN EVENT
-app.delete('/events', function(req, res) {
-	// command: calendar.events.delete
-	// need: eventId
+// 7. MODIFY AN EVENT
+app.put('/events', function(req, res) {
+	// put this in the service or something
+	var attendees = [];
+	req.body.attendees.forEach( function(email) {
+		attendees.push({email: email})
+	});
+
+	var modifiedEvent = {
+		summary: req.body.name,
+		location: req.body.location,
+		description: req.body.description,
+		start: {
+			dateTime: req.body.start,
+			timeZone: req.body.timeZone
+		},
+		end: {
+			dateTime: req.body.end,
+			timeZone: req.body.timeZone
+		},
+		attendees: attendees,
+	}
+
+	calendar.events.patch({
+		auth: oauth2Client,
+		calendarId: req.body.calendarId,
+		eventId: req.body.eventId,
+		resource: modifiedEvent
+	}, function(err, event) {
+		if (err) {
+			console.log('error modifying calendar: ' + err);
+			res.send('err');
+		} else {
+			res.send(calendar);
+		}
+	})
 })
 
-// 8. MODIFY AND EVENT
-app.put('/events', function(req, res) {
-	// command: calendar.events.patch
-	// need: calendarId, eventId
-	// params: same as create event
+// 8. DELETE AN EVENT
+app.delete('/events', function(req, res) {
+	calendar.events.delete({
+		auth: oauth2Client,
+		calendarId: req.body.calendarId,
+		eventId: req.body.eventId
+	}, function (err, result) {
+		if (err) {
+			console.log('error deleting event: ' + err);
+			res.send('err');
+		} else {
+			res.send(result);
+		}
+	})
 })
 // ---------------------------------EVENTS---------------------------------- //
 
 
 // ------------------------------TASK LISTS-------------------------------- //
 // 9. GET A LIST OF THE USER'S TASK LISTS
-app.get('/tasklists', function (req, res, next) {
+app.get('/tasklists', function (req, res) {
 	tasks.tasklists.list({
 		auth: oauth2Client
 	}, function (err, tasklists) {
@@ -239,7 +278,7 @@ app.get('/tasklists', function (req, res, next) {
 });
 
 // 10. CREATE NEW TASK LIST
-app.post('/tasklists', function (req, res, next) {
+app.post('/tasklists', function (req, res) {
 	var newTaskList = {
 		title: req.body.name
 	};
@@ -256,27 +295,49 @@ app.post('/tasklists', function (req, res, next) {
 	});
 });
 
-// 11. DELETE A TASK LIST
-app.delete('/tasklists', function(req, res) {
-	// command: tasks.tasklists.delete
-	// need: tasklistId
+// 11. MODIFY A TASK LIST
+app.put('/tasklists', function(req, res) {
+	var modifiedTasklist = {
+		title: req.body.name
+	}
+
+	tasks.tasklists.patch({
+		auth: oauth2Client,
+		tasklist: req.body.tasklistId,
+		resource: modifiedTasklist
+	}, function(err, tasklist) {
+		if (err) {
+			console.log('error modifying tasklist: ' + err);
+			res.send('err');
+		} else {
+			res.send(tasklist);
+		}
+	})
 })
 
-// 12. MODIFY A TASK LIST
-app.put('/tasklists', function(req, res) {
-	// command: tasks.tasklists.patch
-	// need: tasklistId
-	// params: title
+// 12. DELETE A TASK LIST
+app.delete('/tasklists', function(req, res) {
+	tasks.tasklists.delete({
+		auth: oauth2Client,
+		tasklist: req.body.tasklistId
+	}, function (err, result) {
+		if (err) {
+			console.log('error deleting tasklist: ' + err);
+			res.send('err');
+		} else {
+			res.send(result);
+		}
+	})
 })
 // ------------------------------TASK LISTS-------------------------------- //
 
 
 // ---------------------------------TASKS----------------------------------- //
 // 13. GET A LIST OF TASKS - needs to be post to accept tasklistId
-app.post('/tasks', function (req, res, next) {
+app.get('/tasks', function (req, res) {
 	tasks.tasks.list({
 		auth: oauth2Client,
-		tasklist: req.body.tasklistId
+		tasklist: req.query.tasklistId
 	}, function (err, tasks) {
 		if (err) {
 			console.log('error returning task list: ' + err);
@@ -288,11 +349,13 @@ app.post('/tasks', function (req, res, next) {
 });
 
 // 14. CREATE NEW TASK 
-app.post('/tasks', function (req, res, next) {
+app.post('/tasks', function (req, res) {
 	// params: completed, due, notes, status, title
 	var newTask = {
-
-		title: req.body.name
+		title: req.body.name,
+		notes: req.body.notes,
+		due: req.body.due,
+		status: 'needsAction'
 	};
 
 	tasks.tasks.insert({
@@ -301,14 +364,38 @@ app.post('/tasks', function (req, res, next) {
 		resource: newTask
 	}, function (err, task) {
 		if (err) {
-			res.send('error creating new task list: ' + err);
+			res.send('error creating new task: ' + err);
 		} else {
 			res.send(task);
 		}
 	});
 });
 
-// 15. DELETE TASK
+// 15. MODIFY TASK
+app.put('/tasks', function(req, res) {	
+	var modifiedTask = {
+		title: req.body.name, 
+		notes: req.body.notes,
+		due: req.body.due,
+		status: req.body.status
+	}
+
+	tasks.tasks.patch({
+		auth: oauth2Client,
+		tasklist: req.body.tasklistId,
+		task: req.body.taskId,
+		resource: modifiedTask
+	}, function(err, task) {
+		if (err) {
+			console.log('error modifying task: ' + err);
+			res.send('err');
+		} else {
+			res.send(task);
+		}
+	})
+})
+
+// 16. DELETE TASK
 app.delete('/tasks', function(req, res) {
 	tasks.tasks.delete({
 		auth: oauth2Client,
@@ -322,13 +409,6 @@ app.delete('/tasks', function(req, res) {
 			res.send(resp);
 		}
 	})
-})
-
-// 16. MODIFY TASK
-app.put('/tasks', function(req, res) {
-	// command: tasks.tasks.patch
-	// need: tasklistId, taskId
-	// params: completed, due, notes, status, title
 })
 // ---------------------------------TASKS----------------------------------- //
 

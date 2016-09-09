@@ -4,7 +4,6 @@
 
 .sidebar {
   @extend .z-depth-3;
-  background-color: $primaryBlueColor;
   font-family: $primary-font;
   height: 100vh;
 }
@@ -16,4 +15,8 @@
   background-position: center center;
   background-size: 90%;
   height: 90px;
+}
+
+.side-nav {
+  background-color: $primaryBlueColor;
 }

@@ -10,7 +10,6 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
-console.log(calendar);
 
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(config.consumer_key, config.consumer_secret, '/auth/google/callback');
@@ -64,7 +63,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 });
 
 // -------------------------------CALENDARS-------------------------------- //
-// GET A LIST OF THE USER'S CALENDARS
+// 1. GET A LIST OF THE USER'S CALENDARS
 app.get('/calendars', function (req, res, next) {
 	calendar.calendarList.list({
 		auth: oauth2Client
@@ -73,15 +72,15 @@ app.get('/calendars', function (req, res, next) {
 			console.log('error returning user\'s calendars: ' + err);
 			res.send('err');
 		} else {
+			// can get ids and names from this items array
 			res.send(calendars);
 		}
 	});
 });
 
-// CREATE A NEW CALENDAR
+// 2. CREATE A NEW CALENDAR
 app.post('/calendars', function (req, res) {
 	var newCalendar = {
-		// summary: 'New Calendar'
 		summary: req.body.name
 	};
 
@@ -94,16 +93,16 @@ app.post('/calendars', function (req, res) {
 			// return;
 			res.send('err');
 		}
-		res.send('Calendar created: %s', calendar);
+		// can get id and name from this 
+		res.send(calendar);
 	});
 });
 
-// DELETE A CALENDAR
+// 3. DELETE A CALENDAR
 app.delete('/calendars', function(req, res) {
 	calendar.calendars.delete({
 		auth: oauth2Client,
-		// calendarId: 'miskoj51ort203omh5ubss59tg@group.calendar.google.com'
-		calendarId: req.body.id
+		calendarId: req.body.calendarId
 	}, function (err, resp) {
 		if (err) {
 			console.log('error deleting: ' + err);
@@ -113,42 +112,78 @@ app.delete('/calendars', function(req, res) {
 		}
 	})
 })
+
+// 4. MODIFY A CALENDAR
+app.put('/calendars', function(req, res) {
+	// command: calendar.calendars.patch
+	// need: calendar id
+	// params: description, location, summary (name), timeZone
+	var modifiedCalendar = {
+		summary: req.body.summary, 
+		description: req.body.description,
+		location: req.body.location,
+		timeZone: req.body.timeZone
+	}
+
+	calendar.calendars.patch({
+		auth: oauth2Client,
+		calendarId: req.body.calendarId,
+		resource: modifiedCalendar
+	}, function(err, modifiedCal) {
+		if (err) {
+			console.log('error modifying calendar: ' + err);
+			res.send('err');
+		} else {
+			res.send(modifiedCal);
+		}
+	})
+})
 // -------------------------------CALENDARS-------------------------------- //
 
 
 // ---------------------------------EVENTS---------------------------------- //
-// CREATE A NEW EVENT
+
+// 5. GET A LIST OF EVENTS ON SPECIFIED CALENDAR (needs post)
+app.post('/events', function(req, res) {
+	// command: calendar.events.list
+	// need: calendar id
+	calendar.events.list({
+		auth: oauth2Client,
+		calendarId: req.body.calendarId
+	}, function (err, events) {
+		if (err) {
+			console.log('error returning events: ' + err);
+			res.send('err');
+		} else {
+			res.send(events);
+		}
+	}
+
+	})
+})
+
+
+// 6. CREATE A NEW EVENT
 app.post('/events', function (req, res, next) {
+	
+	var attendees = [];
+	req.body.attendees.forEach( function(email) {
+		attendees.push({email: email})
+	});
+
 	var newEvent = {
-		'summary': 'Event created via nodemon and postman',
-		'location': '560 S 100 W St, Provo, UT 84601',
-		'description': 'Ta Da!!!',
+		'summary': req.body.name,
+		'location': req.body.location,
+		'description': req.body.description,
 		'start': {
-			'dateTime': '2016-09-08T13:00:00',
-			'timeZone': 'America/Denver'
+			'dateTime': req.body.start,
+			'timeZone': req.body.timeZone
 		},
 		'end': {
-			'dateTime': '2016-09-08T14:00:00',
-			'timeZone': 'America/Denver'
+			'dateTime': req.body.end,
+			'timeZone': req.body.timeZone
 		},
-		'recurrence': [
-			// 'RRULE:FREQ=WEEKLY;COUNT=1'
-		],
-		'attendees': [{
-			'email': 'mrevanwitt@gmail.com'
-		}, {
-			'email': 'akang2@gmail.com'
-		}
-		// , {
-		// 	'email': 'jeremy@devmounta.in'
-		// }
-		// , {
-		// 	'email': 'jeremy@devmounta.in'
-		// }
-		// , {
-		// 	'email': 'jeremy@devmounta.in'
-		// }
-		],
+		'attendees': attendees,
 		'reminders': {
 			'useDefault': false,
 			'overrides': [{
@@ -156,12 +191,12 @@ app.post('/events', function (req, res, next) {
 				'minutes': 24 * 60
 			}]
 		},
-		sequence: 1
+		// sequence: 1
 	};
 
 	calendar.events.insert({
 		auth: oauth2Client,
-		calendarId: '3luc0md0o7gmrscugapr5lvn2g@group.calendar.google.com',
+		calendarId: req.body.calendarId,
 		resource: newEvent,
 		sendNotifications: false
 	}, function (err, event) {
@@ -170,16 +205,29 @@ app.post('/events', function (req, res, next) {
 			// return;
 			res.send(err);
 		} else {
-			res.send('Event created: %s', event.htmlLink);
+			res.send(event);
 			// res.redirect('/');
 		}
 	});
 });
+
+//  7. DELETE AN EVENT
+app.delete('/events', function(req, res) {
+	// command: calendar.events.delete
+	// need: eventId
+})
+
+// 8. MODIFY AND EVENT
+app.put('/events', function(req, res) {
+	// command: calendar.events.patch
+	// need: calendarId, eventId
+	// params: same as create event
+})
 // ---------------------------------EVENTS---------------------------------- //
 
 
 // ------------------------------TASK LISTS-------------------------------- //
-// GET A LIST OF THE USER'S TASK LISTS
+// 9. GET A LIST OF THE USER'S TASK LISTS
 app.get('/tasklists', function (req, res, next) {
 	tasks.tasklists.list({
 		auth: oauth2Client
@@ -192,10 +240,10 @@ app.get('/tasklists', function (req, res, next) {
 	});
 });
 
-// CREATE NEW TASK LIST
+// 10. CREATE NEW TASK LIST
 app.post('/tasklists', function (req, res, next) {
 	var newTaskList = {
-		title: 'New Task List'
+		title: req.body.name
 	};
 
 	tasks.tasklists.insert({
@@ -209,15 +257,28 @@ app.post('/tasklists', function (req, res, next) {
 		}
 	});
 });
+
+// 11. DELETE A TASK LIST
+app.delete('/tasklists', function(req, res) {
+	// command: tasks.tasklists.delete
+	// need: tasklistId
+})
+
+// 12. MODIFY A TASK LIST
+app.put('/tasklists', function(req, res) {
+	// command: tasks.tasklists.patch
+	// need: tasklistId
+	// params: title
+})
 // ------------------------------TASK LISTS-------------------------------- //
 
 
 // ---------------------------------TASKS----------------------------------- //
-// GET A LIST OF TASKS
-app.get('/tasks', function (req, res, next) {
+// 13. GET A LIST OF TASKS - needs to be post to accept tasklistId
+app.post('/tasks', function (req, res, next) {
 	tasks.tasks.list({
 		auth: oauth2Client,
-		tasklist: 'MTU0OTY5Njk1NTM4NzgwNjY5MDg6MDow'
+		tasklist: req.body.tasklistId
 	}, function (err, tasks) {
 		if (err) {
 			console.log('error returning task list: ' + err);
@@ -228,16 +289,17 @@ app.get('/tasks', function (req, res, next) {
 	});
 });
 
-// CREATE NEW TASK 
+// 14. CREATE NEW TASK 
 app.post('/tasks', function (req, res, next) {
+	// params: completed, due, notes, status, title
 	var newTask = {
 
-		title: 'New Task'
+		title: req.body.name
 	};
 
 	tasks.tasks.insert({
 		auth: oauth2Client,
-		tasklist: 'MTU0OTY5Njk1NTM4NzgwNjY5MDg6MDow',
+		tasklist: req.body.tasklistId,
 		resource: newTask
 	}, function (err, task) {
 		if (err) {
@@ -248,12 +310,12 @@ app.post('/tasks', function (req, res, next) {
 	});
 });
 
-// DELETE TASK
-app.delete('/calendars', function(req, res) {
-	calendar.calendars.delete({
+// 15. DELETE TASK
+app.delete('/tasks', function(req, res) {
+	tasks.tasks.delete({
 		auth: oauth2Client,
-		tasklist: 'MTU0OTY5Njk1NTM4NzgwNjY5MDg6MTQ2MzkwODU6MA',
-		task: 'item 1'
+		tasklist: req.body.tasklistId,
+		task: req.body.taskId
 	}, function (err, resp) {
 		if (err) {
 			console.log('error deleting task: ' + err);
@@ -262,6 +324,13 @@ app.delete('/calendars', function(req, res) {
 			res.send(resp);
 		}
 	})
+})
+
+// 16. MODIFY TASK
+app.put('/tasks', function(req, res) {
+	// command: tasks.tasks.patch
+	// need: tasklistId, taskId
+	// params: completed, due, notes, status, title
 })
 // ---------------------------------TASKS----------------------------------- //
 

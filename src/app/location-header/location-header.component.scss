@@ -1,5 +1,8 @@
 @import 'src/sass/components/_variables.scss';
 
+.location-container {
+	height: 90px;
+}
 
 .locations {
 	font-family: $primary-font;
@@ -7,8 +10,7 @@
 
 .locations li {
 	color: $borderColor;	
-	// float: left;
-	padding: 0 10px;
+	padding: 0 15px;
 }
 
 .locations li:first-child {

@@ -1,0 +1,18 @@
+@import 'src/sass/components/_variables.scss';
+
+.schedule-container {
+	height: 90px;
+}
+
+.schedule {
+	font-family: $primary-font;
+}
+
+.schedule li {
+	color: $borderColor;	
+	padding: 0 15px;
+}
+
+.schedule li:first-child {
+	padding-left: 0;
+}

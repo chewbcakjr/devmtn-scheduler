@@ -1,12 +1,13 @@
 @import 'src/sass/components/_variables.scss';
 
+
 .locations {
 	font-family: $primary-font;
 }
 
 .locations li {
 	color: $borderColor;	
-	float: left;
+	// float: left;
 	padding: 0 10px;
 }
 

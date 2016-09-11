@@ -9,6 +9,7 @@ import { LocationHeader } from './location-header/location-header.component';
 import { ScheduleHeader } from './schedule-header/schedule-header.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { ContentContainerComponent } from './content-container/content-container.component';
+import { routing } from './app.routing';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ContentContainerComponent } from './content-container/content-container
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [
     

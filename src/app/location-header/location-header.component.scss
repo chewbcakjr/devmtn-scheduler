@@ -16,3 +16,11 @@
 .locations li:first-child {
 	padding-left: 0;
 }
+
+.show-hide-add li {
+	padding: 0 15px;
+}
+
+.show-hide-add li:last-child a{
+	color: $borderColor;	
+}

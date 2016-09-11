@@ -4,9 +4,10 @@
 
 .sidebar {
   // @extend .z-depth-3;
-  box-shadow: 20px 0px 25px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 8px 0px 22px -5px rgba(0, 0, 0, 0.15);
   font-family: $primary-font;
   height: 100vh;
+  padding: 0;
 }
 
 .devmountain-logo-blacktext {
@@ -18,6 +19,6 @@
   height: 90px;
 }
 
-.side-nav {
+.bot-nav {
   background-color: $primaryBlueColor;
 }

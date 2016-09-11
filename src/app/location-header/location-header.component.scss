@@ -9,10 +9,18 @@
 }
 
 .locations li {
-	color: $borderColor;	
+	color: $primaryTealColor;
 	padding: 0 15px;
 }
 
 .locations li:first-child {
 	padding-left: 0;
+}
+
+.show-hide-add li {
+	padding: 0 15px;
+}
+
+.show-hide-add li:last-child a{
+	color: $secondaryBlueColor;
 }

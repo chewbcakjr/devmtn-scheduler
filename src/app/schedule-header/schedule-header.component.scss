@@ -21,6 +21,10 @@
 	padding: 0 15px;
 }
 
+.add-icon {
+	background-image: $add-icon;
+}
+
 .show-hide-add li:last-child a{
-	color: $secondaryBlueColor;	
+	color: $secondaryBlueColor;
 }

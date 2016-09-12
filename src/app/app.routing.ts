@@ -4,16 +4,17 @@ import { Routes, RouterModule } from '@angular/router';
 // need to import all components that we will be routing to here
 import { AppComponent } from './app.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
-import { TemplateComponent } from './template/template.component';
+import { TaskComponent } from './task/task.component';
+import { EventComponent } from './event/event.component';
 
 const appRoutes:Routes = [
 	{
 		path: 'dashboard',
-		component: TemplateComponent
+		component: TaskComponent
 	},
 	{
-		path: 'calendar',
-		component: CalendarHeader
+		path: 'event',
+		component: EventComponent
 	},
 	{
 		path: '',

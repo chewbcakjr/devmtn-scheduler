@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { TemplateComponent } from './template.component';
+import { EventComponent } from './event.component';
 
-describe('Component: Template', () => {
+describe('Component: Event', () => {
   it('should create an instance', () => {
-    let component = new TemplateComponent();
+    let component = new EventComponent();
     expect(component).toBeTruthy();
   });
 });

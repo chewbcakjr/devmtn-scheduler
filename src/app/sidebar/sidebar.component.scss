@@ -46,6 +46,14 @@
   background: $dashboard-icon no-repeat 35px center;
 }
 
+.account {
+  background: $account-icon no-repeat 35px center;
+}
+
+.messages {
+  background: $messages-icon no-repeat 35px center;
+}
+
 .active-bg {
   background-color: $titleFontColor;
   text-transform: uppercase;

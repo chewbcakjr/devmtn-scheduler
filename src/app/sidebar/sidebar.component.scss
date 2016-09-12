@@ -1,9 +1,7 @@
 @import 'src/sass/components/_variables.scss';
 @import 'src/sass/components/_global.scss';
-// @import 'src/styles.scss';
 
 .sidebar {
-  // @extend .z-depth-3;
   box-shadow: 8px 0px 22px -5px rgba(0, 0, 0, 0.15);
   font-family: $primary-font;
   height: 100vh;
@@ -21,4 +19,42 @@
 
 .bot-nav {
   background-color: $primaryBlueColor;
+  height: 100vh;
+}
+
+.sidenav-ul {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  text-align: left;
+}
+
+.sidenav-ul li {
+  height: 50px;
+  margin: 5px auto;
+  width: 100%;
+}
+
+.sidenav-ul a {
+  color: #fff;
+  padding: 15px 0 15px 75px;
+  width: 180px;
+  letter-spacing: 2px;
+}
+
+.dashboard {
+  background: $dashboard-icon no-repeat 35px center;
+}
+
+.account {
+  background: $account-icon no-repeat 35px center;
+}
+
+.messages {
+  background: $messages-icon no-repeat 35px center;
+}
+
+.active-bg {
+  background-color: $titleFontColor;
+  text-transform: uppercase;
 }

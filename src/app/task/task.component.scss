@@ -1,8 +1,12 @@
 @import 'src/sass/components/_variables.scss';
 
+.input-field:focus:not([readonly]) {
+	border-bottom: 1px solid #48AD92;
+}
+
 .buttons {
 	display: flex;
-	flex-direction: column
+	flex-direction: column;
 }
 
 .btn {

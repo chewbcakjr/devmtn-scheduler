@@ -25,10 +25,22 @@
 .sidenav-ul {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  padding-top: 25px;
+  text-align: left;
   text-transform: uppercase;
+}
+
+.sidenav-ul li {
+  padding: 15px 0 15px 40px;
+  margin: 5px auto;
+  letter-spacing: 2px;
+  width: 180px;
 }
 
 .sidenav-ul a {
   color: #fff;
+}
+
+.dashboard {
+  background: $dashboard-icon no-repeat 5px center;
 }

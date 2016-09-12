@@ -1,6 +1,16 @@
 @font-face {
     font-family: "Proxima Nova";
-    src: url('#{$proximanova-font-path}proximanova-webfont.ttf') format("truetype");
+    src: url('#{$proximanova-font-path}proximanova-webfont.ttf') format('truetype');
 
     font-weight: normal;
+}
+
+// @font-face {
+//     font-family: "Proxima Nova Bold";
+//     src: url('#{$proximanova-font-path}proximanova-bold.otf') format('opentype');
+// }
+
+@font-face {
+    font-family: "Proxima Nova Semi Bold";
+    src: url('#{$proximanova-font-path}proximanova-sbold-webfont.ttf') format('truetype');
 }

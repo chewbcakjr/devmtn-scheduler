@@ -49,6 +49,10 @@ $primaryTealColor: #0DFFF0;
 $secondaryBlueColor: #00DDFF;
 $borderColor: #29DDB9;
 
+//font colors
+$titleFontColor: #2C3E50;
+$primaryFontColor: #6D6D6D;
+$secondaryFontColor: #909090;
 
 /* 2. Badges
    ========================================================================== */
@@ -153,11 +157,8 @@ $roboto-font-path: "fonts/roboto/" !default;
 $proximanova-font-path: "fonts/proximanova/" !default;
 
 $primary-font: "Proxima Nova";
-
-//font colors
-$titleFontColor: #2C3E50;
-$primaryFontColor: #6D6D6D;
-$secondaryFontColor: #909090;
+$secondary-font: "Proxima Nova Bold";
+$tertiary-font: "Proxima Nova Semi Bold";
 
 
 /* 10. Forms

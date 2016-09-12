@@ -13,6 +13,7 @@ import { ContentComponent } from './content/content.component';
 import { routing } from './app.routing';
 import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
+import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
 
 
 
@@ -26,7 +27,8 @@ import { TaskComponent } from './task/task.component';
     ContentContainerComponent,
     ContentComponent,
     EventComponent,
-    TaskComponent
+    TaskComponent,
+    CalendarHeaderTitleComponent
   ],
   imports: [
     BrowserModule,

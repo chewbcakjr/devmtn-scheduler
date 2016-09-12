@@ -22,11 +22,16 @@
 }
 
 .add-icon {
-	background-image : $add-icon;
+	background: $add-icon no-repeat center center;
 }
 
 .up-circle {
-	background-color: black;
+	background: $up-circle no-repeat center center;
+}
+
+.waves-circle {
+	width: 3em;
+	height: 3em;
 }
 
 .show-hide-add li:last-child a{

@@ -5,10 +5,14 @@
 	flex-direction: column
 }
 
+.btn {
+	border-radius: 4px;
+}
+
 .create {
 	background-color: $secondaryBlueColor;
 }
 
-.white {
+.next {
 	color: $secondaryBlueColor;
 }

@@ -21,3 +21,14 @@
   background-color: $primaryBlueColor;
   height: 100vh;
 }
+
+.sidenav-ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sidenav-ul a {
+  color: #fff;
+}

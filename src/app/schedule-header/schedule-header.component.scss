@@ -5,7 +5,8 @@
 }
 
 .schedule {
-	font-family: $primary-font;
+	font-family: $tertiary-font;
+	width: 100%;
 }
 
 .schedule li {
@@ -15,6 +16,12 @@
 
 .schedule li:first-child {
 	padding-left: 0;
+}
+
+.show-hide-add {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
 }
 
 .show-hide-add li {

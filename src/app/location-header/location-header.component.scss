@@ -6,6 +6,7 @@
 
 .locations {
 	font-family: $tertiary-font;
+	width: 100%;
 }
 
 .locations li {
@@ -15,6 +16,12 @@
 
 .locations li:first-child {
 	padding-left: 0;
+}
+
+.show-hide-add {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
 }
 
 .show-hide-add li {

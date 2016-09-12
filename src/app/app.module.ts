@@ -9,7 +9,6 @@ import { LocationHeader } from './location-header/location-header.component';
 import { ScheduleHeader } from './schedule-header/schedule-header.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { ContentContainerComponent } from './content-container/content-container.component';
-import { ContentComponent } from './content/content.component';
 import { routing } from './app.routing';
 import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
@@ -25,7 +24,6 @@ import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-h
     ScheduleHeader,
     CalendarHeader,
     ContentContainerComponent,
-    ContentComponent,
     EventComponent,
     TaskComponent,
     CalendarHeaderTitleComponent

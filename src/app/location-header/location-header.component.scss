@@ -22,7 +22,11 @@
 }
 
 .add-icon {
-	background: $add-icon;
+	background: $add-icon no-repeat center center;
+}
+
+.up-circle {
+	background: $up-circle no-repeat center center;
 }
 
 .show-hide-add li:last-child a{

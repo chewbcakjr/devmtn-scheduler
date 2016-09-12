@@ -5,11 +5,12 @@
 }
 
 .schedule {
-	font-family: $primary-font;
+	font-family: $tertiary-font;
+	width: 100%;
 }
 
 .schedule li {
-	color: $borderColor;
+	color: $titleFontColor;
 	padding: 0 15px;
 }
 
@@ -17,10 +18,29 @@
 	padding-left: 0;
 }
 
+.show-hide-add {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
 .show-hide-add li {
 	padding: 0 15px;
 }
 
+.add-icon {
+	background: $add-icon no-repeat center center;
+}
+
+.up-circle {
+	background: $up-circle no-repeat center center;
+}
+
+.waves-circle {
+	width: 3em;
+	height: 3em;
+}
+
 .show-hide-add li:last-child a{
-	color: $secondaryBlueColor;	
+	color: $secondaryBlueColor;
 }

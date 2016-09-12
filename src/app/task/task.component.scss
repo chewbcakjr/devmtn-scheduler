@@ -1,0 +1,14 @@
+@import 'src/sass/components/_variables.scss';
+
+.buttons {
+	display: flex;
+	flex-direction: column
+}
+
+.create {
+	background-color: $secondaryBlueColor;
+}
+
+.white {
+	color: $secondaryBlueColor;
+}

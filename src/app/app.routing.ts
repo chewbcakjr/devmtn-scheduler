@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TaskComponent } from './task/task.component';
+import { EventComponent } from './event/event.component';
 
 const appRoutes:Routes = [
 	{
@@ -12,8 +13,8 @@ const appRoutes:Routes = [
 		component: TaskComponent
 	},
 	{
-		path: 'calendar',
-		component: CalendarHeader
+		path: 'event',
+		component: EventComponent
 	},
 	{
 		path: '',

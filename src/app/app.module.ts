@@ -14,6 +14,7 @@ import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
 import { EventCardComponent } from './event-card/event-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -28,7 +29,8 @@ import { EventCardComponent } from './event-card/event-card.component';
     EventComponent,
     TaskComponent,
     CalendarHeaderTitleComponent,
-    EventCardComponent
+    EventCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,12 @@
 	border-radius: 5px;
 	margin: 0 auto;
 	max-width: 95%;
+	padding-top: 55px;
+}
+
+.card-content, .buttons {
+	margin: 0 auto;
+	max-width: 80%;
 }
 
 .input-field:focus:not([readonly]) {

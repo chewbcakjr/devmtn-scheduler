@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { Sidebar } from './sidebar/sidebar.component';
 import { LocationHeader } from './location-header/location-header.component';
@@ -36,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+		ReactiveFormsModule
   ],
   providers: [
 

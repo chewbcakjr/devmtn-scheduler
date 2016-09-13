@@ -1,16 +1,45 @@
 <app-calendar-header-title></app-calendar-header-title>
 <main class="content-area">
-			<div class="card">
-				<div class="card-content ">
-					<!-- <span class="card-title">Card Title</span> -->
-					<input type="text" class="input-field" placeholder="TASK PRIORITY 1-5">
+	<div class="card">
+		<!-- <div class="card-content "> -->
+		<!-- <span class="card-title">Card Title</span> -->
+		<!-- <input type="text" class="input-field" placeholder="TASK PRIORITY 1-5">
 					<input type="text" class="input-field" placeholder="TASK TITLE">
 					<input type="text" class="input-field" placeholder="ADD PEOPLE TO TASK">
-				</div>
-				<div class="buttons">
+				</div> -->
+		<!-- <div class="buttons">
 					<button type="submit" class="btn create"><a href="#" class="white-text">Create Task</a></button>
 					<button type="submit" class="btn create"><a href="#" class="white-text">Import Tasks</a></button>
 					<button type="submit" class="btn white rt-arrow"><a href="#" class="next">Next </a></button>
-				</div>
+				</div> -->
+		<form [formGroup]="form" (ngSubmit)="save()">
+
+			<!-- <legend>
+				User
+			</legend> -->
+
+			<div class="form-group">
+				<label>Title</label>
+				<input [(ngModel)]="template.title" #email formControlName="title" type="text" class="input-field">
+				<!-- <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+                      Please type a valid email.
+                  </div> -->
+			</div>
+
+			<div class="buttons">
+				<button type="submit" class="btn create col s6 m6 l6 offset-m3">Create Template
+					<!-- <a href="#" class="white-text">Create Task</a> -->
+				</button>
+				<!-- <button type="submit" class="btn create col s6 m6 l6 offset-m3">
+      <a href="#" class="white-text">Import Tasks</a>
+    </button> -->
+				<!-- <button type="submit" class="btn white col s6 m6 l6 offset-m3 rt-arrow">
+      <a href="#" class="next">Next
+      </a>
+    </button> -->
+			</div>
+
+		</form>
+
 	</div>
 </main>

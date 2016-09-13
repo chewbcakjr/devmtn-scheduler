@@ -1,11 +1,24 @@
 @import 'src/sass/components/_variables.scss';
 
+.card {
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 95%;
+	padding-top: 55px;
+}
+
+.card-content, .buttons {
+	margin: 0 auto;
+	max-width: 80%;
+}
+
 .input-field:focus:not([readonly]) {
-	border-bottom: 1px solid #48AD92;
+	border-bottom: 1px solid $borderColor;
+	box-shadow: 0 1px 0 0 $borderColor;
 }
 
 input {
-	color: #48AD92
+	color: $borderColor
 }
 
 .buttons {
@@ -15,7 +28,8 @@ input {
 
 .btn {
 	border-radius: 20px;
-	margin: 10px 0;
+	margin: 10px auto;
+	width: 240px;
 }
 
 .create {
@@ -32,5 +46,5 @@ input {
 }
 
 .rt-arrow {
-	background: $rt-arrow no-repeat 110px center;
+	background: $rt-arrow no-repeat 160px center;
 }

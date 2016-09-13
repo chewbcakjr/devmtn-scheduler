@@ -3,21 +3,37 @@
 .header {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 5px;
+	padding: 0 20px 10px 20px;
+}
+
+.card .card-content {
+	padding: 10px 0 20px 0;
 }
 
 .num {
 	color: $secondaryBlueColor;
-	font-size: 25px;
+	font-size: 2em;
 	font-weight: bold;
+	margin-top: -5px;
 }
 
 .edit-icon {
-	background: $add-icon no-repeat center center;
+	background: $pencil-icon no-repeat center center;
+	background-size: cover;
+}
+
+.card .card-action {
+	border-top: none;
 }
 
 .card-action {
 	display: flex;
 	justify-content: center;
+}
+
+.card-content .card-details {
+	padding: 20px;
 }
 
 button {
@@ -28,6 +44,8 @@ button {
 
 .btn {
 	box-shadow: none;
+	font-family: $primary-font;
+	font-size: 1em;
 }
 
 .btn-left {

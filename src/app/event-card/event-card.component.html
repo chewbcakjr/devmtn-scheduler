@@ -11,8 +11,19 @@
         </header>
         <div class="divider"></div>
 
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
+        <!-- the .row would be ngFor with the data populated from db/API -->
+        <div class="card-details">
+          <div class="row event-details">
+            <div class="start-time">
+              9:00am
+            </div>
+            <div class="event-title">
+              Orientation
+            </div>
+          </div>
+          <div class="row event-details">
+          </div>
+        </div>
       </div>
       <div class="card-action">
         <button type="" class="btn btn-left">New Event</button>

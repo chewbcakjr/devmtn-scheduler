@@ -1,11 +1,12 @@
 @import 'src/sass/components/_variables.scss';
 
 .input-field:focus:not([readonly]) {
-	border-bottom: 1px solid #48AD92;
+	border-bottom: 1px solid $borderColor;
+	box-shadow: 0 1px 0 0 $borderColor;
 }
 
 input {
-	color: #48AD92
+	color: $borderColor
 }
 
 .buttons {

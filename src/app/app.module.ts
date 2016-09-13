@@ -14,6 +14,7 @@ import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { TemplateListComponent } from './template-list/template-list.component';
 
 
 
@@ -29,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     TaskComponent,
     CalendarHeaderTitleComponent,
     EventCardComponent,
-    FooterComponent
+    FooterComponent,
+    TemplateListComponent
   ],
   imports: [
     BrowserModule,

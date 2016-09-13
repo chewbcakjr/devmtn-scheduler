@@ -8,7 +8,7 @@ export class TemplatesService {
 
   constructor(private http:Http) { }
 
-  base_url:string = 'https://localhost:9001';
+  base_url:string = 'http://localhost:9001';
 
   getTmpls(): Observable<any> {
   	console.log(this.http.get(`${this.base_url}/templates`))

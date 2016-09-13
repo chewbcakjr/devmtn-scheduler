@@ -14,6 +14,7 @@ export class TemplateListComponent implements OnInit {
   	this.templatesService.getTmpls()
   		.subscribe(data => {
   			console.log(data);
+  			console.log('working')
   			this.data = data;
   		})
   }

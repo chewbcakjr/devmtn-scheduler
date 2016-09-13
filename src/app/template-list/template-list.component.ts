@@ -11,12 +11,13 @@ export class TemplateListComponent implements OnInit {
   constructor(private templatesService:TemplatesService) { }
 
   // these will not stay as strings. just defining them for now to get the front to back working
-  tmplList:string = '';
+  tmplList:any[] = [];
   newTmpl:string = '';
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
   	this.templatesService.getTmpls()
+  	// this.templatesService.createTmpl('testing')
   		.subscribe(data => {
   			console.log(data);
   			this.tmplList = data;

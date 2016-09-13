@@ -8,6 +8,9 @@ var config = require('./config');
 var google = require('googleapis');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+var massive = require('massive');
+var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
+
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
 
@@ -18,6 +21,14 @@ google.options({auth: oauth2Client}); // set auth as a global default
 //App Init
 var app = express();
 var port = 9001;
+
+var massiveInstance = massive.connectSync({
+	connectionString: connectionString
+});
+
+app.set('db', massiveInstance);
+
+var db = app.get('db');
 
 //Middleware
 app.use(bodyParser.json());
@@ -415,11 +426,19 @@ app.delete('/tasks', function(req, res) {
 
 // get list of templates
 app.get('/templates', function(req, res) {
-	res.send('yay you got the templates!')
+	db.get_templates(function(err, tmpls) {
+		if (err) console.log(err)
+		res.status(200).send(tmpls)
+	})
+	// res.send('yay you got the templates!')
 })
 
 app.post('/templates', function(req, res) {
-	res.send('template created with name ' + req.body.name)
+	db.create_template(req.body.name, function(err, tmpl) {
+		if (err) console.log(err)
+		res.status(200).send(tmpl)	
+	})
+	// res.send('template created with name ' + req.body.name)
 })
 
 

@@ -441,6 +441,20 @@ app.post('/templates', function(req, res) {
 	// res.send('template created with name ' + req.body.name)
 })
 
+app.get('/dbevents', function(req, res) {
+	db.get_events(req.query.tmpl_id, function(err, events) {
+		if (err) console.log(err)
+		res.status(200).send(events)	
+	})
+})
+
+
+app.post('/dbevents', function(req, res) {
+	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send(resp)	
+	})
+})
 
 
 

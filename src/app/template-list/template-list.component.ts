@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-template-list',
@@ -8,7 +9,8 @@ import { TemplatesService } from '../templates.service';
 })
 export class TemplateListComponent implements OnInit {
 
-  constructor(private templatesService:TemplatesService) { }
+  constructor(private templatesService:TemplatesService,
+              private eventsService:EventsService) { }
 
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
@@ -16,6 +18,9 @@ export class TemplateListComponent implements OnInit {
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
+ 	
+  	// this.eventsService.getEvents(5)
+  	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
   	this.templatesService.getTmpls()
   	// this.templatesService.createTmpl('testing')
   		.subscribe(data => {
@@ -33,5 +38,15 @@ export class TemplateListComponent implements OnInit {
   			this.newTmpl = data;
   		})
   }
+
+  // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data
+  createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {
+  	this.eventsService.createEvent(tmpl_id, name, start_time, end_time, default_instructor, notes, day_number)
+  		.subscribe(data => {
+  			console.log(data);
+  		})
+  }
+
+
 
 }

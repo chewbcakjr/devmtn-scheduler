@@ -1,10 +1,18 @@
 @import 'src/sass/components/_variables.scss';
 
+.content-area {
+	display: flex;
+	justify-content: space-around;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 5px;
-	padding: 0 20px 10px 20px;
+	padding: 0 20px;
+}
+
+.card {
+	min-width: 300px;
 }
 
 .card .card-content {
@@ -18,9 +26,11 @@
 	margin-top: -5px;
 }
 
-.edit-icon {
+.edit .edit-icon {
 	background: $pencil-icon no-repeat center center;
 	background-size: cover;
+	width: 2em;
+	height: 2em;
 }
 
 .event-details {

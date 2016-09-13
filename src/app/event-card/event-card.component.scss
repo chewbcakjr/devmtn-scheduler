@@ -1,7 +1,40 @@
 @import 'src/sass/components/_variables.scss';
 
+.header {
+	display: flex;
+	justify-content: space-between;
+}
 
+.num {
+	color: $secondaryBlueColor;
+	font-size: 25px;
+	font-weight: bold;
+}
 
 .edit-icon {
 	background: $add-icon no-repeat center center;
 }
+
+.card-action {
+	display: flex;
+	justify-content: center;
+}
+
+button {
+	background-color: $borderColor;
+	text-transform: unset;
+	font-size: 9px;
+}
+
+.btn-left {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-right: 1px solid #fff;
+}
+
+.btn-right {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-left: 1px solid #fff;
+}
+

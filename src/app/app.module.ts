@@ -18,7 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { EventsService } from './events.service';
 import { TemplatesService } from './templates.service';
 import { GoLiveService } from './go-live.service';
-
+import { TemplateListComponent } from './template-list/template-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { GoLiveService } from './go-live.service';
     TaskComponent,
     CalendarHeaderTitleComponent,
     EventCardComponent,
-    FooterComponent
+    FooterComponent,
+    TemplateListComponent
   ],
   imports: [
     BrowserModule,

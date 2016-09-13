@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TemplatesService } from '../templates.service';
 
 @Component({
   selector: 'app-template-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateListComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private templatesService:TemplatesService) { }
+  data:string = ''
+  ngOnInit():void {
+  	this.templatesService.getTmpls()
+  		.subscribe(data => {
+  			console.log(data);
+  			this.data = data;
+  		})
   }
 
 }

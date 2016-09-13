@@ -11,6 +11,7 @@ export class TemplatesService {
   base_url:string = 'https://localhost:9001';
 
   getTmpls(): Observable<any> {
+  	console.log(this.http.get(`${this.base_url}/templates`))
   	return this.http.get(`${this.base_url}/templates`)
   }
 

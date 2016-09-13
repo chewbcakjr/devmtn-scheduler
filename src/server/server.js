@@ -21,9 +21,10 @@ var port = 9001;
 
 //Middleware
 app.use(bodyParser.json());
-var corsOptions = {
-	origin: 'http://localhost:9001'
-};
+// var corsOptions = {
+// 	origin: 'http://localhost:4200'
+// };
+var corsOptions = {}
 app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));

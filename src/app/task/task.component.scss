@@ -1,0 +1,36 @@
+@import 'src/sass/components/_variables.scss';
+
+.input-field:focus:not([readonly]) {
+	border-bottom: 1px solid #48AD92;
+}
+
+input {
+	color: #48AD92
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn {
+	border-radius: 20px;
+	margin: 10px 0;
+}
+
+.create {
+	background-color: $secondaryBlueColor;
+}
+
+.white {
+	border: solid 0.75px $secondaryBlueColor;
+}
+
+.next {
+	color: $secondaryBlueColor;
+	margin-right: 10px
+}
+
+.rt-arrow {
+	background: $rt-arrow no-repeat 110px center;
+}

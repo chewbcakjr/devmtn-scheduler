@@ -1,0 +1,36 @@
+@import 'src/sass/components/_variables.scss';
+
+.calendar {
+	height: 90px;
+	// border: solid black;	
+}
+
+.week {
+	border-right: solid 1px #e0e0e0;
+}
+
+.week-num {
+	font-size: 22px;
+	margin: 0;
+	padding-left: 10px;
+	font-family: $tertiary-font;
+}
+
+.class {
+	font-size: 10px;
+	margin: 0;
+	padding-left: 10px;
+	font-family: $tertiary-font;
+}
+
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+button {
+	border-radius: 20px;
+	background-color: $borderColor;
+	margin: 0 15px;
+}

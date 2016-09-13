@@ -23,8 +23,24 @@
 	background-size: cover;
 }
 
+.event-details {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.start-time {
+	width: 50%;
+}
+
+.event-title {
+	text-align: right;
+	width: 50%;
+}
+
 .card .card-action {
 	border-top: none;
+	width: 50%;
 }
 
 .card-action {

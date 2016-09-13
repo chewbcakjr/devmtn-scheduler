@@ -15,7 +15,10 @@ const appRoutes:Routes = [
 	},
 	{
 		path: 'event',
-		// component: EventComponent
+		component: EventComponent
+	},
+	{
+		path: 'eventcards',
 		component: EventCardComponent
 	},
 	{

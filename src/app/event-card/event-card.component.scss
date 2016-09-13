@@ -26,6 +26,10 @@ button {
 	font-size: 9px;
 }
 
+.btn {
+	box-shadow: none;
+}
+
 .btn-left {
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
@@ -37,4 +41,3 @@ button {
 	border-bottom-right-radius: 20px;
 	border-left: 1px solid #fff;
 }
-

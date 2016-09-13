@@ -28,31 +28,31 @@ app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));
 
-//Passport
-passport.serializeUser(function (user, cb) {
-	cb(null, user);
-});
-passport.deserializeUser(function (obj, cb) {
-	cb(null, obj);
-});
-app.use(passport.initialize());
-app.use(passport.session());
+// //Passport
+// passport.serializeUser(function (user, cb) {
+// 	cb(null, user);
+// });
+// passport.deserializeUser(function (obj, cb) {
+// 	cb(null, obj);
+// });
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-passport.use(new GoogleStrategy({
-	clientID: config.consumer_key,
-	clientSecret: config.consumer_secret,
-	callbackURL: "http://localhost:" + port + "/auth/google/callback",
-	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
-}, function (accessToken, refreshToken, profile, done) {
+// passport.use(new GoogleStrategy({
+// 	clientID: config.consumer_key,
+// 	clientSecret: config.consumer_secret,
+// 	callbackURL: "http://localhost:" + port + "/auth/google/callback",
+// 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
+// }, function (accessToken, refreshToken, profile, done) {
 
-	console.log("Auth Success. Celebration is in order.");
+// 	console.log("Auth Success. Celebration is in order.");
 
-	console.log("Access Token: ", accessToken);
+// 	console.log("Access Token: ", accessToken);
 
-	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
+// 	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
 
-	return done(null, profile);
-}));
+// 	return done(null, profile);
+// }));
 
 //Auth Routing
 app.get('/auth/google', passport.authenticate('google'));
@@ -411,6 +411,18 @@ app.delete('/tasks', function(req, res) {
 	})
 })
 // ---------------------------------TASKS----------------------------------- //
+
+
+// get list of templates
+app.get('/templates', function(req, res) {
+	res.send('yay you got the templates!')
+})
+
+
+
+
+
+
 
 //Listen
 app.listen(port, function () {

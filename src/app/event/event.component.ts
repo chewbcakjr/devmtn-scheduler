@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from './event';
-import { FormBuilder, FormGroup, Validators }    from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event',

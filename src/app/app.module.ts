@@ -8,7 +8,7 @@ import { LocationHeader } from './location-header/location-header.component';
 import { ScheduleHeader } from './schedule-header/schedule-header.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { ContentContainerComponent } from './content-container/content-container.component';
-import { routing } from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
@@ -39,7 +39,7 @@ import { FooterComponent } from './footer/footer.component';
 		ReactiveFormsModule
   ],
   providers: [
-
+		appRoutingProviders
     ],
   bootstrap: [AppComponent]
 })

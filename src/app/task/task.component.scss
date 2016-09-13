@@ -1,5 +1,11 @@
 @import 'src/sass/components/_variables.scss';
 
+.card {
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 95%;
+}
+
 .input-field:focus:not([readonly]) {
 	border-bottom: 1px solid $borderColor;
 	box-shadow: 0 1px 0 0 $borderColor;

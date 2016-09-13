@@ -418,6 +418,9 @@ app.get('/templates', function(req, res) {
 	res.send('yay you got the templates!')
 })
 
+app.post('/templates', function(req, res) {
+	res.send('template created with name ' + req.body.name)
+})
 
 
 

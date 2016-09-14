@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Event } from './event';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+	form: FormGroup;
+	event = new Event();
+// instructors: string[]= ['Brett', 'Jeremy', 'Ben Callis'];
+instructors: string[] = ['Brett', 'Jeremy', 'Ben'];
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+		this.form = fb.group({
+		      name: ['', Validators.required],
+		      number: [''],
+		      instructor: [''],
+					notes: ['']
+		    })
+	}
+	ngOnInit() {
+		console.log(this.event);
+	}
 
-  ngOnInit() {
-  }
+	save() {
+	///need to input service here with http post for this to actually save
+	console.log(this.form.value);
+	}
 
 }

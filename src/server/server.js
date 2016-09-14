@@ -93,7 +93,7 @@ app.post('/calendars', function (req, res) {
 			// return;
 			res.send('err');
 		}
-		// can get id and name from this 
+		// can get id and name from this
 		res.send(calendar);
 	});
 });
@@ -101,7 +101,7 @@ app.post('/calendars', function (req, res) {
 // 3. MODIFY A CALENDAR
 app.put('/calendars', function(req, res) {
 	var modifiedCalendar = {
-		summary: req.body.summary, 
+		summary: req.body.summary,
 		description: req.body.description,
 		location: req.body.location,
 		timeZone: req.body.timeZone
@@ -159,7 +159,7 @@ app.get('/events', function(req, res) {
 
 // 6. CREATE A NEW EVENT
 app.post('/events', function (req, res) {
-	
+
 	// put this in the service or something
 	var attendees = [];
 	req.body.attendees.forEach( function(email) {
@@ -348,7 +348,7 @@ app.get('/tasks', function (req, res) {
 	});
 });
 
-// 14. CREATE NEW TASK 
+// 14. CREATE NEW TASK
 app.post('/tasks', function (req, res) {
 	// params: completed, due, notes, status, title
 	var newTask = {
@@ -372,9 +372,9 @@ app.post('/tasks', function (req, res) {
 });
 
 // 15. MODIFY TASK
-app.put('/tasks', function(req, res) {	
+app.put('/tasks', function(req, res) {
 	var modifiedTask = {
-		title: req.body.name, 
+		title: req.body.name,
 		notes: req.body.notes,
 		due: req.body.due,
 		status: req.body.status

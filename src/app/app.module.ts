@@ -15,7 +15,8 @@ import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-h
 import { EventCardComponent } from './event-card/event-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { TemplateListComponent } from './template-list/template-list.component';
-
+import { EventsService } from './events.service';
+import { TemplatesService } from './templates.service';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { TemplateListComponent } from './template-list/template-list.component';
 		ReactiveFormsModule
   ],
   providers: [
-		appRoutingProviders
+		appRoutingProviders,
+		EventsService,
+		TemplatesService
     ],
   bootstrap: [AppComponent]
 })

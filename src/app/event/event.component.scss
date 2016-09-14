@@ -1,0 +1,50 @@
+@import 'src/sass/components/_variables.scss';
+
+.card {
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 95%;
+	padding-top: 55px;
+}
+
+.card-content, .buttons {
+	margin: 0 auto;
+	max-width: 80%;
+}
+
+.input-field:focus:not([readonly]) {
+	border-bottom: 1px solid $borderColor;
+	box-shadow: 0 1px 0 0 $borderColor;
+}
+
+input {
+	color: $borderColor
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn {
+	border-radius: 20px;
+	margin: 10px auto;
+	width: 240px;
+}
+
+.create {
+	background-color: $secondaryBlueColor;
+}
+
+.white {
+	border: solid 0.75px $secondaryBlueColor;
+}
+
+.next {
+	color: $secondaryBlueColor;
+	margin-right: 10px
+}
+
+.rt-arrow {
+	background: $rt-arrow no-repeat 160px center;
+}

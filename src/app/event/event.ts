@@ -1,4 +1,5 @@
 export class Event {
+	templateId: string;
   name: string;
   number: number;
   instructor?: string;

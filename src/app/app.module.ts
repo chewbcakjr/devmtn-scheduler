@@ -15,9 +15,10 @@ import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { EventsService } from './events.service';
+import { TemplatesService } from './templates.service';
+import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
-
-
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { TemplateListComponent } from './template-list/template-list.component';
     routing
   ],
   providers: [
-
+    EventsService,
+    TemplatesService,
+    GoLiveService
     ],
   bootstrap: [AppComponent]
 })

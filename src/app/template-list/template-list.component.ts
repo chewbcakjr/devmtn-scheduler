@@ -19,7 +19,7 @@ export class TemplateListComponent implements OnInit {
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
- 	
+ 	// this.eventsService.removeEvent(4)
   	this.eventsService.getEvents(5)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
   	// this.templatesService.getTmpls()
@@ -54,6 +54,11 @@ export class TemplateListComponent implements OnInit {
   		.subscribe(data => {
   			console.log(data);
   		})
+  }
+
+  // this also will live somewhere else
+  removeEvent(event_id:number) {
+  	this.eventsService.removeEvent(event_id)
   }
 
 

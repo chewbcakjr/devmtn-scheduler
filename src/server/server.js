@@ -433,6 +433,7 @@ app.get('/templates', function(req, res) {
 	// res.send('yay you got the templates!')
 })
 
+// create new template
 app.post('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err)
@@ -441,6 +442,16 @@ app.post('/templates', function(req, res) {
 	// res.send('template created with name ' + req.body.name)
 })
 
+
+// create event on given template
+app.post('/dbevents', function(req, res) {
+	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send(resp)	
+	})
+})
+
+// get a list of events on given template
 app.get('/dbevents', function(req, res) {
 	db.get_events(req.query.tmpl_id, function(err, events) {
 		if (err) console.log(err)
@@ -448,11 +459,15 @@ app.get('/dbevents', function(req, res) {
 	})
 })
 
+// update an event on given template
 
-app.post('/dbevents', function(req, res) {
-	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+
+
+// remove event on given template
+app.delete('/dbevents', function(req, res) {
+	db.remove_event(req.query.event_id, function(err, resp) {
 		if (err) console.log(err)
-		res.status(200).send(resp)	
+		res.status(200).send('yay')
 	})
 })
 

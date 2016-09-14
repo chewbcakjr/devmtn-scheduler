@@ -21,6 +21,7 @@ export class EventsService {
   }
 
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
+  	
   	var obj = {
   		tmpl_id: tmpl_id,
   		name: name,
@@ -32,6 +33,14 @@ export class EventsService {
   	};
   	
   	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
+  }
+
+  removeEvent(event_id:number):Observable<any> {
+  	return this.http.delete(`${this.base_url}/dbevents?event_id=${event_id}`)
+  		.map(res => {
+  			console.log('event deleted');
+  			return res
+  		})
   }
 
 

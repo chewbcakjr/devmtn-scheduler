@@ -34,7 +34,5 @@ export class GoLiveService {
   	return true;
   }
 
-  adjustDates(start_date:Date, day_number:number) {
 
-  } 
 }

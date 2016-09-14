@@ -1,3 +1,71 @@
-<p>
-  template-list works!
-</p>
+<main class="content-area">
+  <!-- probably we'll have this be a container and do an ngFor over all the cards -->
+  <!-- you mean here candice :troll: -->
+  <div class="card">
+    <div class="card-content ">
+      <header class="header">
+
+      </header>
+
+      <!-- the .row would be ngFor with the data populated from db/API -->
+      <div class="card-details">
+        <div class="row event-details">
+          <div class="start-time">
+            9:00am
+          </div>
+          <div class="event-title">
+            Orientation
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-action">
+      <button type="" class="btn btn-left">New Event</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-content ">
+      <header class="header">
+        <div class="num">1</div>
+        <div class="edit"><a class="edit-icon btn-med waves-effect waves-circle"></a>
+        </div>
+      </header>
+      <div class="divider"></div>
+
+      <!-- the .row would be ngFor with the data populated from db/API -->
+      <div class="card-details">
+        <div class="row event-details">
+          <div class="start-time">
+            9:00am
+          </div>
+          <div class="event-title">
+            Orientation
+          </div>
+        </div>
+        <div class="row event-details">
+          <div class="start-time">
+            11:00am
+          </div>
+          <div class="event-title">
+            Intro to Git
+          </div>
+        </div>
+        <div class="row event-details">
+          <div class="start-time">
+            1:00pm
+          </div>
+          <div class="event-title">
+            Do you read the bible Brent?
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-action">
+      <button type="" class="btn btn-left">New Event</button>
+      <button type="" class="btn btn-right">New Task</button>
+    </div>
+  </div>
+
+</main>

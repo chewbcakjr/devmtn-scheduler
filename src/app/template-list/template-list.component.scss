@@ -1,0 +1,28 @@
+@import 'src/sass/components/_variables.scss';
+
+.content-area {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+}
+
+.card {
+	min-width: 300px;
+}
+
+.card .card-content {
+	padding: 10px 0 20px 0;
+}
+
+.btn {
+  background-color: $borderColor;
+  border-radius: 20px;
+}

@@ -19,6 +19,7 @@ import { EventsService } from './events.service';
 import { TemplatesService } from './templates.service';
 import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
+import { DayCardComponent } from './day-card/day-card.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TemplateListComponent } from './template-list/template-list.component';
     CalendarHeaderTitleComponent,
     EventCardComponent,
     FooterComponent,
-    TemplateListComponent
+    TemplateListComponent,
+    DayCardComponent
   ],
   imports: [
     BrowserModule,

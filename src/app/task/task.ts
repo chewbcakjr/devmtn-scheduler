@@ -1,5 +1,4 @@
 export class Template {
-  priority: number;
-  title: string;
-  people: string;
+	tmpl_id: number;
+  name: string;
 }

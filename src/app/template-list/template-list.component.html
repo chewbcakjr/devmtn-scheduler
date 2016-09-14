@@ -1,3 +1,23 @@
+<app-calendar-header-title></app-calendar-header-title>
+
+<div *ngFor = "let event of events">
+	<p>
+		{{event.name}}
+	</p>
+	<p>
+		{{event.number}}
+	</p>
 <p>
-  template-list works!
+	{{event.instructor}}
 </p>
+</div>
+
+<div *ngFor = "let template of templates">
+	<p>
+		{{template.name}}
+	</p>
+	<p>
+		{{template.tmpl_id}}
+
+	</p>
+</div>

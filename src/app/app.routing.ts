@@ -7,6 +7,7 @@ import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TaskComponent } from './task/task.component';
 import { EventComponent } from './event/event.component';
 import { EventCardComponent } from './event-card/event-card.component';
+import { TemplateListComponent} from './template-list/template-list.component';
 
 const appRoutes:Routes = [
 	{
@@ -20,6 +21,10 @@ const appRoutes:Routes = [
 	{
 		path: 'eventcards',
 		component: EventCardComponent
+	},
+	{
+		path: 'templatesList',
+		component: TemplateListComponent
 	},
 	{
 		path: '',

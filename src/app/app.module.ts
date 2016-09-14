@@ -13,7 +13,7 @@ import { routing } from './app.routing';
 import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
-import { EventCardComponent } from './event-card/event-card.component';
+import { TemplateComponent } from './template/template.component';
 import { FooterComponent } from './footer/footer.component';
 import { EventsService } from './events.service';
 import { TemplatesService } from './templates.service';
@@ -32,7 +32,7 @@ import { DayCardComponent } from './day-card/day-card.component';
     EventComponent,
     TaskComponent,
     CalendarHeaderTitleComponent,
-    EventCardComponent,
+    TemplateComponent,
     FooterComponent,
     TemplateListComponent,
     DayCardComponent

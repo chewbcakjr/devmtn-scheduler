@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-event-card',
-  templateUrl: './event-card.component.html',
-  styleUrls: ['./event-card.component.scss']
+  selector: 'app-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.scss']
 })
 export class EventCardComponent implements OnInit {
 

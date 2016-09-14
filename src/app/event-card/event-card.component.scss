@@ -2,7 +2,10 @@
 
 .content-area {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .header {
@@ -40,7 +43,17 @@
 }
 
 .start-time {
+	height: 22px;
 	width: 50%;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 50%;
+		border-bottom: 3px solid $primaryTealColor;
+	}
 }
 
 .event-title {
@@ -50,6 +63,7 @@
 
 .card .card-action {
 	border-top: none;
+	font-size: 0.9em;
 }
 
 .card-action {

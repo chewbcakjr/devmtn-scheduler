@@ -3,31 +3,33 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
 var passport = require('passport');
-var gcal = require('google-calendar');
-var config = require('./config');
-var google = require('googleapis');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var config = require('./config');
+// var gcal = require('google-calendar');
 
-var massive = require('massive');
-var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
-
+var google = require('googleapis');
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
-
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(config.consumer_key, config.consumer_secret, '/auth/google/callback');
 google.options({auth: oauth2Client}); // set auth as a global default
+
+var massive = require('massive');
+var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
+var massiveInstance = massive.connectSync({
+	connectionString: connectionString
+});
+
+var gCalCtrl = require('./controllers/gCalCtrl');
+
+
+
 
 //App Init
 var app = express();
 var port = 9001;
 
-var massiveInstance = massive.connectSync({
-	connectionString: connectionString
-});
-
 app.set('db', massiveInstance);
-
 var db = app.get('db');
 
 //Middleware
@@ -75,19 +77,19 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 
 // -------------------------------CALENDARS-------------------------------- //
 // 1. GET A LIST OF THE USER'S CALENDARS
-app.get('/calendars', function (req, res) {
-	calendar.calendarList.list({
-		auth: oauth2Client
-	}, function (err, calendars) {
-		if (err) {
-			console.log('error returning user\'s calendars: ' + err);
-			res.send('err');
-		} else {
-			// can get ids and names from this items array
-			res.send(calendars);
-		}
-	});
-});
+app.get('/calendars', function(req, res) {
+        calendar.calendarList.list({
+            auth: oauth2Client
+        }, function(err, calendars) {
+            if (err) {
+                console.log('error returning user\'s calendars: ' + err);
+                res.send('err');
+            } else {
+                // can get ids and names from this items array
+                res.send(calendars);
+            }
+        });
+    });
 
 // 2. CREATE A NEW CALENDAR
 app.post('/calendars', function (req, res) {
@@ -472,6 +474,15 @@ app.delete('/dbevents', function(req, res) {
 	db.remove_event(req.query.event_id, function(err, resp) {
 		if (err) console.log(err)
 		res.status(200).send('yay')
+	})
+})
+
+app.get('/locations', function(req, res) {
+	console.log('got to server')
+	db.get_locations(req.query.location, function(err, locations) {
+		if (err) console.log(err)
+		console.log(locations)
+		res.status(200).send(locations[0])
 	})
 })
 

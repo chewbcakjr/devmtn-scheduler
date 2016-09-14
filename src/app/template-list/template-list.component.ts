@@ -28,6 +28,7 @@ export class TemplateListComponent implements OnInit {
   		.subscribe(data => {
   			console.log(data);
   			this.goLiveService.goLive(5,'Provo', new Date())
+  				.subscribe(data => console.log(data))
   			this.tmplList = data;
   		})
   	// this.eventsService.createEvent(5,'did it work?','now', 'never', 'me', 'nuff said', 1)

@@ -45,12 +45,14 @@
 .start-time {
 	width: 50%;
 	position: relative;
-}
-
-.bot-border {
-	border-bottom: 1px solid $primaryTealColor;
-	position: absolute;
-	left: 50%;
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 50%;
+		border-bottom: 3px solid $primaryTealColor;
+	}
 }
 
 .event-title {

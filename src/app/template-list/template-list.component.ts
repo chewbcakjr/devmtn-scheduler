@@ -21,6 +21,7 @@ export class TemplateListComponent implements OnInit {
   ngOnInit():void {
  	// this.eventsService.removeEvent(4)
   	this.eventsService.getEvents(5)
+  	// this.eventsService.updateEvent(1, 'updated', '09:00', '10:00', 'me', 'notes notes', 2)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
   	// this.templatesService.getTmpls()
   	// this.templatesService.createTmpl('testing')

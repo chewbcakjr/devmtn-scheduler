@@ -460,8 +460,12 @@ app.get('/dbevents', function(req, res) {
 })
 
 // update an event on given template
-
-
+app.put('/dbevents', function(req, res) {
+	db.update_event(req.query.event_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send(resp)
+	})
+})
 
 // remove event on given template
 app.delete('/dbevents', function(req, res) {

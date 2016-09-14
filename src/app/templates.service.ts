@@ -11,14 +11,25 @@ export class TemplatesService {
   base_url:string = 'http://localhost:9001';
 
   // this will retrieve a list of the existing templates in the db. templates will be objects with an id and name
-  getTmpls():Observable<any> {
-  	return this.http.get(`${this.base_url}/templates`)
-  		.map(res => res.json())
-  }
+  // getTmpls():Observable<any> {
+  // 	return this.http.get(`${this.base_url}/templates`)
+  // 		.map(res => res.json());
+  // }
+	getTmpls() {
+		return this.http.get('http://localhost:9001/templates')
+		.map(res => {
+			console.log(res)
+			res.json()
+		})
+	}
 
   // this will create a new template. the id will be auto generated in db
   createTmpl(name:string):Observable<any> {
   	return this.http.post(`${this.base_url}/templates`, {name: name})
   }
+	createTemplate(name:string) {
+		return this.http.post(this.base_url + '/' + 'templates', {name: name})
+		.map(res => res.json());
+	}
 
 }

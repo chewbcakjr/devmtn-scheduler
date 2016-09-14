@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TaskComponent } from './task/task.component';
 import { EventComponent } from './event/event.component';
-import { EventCardComponent } from './event-card/event-card.component';
+// import { EventCardComponent } from './event-card/event-card.component';
 import { TemplateListComponent} from './template-list/template-list.component';
+import { TemplateComponent } from './template/template.component';
+
 
 const appRoutes:Routes = [
 	{
@@ -19,8 +21,8 @@ const appRoutes:Routes = [
 		component: EventComponent
 	},
 	{
-		path: 'eventcards',
-		component: EventCardComponent
+		path: 'template',
+		component: TemplateComponent
 	},
 	{
 		path: 'templatesList',

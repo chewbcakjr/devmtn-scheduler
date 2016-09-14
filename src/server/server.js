@@ -8,6 +8,9 @@ var config = require('./config');
 var google = require('googleapis');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+var massive = require('massive');
+var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
+
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
 
@@ -19,40 +22,48 @@ google.options({auth: oauth2Client}); // set auth as a global default
 var app = express();
 var port = 9001;
 
+var massiveInstance = massive.connectSync({
+	connectionString: connectionString
+});
+
+app.set('db', massiveInstance);
+
+var db = app.get('db');
+
 //Middleware
 app.use(bodyParser.json());
 var corsOptions = {
-	origin: 'http://localhost:9001'
+	origin: 'http://localhost:4200'
 };
 app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));
 
-//Passport
-passport.serializeUser(function (user, cb) {
-	cb(null, user);
-});
-passport.deserializeUser(function (obj, cb) {
-	cb(null, obj);
-});
-app.use(passport.initialize());
-app.use(passport.session());
+// //Passport
+// passport.serializeUser(function (user, cb) {
+// 	cb(null, user);
+// });
+// passport.deserializeUser(function (obj, cb) {
+// 	cb(null, obj);
+// });
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-passport.use(new GoogleStrategy({
-	clientID: config.consumer_key,
-	clientSecret: config.consumer_secret,
-	callbackURL: "http://localhost:" + port + "/auth/google/callback",
-	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
-}, function (accessToken, refreshToken, profile, done) {
+// passport.use(new GoogleStrategy({
+// 	clientID: config.consumer_key,
+// 	clientSecret: config.consumer_secret,
+// 	callbackURL: "http://localhost:" + port + "/auth/google/callback",
+// 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
+// }, function (accessToken, refreshToken, profile, done) {
 
-	console.log("Auth Success. Celebration is in order.");
+// 	console.log("Auth Success. Celebration is in order.");
 
-	console.log("Access Token: ", accessToken);
+// 	console.log("Access Token: ", accessToken);
 
-	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
+// 	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
 
-	return done(null, profile);
-}));
+// 	return done(null, profile);
+// }));
 
 //Auth Routing
 app.get('/auth/google', passport.authenticate('google'));
@@ -411,6 +422,43 @@ app.delete('/tasks', function(req, res) {
 	})
 })
 // ---------------------------------TASKS----------------------------------- //
+
+
+// get list of templates
+app.get('/templates', function(req, res) {
+	db.get_templates(function(err, tmpls) {
+		if (err) console.log(err)
+		res.status(200).send(tmpls)
+	})
+	// res.send('yay you got the templates!')
+})
+
+app.post('/templates', function(req, res) {
+	db.create_template(req.body.name, function(err, tmpl) {
+		if (err) console.log(err)
+		res.status(200).send(tmpl)	
+	})
+	// res.send('template created with name ' + req.body.name)
+})
+
+app.get('/dbevents', function(req, res) {
+	db.get_events(req.query.tmpl_id, function(err, events) {
+		if (err) console.log(err)
+		res.status(200).send(events)	
+	})
+})
+
+
+app.post('/dbevents', function(req, res) {
+	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send(resp)	
+	})
+})
+
+
+
+
 
 //Listen
 app.listen(port, function () {

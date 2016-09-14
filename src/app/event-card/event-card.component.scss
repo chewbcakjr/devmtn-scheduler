@@ -1,18 +1,55 @@
 @import 'src/sass/components/_variables.scss';
 
+.content-area {
+	display: flex;
+	justify-content: space-around;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
+	padding: 0 20px;
+}
+
+.card {
+	min-width: 300px;
+}
+
+.card .card-content {
+	padding: 10px 0 20px 0;
 }
 
 .num {
 	color: $secondaryBlueColor;
-	font-size: 25px;
+	font-size: 2em;
 	font-weight: bold;
+	margin-top: -5px;
 }
 
-.edit-icon {
-	background: $add-icon no-repeat center center;
+.edit .edit-icon {
+	background: $pencil-icon no-repeat center center;
+	background-size: cover;
+	width: 2em;
+	height: 2em;
+}
+
+.event-details {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.start-time {
+	width: 50%;
+}
+
+.event-title {
+	text-align: right;
+	width: 50%;
+}
+
+.card .card-action {
+	border-top: none;
 }
 
 .card-action {
@@ -20,10 +57,20 @@
 	justify-content: center;
 }
 
+.card-content .card-details {
+	padding: 20px;
+}
+
 button {
 	background-color: $borderColor;
 	text-transform: unset;
 	font-size: 9px;
+}
+
+.btn {
+	box-shadow: none;
+	font-family: $primary-font;
+	font-size: 1em;
 }
 
 .btn-left {
@@ -37,4 +84,3 @@ button {
 	border-bottom-right-radius: 20px;
 	border-left: 1px solid #fff;
 }
-

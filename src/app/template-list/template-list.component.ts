@@ -41,7 +41,18 @@ export class TemplateListComponent implements OnInit {
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {
-  	this.eventsService.createEvent(tmpl_id, name, start_time, end_time, default_instructor, notes, day_number)
+
+  	var obj = {
+  		tmpl_id: tmpl_id,
+  		name: name,
+  		start_time: start_time,
+  		end_time: end_time,
+  		default_instructor: default_instructor,
+  		notes: notes,
+  		day_number: day_number
+  	};
+
+  	this.eventsService.createEvent(obj)
   		.subscribe(data => {
   			console.log(data);
   		})

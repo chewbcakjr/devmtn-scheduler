@@ -16,17 +16,7 @@ export class EventsService {
   		.map(res => res.json())
   }
 
-  createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
-  	var obj = {
-  		tmpl_id: tmpl_id,
-  		name: name,
-  		start_time: start_time,
-  		end_time: end_time,
-  		default_instructor: default_instructor,
-  		notes: notes,
-  		day_number: day_number
-  	};
-  	
+  createEvent(obj):Observable<any> {
   	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
   }
 

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
@@ -13,13 +14,8 @@ export class EventsService {
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
-  		.map(events => events.find(event=> event.tmpl_id === tmpl_id));
+  		.map(res => res.json())
   }
-	// getSpecificEvent(tmpl_id:number): Observable<Event> {
-	// 	return this.getEvents()
-	// 	.map(events => events.find(event => event.tmpl_id === tmpl_id));
-	//
-	// }
 
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
   	var obj = {

@@ -24,10 +24,16 @@ event = new Event();
  template_id: number;
  name: string;
  templates;
+ event: Event;
 
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
+
+    this.route.params.forEach((params: Params) => {
+     let id = +params['id'];
+     this.eventsService.getEvents(id)
+       .then(event => this.event = event);
 
   	// this.eventsService.getEvents(5)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)

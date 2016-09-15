@@ -3,7 +3,7 @@
 .content-area {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: flex-start;
 	padding-left: 50px;
 	padding-right: 50px;
 }
@@ -12,10 +12,15 @@
   background-color: #fff;
   height: 210px;
   position: relative;
-	min-width: 300px;
+  margin-right: 20px;
+	width: 300px;
   overflow: hidden;
   text-align: center;
-  z-index: 10;
+  transition: all .3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card:before {

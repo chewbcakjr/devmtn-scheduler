@@ -7,6 +7,7 @@ import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { EventComponent } from './event/event.component';
 import { TemplateComponent } from './template/template.component';
+import { DayCardComponent } from './day-card/day-card.component';
 
 const appRoutes:Routes = [
 	{

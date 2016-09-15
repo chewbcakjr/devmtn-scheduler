@@ -12,6 +12,9 @@ import { ActivatedRoute} from '@angular/router';
 export class EventComponent implements OnInit {
 	form: FormGroup;
 	event = new Event();
+	errorMessage: string = '';
+	eventName = [];
+
 // instructors: string[]= ['Brett', 'Jeremy', 'Ben Callis'];
 instructors: string[] = ['Brett', 'Jeremy', 'Ben'];
 
@@ -30,7 +33,10 @@ instructors: string[] = ['Brett', 'Jeremy', 'Ben'];
 	}
 
 	save() {
-		this.eventsService.createEvent(this.event);
+		this.eventsService.createEvent()
+		.subscribe(
+			p => this.eventName = p,
+			e => this.errorMessage = e);
 
 
 	///need to input service here with http post for this to actually save

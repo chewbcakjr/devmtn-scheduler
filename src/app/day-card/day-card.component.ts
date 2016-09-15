@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EventsService} from '../events.service';
+import {Event} from '../event/event';
 
 @Component({
   selector: 'app-day-card',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayCardComponent implements OnInit {
 
-  constructor() { }
+	allEvents: Event[];
+
+  constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
+		this.loadEvents();
   }
-
+	loadEvents() {
+		this.eventsService.getEvents()
+		.subscribe(
+			events => this.allEvents = events,
+			err => {
+			console.log(err);
+	});
+}
 }

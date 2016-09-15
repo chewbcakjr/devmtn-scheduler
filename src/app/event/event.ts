@@ -1,9 +1,10 @@
 export class Event {
-	templateId: string;
-  name: string;
-  number: number;
-  instructor?: string;
-  notes: string;
-	startTime: string;
-	endTime: string;
+	tmpl_id: number;
+	name: string;
+	start_time: string;
+	end_time: string;
+	default_instructor: string;
+	notes: string;
+	day_number: number;
+	calendar_id: number;
 }

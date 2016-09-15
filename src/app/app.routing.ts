@@ -9,6 +9,7 @@ import { EventComponent } from './event/event.component';
 // import { EventCardComponent } from './event-card/event-card.component';
 import { TemplateListComponent} from './template-list/template-list.component';
 import { TemplateComponent } from './template/template.component';
+import {DayCardComponent} from './day-card/day-card.component';
 
 
 const appRoutes:Routes = [
@@ -27,6 +28,10 @@ const appRoutes:Routes = [
 	{
 		path: 'templatesList',
 		component: TemplateListComponent
+	},
+	{
+		path: 'allEvents',
+		component: DayCardComponent
 	},
 	{
 		path: '',

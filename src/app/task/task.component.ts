@@ -9,6 +9,7 @@ import { Template } from './task';
 	templateUrl: './task.component.html',
 	styleUrls: ['./task.component.scss']
 })
+//create template then redirects to template view
 export class TaskComponent implements OnInit {
 	form: FormGroup;
 	temp = new Template();
@@ -30,6 +31,7 @@ export class TaskComponent implements OnInit {
 	createTemplate(template) {
 		this.templatesService.createTemplate(name)
 		.subscribe(data => {
+			console.log(data);
 			this.template = data;
 		})
 		console.log(this.form.value);

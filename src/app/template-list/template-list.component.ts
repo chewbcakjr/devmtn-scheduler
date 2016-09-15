@@ -18,8 +18,8 @@ export class TemplateListComponent implements OnInit {
 	event = new Event();
 		template_id: number;
 		newTmpl: string = '';
-name: string;
-templates;
+		name: string;
+		templates;
 
 
 
@@ -36,7 +36,7 @@ templates;
 		.subscribe(data => this.templates = data);
 
 
-		this.eventsService.getEvents(this.template.tmpl_id)
+		this.eventsService.getEvents()
 		.subscribe(
 			event => this.event = event,
 			response => {
@@ -48,6 +48,10 @@ templates;
 	createTmpl(name) {
 	this.templatesService.createTmpl(name)
 		.subscribe(data => this.newTmpl = data);
+}
+
+getAllEvents(tmpl_id:number) {
+  
 }
 
 

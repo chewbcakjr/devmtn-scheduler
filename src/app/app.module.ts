@@ -10,7 +10,6 @@ import { ScheduleHeader } from './schedule-header/schedule-header.component';
 import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { ContentContainerComponent } from './content-container/content-container.component';
 import { routing } from './app.routing';
-import { EventComponent } from './event/event.component';
 import { TaskComponent } from './task/task.component';
 import { CalendarHeaderTitleComponent } from './calendar-header-title/calendar-header-title.component';
 import { TemplateComponent } from './template/template.component';
@@ -21,6 +20,11 @@ import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { GoogleService } from './google.service';
 import { DayCardComponent } from './day-card/day-card.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { GoLiveInputComponent } from './go-live-input/go-live-input.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,17 @@ import { DayCardComponent } from './day-card/day-card.component';
     ScheduleHeader,
     CalendarHeader,
     ContentContainerComponent,
-    EventComponent,
     TaskComponent,
     CalendarHeaderTitleComponent,
     TemplateComponent,
     FooterComponent,
     TemplateListComponent,
-    DayCardComponent
+    DayCardComponent,
+    ScheduleComponent,
+    LoginPageComponent,
+    GoLiveInputComponent,
+    EditEventComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,

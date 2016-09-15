@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
@@ -9,6 +10,12 @@ export class EventsService {
   constructor(private http:Http) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
+
+  // return a list of events associated with a specified template.
+  getEvents(tmpl_id:number):Observable<any> {
+  	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
+  		.map(res => res.json())
+  }
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
@@ -22,18 +29,8 @@ export class EventsService {
   		notes: notes,
   		day_number: day_number
   	};
-  	
-  	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
-  }
 
-  // return a list of events associated with a specified template. 
-  getEvents(tmpl_id:number):Observable<any> {
-  	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
-  		.map(res => {
-  			this.events = res.json();
-  			console.log(this.events)
-  			return res.json()
-  		})
+  	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
   }
 
   // update an event

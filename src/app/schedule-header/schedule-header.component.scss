@@ -48,3 +48,7 @@
 .show-hide-add li:last-child a{
 	color: $secondaryBlueColor;
 }
+.active-bg {
+  background-color: $titleFontColor;
+  text-transform: uppercase;
+}

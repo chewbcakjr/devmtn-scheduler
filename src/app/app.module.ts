@@ -19,6 +19,7 @@ import { EventsService } from './events.service';
 import { TemplatesService } from './templates.service';
 import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
+import { GoogleService } from './google.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TemplateListComponent } from './template-list/template-list.component';
   providers: [
     EventsService,
     TemplatesService,
-    GoLiveService
+    GoLiveService,
+    GoogleService
     ],
   bootstrap: [AppComponent]
 })

@@ -21,7 +21,7 @@ export class GoLiveService {
   		.map(res =>{
   			console.log(res.json());
   			let address = res.json().address;
-  			console.log(this.address)
+  			console.log(address)
   			// ---------------
   			events.map(function(el) {
   		// right now this just slaps on a string, but we need to fetch the address from the db based on the location that jeremy chooses

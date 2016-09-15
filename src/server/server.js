@@ -20,10 +20,6 @@ var massiveInstance = massive.connectSync({
 	connectionString: connectionString
 });
 
-var gCalCtrl = require('./controllers/gCalCtrl');
-
-
-
 
 //App Init
 var app = express();
@@ -41,39 +37,54 @@ app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));
 
-// //Passport
-// passport.serializeUser(function (user, cb) {
-// 	cb(null, user);
-// });
-// passport.deserializeUser(function (obj, cb) {
-// 	cb(null, obj);
-// });
-// app.use(passport.initialize());
-// app.use(passport.session());
+//Passport
+passport.serializeUser(function (user, cb) {
+	cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+	// console.log(obj)
+	cb(null, obj);
+});
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.use(new GoogleStrategy({
-// 	clientID: config.consumer_key,
-// 	clientSecret: config.consumer_secret,
-// 	callbackURL: "http://localhost:" + port + "/auth/google/callback",
-// 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
-// }, function (accessToken, refreshToken, profile, done) {
+passport.use(new GoogleStrategy({
+	clientID: config.consumer_key,
+	clientSecret: config.consumer_secret,
+	callbackURL: "http://localhost:" + port + "/auth/google/callback",
+	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
+}, function (accessToken, refreshToken, profile, done) {
 
-// 	console.log("Auth Success. Celebration is in order.");
+	console.log("Auth Success. Celebration is in order.");
 
-// 	console.log("Access Token: ", accessToken);
+	console.log("Access Token: ", accessToken);
 
-// 	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
+	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
 
-// 	return done(null, profile);
-// }));
+	return done(null, profile);
+}));
 
 //Auth Routing
 app.get('/auth/google', passport.authenticate('google'));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
 	// Successful authentication, redirect home.
-	res.redirect('/');
+	// res.redirect('/');
+	res.redirect('http://localhost:4200')
 });
+
+app.get('/auth/me', function(req, res) {
+	// console.log(req.user)
+	// res.send(req.user)
+	// console.log(Object.keys(req))
+	// res.send(Object.keys(req))
+	console.log('req.session')
+	console.log(req.session)
+	console.log('req._passport')
+	console.log(req._passport)
+	res.send('done')
+	// res.send(req._passport.session)
+})
 
 // -------------------------------CALENDARS-------------------------------- //
 // 1. GET A LIST OF THE USER'S CALENDARS
@@ -478,10 +489,8 @@ app.delete('/dbevents', function(req, res) {
 })
 
 app.get('/locations', function(req, res) {
-	console.log('got to server')
 	db.get_locations(req.query.location, function(err, locations) {
 		if (err) console.log(err)
-		console.log(locations)
 		res.status(200).send(locations[0])
 	})
 })

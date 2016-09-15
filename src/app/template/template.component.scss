@@ -3,7 +3,15 @@
 .content-area {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: flex-start;
 	padding-left: 50px;
 	padding-right: 50px;
+}
+
+app-day-card {
+	margin-right: 20px;
+}
+
+app-day-card:last-child {
+	margin-right: 0;
 }

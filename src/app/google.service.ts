@@ -12,16 +12,15 @@ export class GoogleService {
   logged_in:boolean = false;
 
   getCalendars():Observable<any> {
-  	if (!this.logged_in) {
-	  	return this.http.get(`${this.base_url}/auth/me`)
-	  		.map(res => {
-	  			console.log(res)
-	  			this.logged_in = true
-	  		     
-	  		     	window.location.href='http://localhost:9001/auth/google'
-	  		    
+  	
+  	return this.http.get(`${this.base_url}/auth/me`)
+  		.map(res => {
+  			if (!res.json().credentials.access_token) {
+  			// above if statement used just in development. below statement used once we build/bundle and serve our files with express/node
+  			// if (!res.json().user) {	
+  				window.location.href='http://localhost:9001/auth/google'
+  			}
   		})
-  	}
   }
 }
 

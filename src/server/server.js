@@ -31,20 +31,13 @@ var db = app.get('db');
 //Middleware
 app.use(bodyParser.json());
 var corsOptions = {
+	// need to change this once we build/bundle
 	origin: 'http://localhost:4200'
 };
 app.use(cors(corsOptions));
-app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
+app.use(express.static(__dirname + '/../../dist'));
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));
 
-//Passport
-passport.serializeUser(function (user, cb) {
-	cb(null, user);
-});
-passport.deserializeUser(function (obj, cb) {
-	// console.log(obj)
-	cb(null, obj);
-});
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -56,7 +49,6 @@ passport.use(new GoogleStrategy({
 }, function (accessToken, refreshToken, profile, done) {
 
 	console.log("Auth Success. Celebration is in order.");
-
 	console.log("Access Token: ", accessToken);
 
 	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
@@ -64,26 +56,28 @@ passport.use(new GoogleStrategy({
 	return done(null, profile);
 }));
 
+passport.serializeUser(function (user, cb) {
+	cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+	cb(null, obj);
+});
+
 //Auth Routing
 app.get('/auth/google', passport.authenticate('google'));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
-	// Successful authentication, redirect home.
+	// Successful authentication, redirect home. switch the res.redirect (comment/uncomment once we build/bundle)
 	// res.redirect('/');
 	res.redirect('http://localhost:4200')
 });
 
 app.get('/auth/me', function(req, res) {
-	// console.log(req.user)
+	console.log(req.user)
 	// res.send(req.user)
-	// console.log(Object.keys(req))
-	// res.send(Object.keys(req))
-	console.log('req.session')
-	console.log(req.session)
-	console.log('req._passport')
-	console.log(req._passport)
-	res.send('done')
-	// res.send(req._passport.session)
+
+	res.send(oauth2Client)
+
 })
 
 // -------------------------------CALENDARS-------------------------------- //

@@ -7,6 +7,7 @@ import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { EventComponent } from './event/event.component';
 import { TemplateComponent } from './template/template.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 const appRoutes:Routes = [
 	{
@@ -20,6 +21,9 @@ const appRoutes:Routes = [
 	{
 		path: 'template',
 		component: TemplateComponent
+	},
+	{ path: 'schedule',
+	component: ScheduleComponent
 	},
 	{
 		path: '',

@@ -20,6 +20,7 @@ import { TemplatesService } from './templates.service';
 import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { DayCardComponent } from './day-card/day-card.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DayCardComponent } from './day-card/day-card.component';
     TemplateComponent,
     FooterComponent,
     TemplateListComponent,
-    DayCardComponent
+    DayCardComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

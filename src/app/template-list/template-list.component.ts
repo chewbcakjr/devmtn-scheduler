@@ -16,7 +16,7 @@ export class TemplateListComponent implements OnInit {
  tmplList: any;
 	template = new Template();
 	event = new Event();
-		template_id: number;
+		tmpl_id: number;
 		newTmpl: string = '';
 		name: string;
 		templates;
@@ -36,7 +36,7 @@ export class TemplateListComponent implements OnInit {
 		.subscribe(data => this.templates = data);
 
 
-		this.eventsService.getEvents()
+		this.eventsService.getEvents(event.tmpl_id)
 		.subscribe(
 			event => this.event = event,
 			response => {
@@ -51,7 +51,7 @@ export class TemplateListComponent implements OnInit {
 }
 
 getAllEvents(tmpl_id:number) {
-  
+
 }
 
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
+import { Template } from '../task/task';
+import { Event } from '../create-event/event';
+
 
 @Component({
   selector: 'app-template-list',
@@ -15,10 +18,17 @@ export class TemplateListComponent implements OnInit {
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
   newTmpl:string = '';
+  tmplList: any;
+template = new Template();
+event = new Event();
+ template_id: number;
+ name: string;
+ templates;
+
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
- 	
+
   	// this.eventsService.getEvents(5)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
   	this.templatesService.getTmpls()
@@ -46,6 +56,7 @@ export class TemplateListComponent implements OnInit {
   			console.log(data);
   		})
   }
+
 
 
 

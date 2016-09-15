@@ -19,6 +19,10 @@
   transition: all .3s ease-in-out;
 }
 
+.card:last-child {
+  margin-right: 0;
+}
+
 .card:hover {
   transform: scale(1.05);
 }

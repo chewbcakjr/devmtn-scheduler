@@ -18,6 +18,7 @@ import { EventsService } from './events.service';
 import { TemplatesService } from './templates.service';
 import { GoLiveService } from './go-live.service';
 import { TemplateListComponent } from './template-list/template-list.component';
+import { GoogleService } from './google.service';
 import { DayCardComponent } from './day-card/day-card.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -54,7 +55,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
   providers: [
     EventsService,
     TemplatesService,
-    GoLiveService
+    GoLiveService,
+    GoogleService
     ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
+import { GoLiveService } from '../go-live.service';
 
 @Component({
   selector: 'app-template-list',
@@ -10,7 +11,7 @@ import { EventsService } from '../events.service';
 export class TemplateListComponent implements OnInit {
 
   constructor(private templatesService:TemplatesService,
-              private eventsService:EventsService) { }
+              private eventsService:EventsService, private goLiveService:GoLiveService) { }
 
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
@@ -18,15 +19,25 @@ export class TemplateListComponent implements OnInit {
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
- 	
-  	// this.eventsService.getEvents(5)
+ 	// this.eventsService.removeEvent(4)
+  	this.eventsService.getEvents(5)
+  	// this.eventsService.updateEvent(1, 'updated', '09:00', '10:00', 'me', 'notes notes', 2)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
-  	this.templatesService.getTmpls()
+  	// this.templatesService.getTmpls()
   	// this.templatesService.createTmpl('testing')
   		.subscribe(data => {
   			console.log(data);
+  			this.goLiveService.goLive(5,'Provo', new Date())
+  				.subscribe(data => console.log(data))
   			this.tmplList = data;
   		})
+  	// this.eventsService.createEvent(5,'did it work?','now', 'never', 'me', 'nuff said', 1)
+  	// 	.subscribe(data => {
+  	// 		console.log(data);
+  	// 		this.tmplList = data;
+  	// 	})
+  	// this.goLiveService.goLive(5,'Provo', '2016-09-14T09:00:00')
+
   }
 
   // this should be invoked when Jeremy selects "create a new template" and then hits save
@@ -45,6 +56,11 @@ export class TemplateListComponent implements OnInit {
   		.subscribe(data => {
   			console.log(data);
   		})
+  }
+
+  // this also will live somewhere else
+  removeEvent(event_id:number) {
+  	this.eventsService.removeEvent(event_id)
   }
 
 

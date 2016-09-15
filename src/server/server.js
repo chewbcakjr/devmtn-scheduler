@@ -3,91 +3,98 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
 var passport = require('passport');
-var gcal = require('google-calendar');
-var config = require('./config');
-var google = require('googleapis');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var config = require('./config');
+// var gcal = require('google-calendar');
 
-var massive = require('massive');
-var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
-
+var google = require('googleapis');
 var calendar = google.calendar('v3');
 var tasks = google.tasks('v1');
-
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(config.consumer_key, config.consumer_secret, '/auth/google/callback');
 google.options({auth: oauth2Client}); // set auth as a global default
+
+var massive = require('massive');
+var connectionString = 'postgres://'+config.db_userName+':'+config.db_password+'@'+config.db_hostName+'.db.elephantsql.com:5432/'+config.db_userName;
+var massiveInstance = massive.connectSync({
+	connectionString: connectionString
+});
+
 
 //App Init
 var app = express();
 var port = 9001;
 
-var massiveInstance = massive.connectSync({
-	connectionString: connectionString
-});
-
 app.set('db', massiveInstance);
-
 var db = app.get('db');
 
 //Middleware
 app.use(bodyParser.json());
 var corsOptions = {
+	// need to change this once we build/bundle
 	origin: 'http://localhost:4200'
 };
 app.use(cors(corsOptions));
-app.use(express.static(__dirname + '/../../../build')); //serve all of our static front-end files from our server.
+app.use(express.static(__dirname + '/../../dist'));
 app.use(session({ secret: config.session_secret, resave: true, saveUninitialized: true }));
 
-// //Passport
-// passport.serializeUser(function (user, cb) {
-// 	cb(null, user);
-// });
-// passport.deserializeUser(function (obj, cb) {
-// 	cb(null, obj);
-// });
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.use(new GoogleStrategy({
-// 	clientID: config.consumer_key,
-// 	clientSecret: config.consumer_secret,
-// 	callbackURL: "http://localhost:" + port + "/auth/google/callback",
-// 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
-// }, function (accessToken, refreshToken, profile, done) {
+passport.use(new GoogleStrategy({
+	clientID: config.consumer_key,
+	clientSecret: config.consumer_secret,
+	callbackURL: "http://localhost:" + port + "/auth/google/callback",
+	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks']
+}, function (accessToken, refreshToken, profile, done) {
 
-// 	console.log("Auth Success. Celebration is in order.");
+	console.log("Auth Success. Celebration is in order.");
+	console.log("Access Token: ", accessToken);
 
-// 	console.log("Access Token: ", accessToken);
+	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
 
-// 	oauth2Client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
+	return done(null, profile);
+}));
 
-// 	return done(null, profile);
-// }));
+passport.serializeUser(function (user, cb) {
+	cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+	cb(null, obj);
+});
 
 //Auth Routing
 app.get('/auth/google', passport.authenticate('google'));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
-	// Successful authentication, redirect home.
-	res.redirect('/');
+	// Successful authentication, redirect home. switch the res.redirect (comment/uncomment once we build/bundle)
+	// res.redirect('/');
+	res.redirect('http://localhost:4200')
 });
+
+app.get('/auth/me', function(req, res) {
+	console.log(req.user)
+	// res.send(req.user)
+
+	res.send(oauth2Client)
+
+})
 
 // -------------------------------CALENDARS-------------------------------- //
 // 1. GET A LIST OF THE USER'S CALENDARS
-app.get('/calendars', function (req, res) {
-	calendar.calendarList.list({
-		auth: oauth2Client
-	}, function (err, calendars) {
-		if (err) {
-			console.log('error returning user\'s calendars: ' + err);
-			res.send('err');
-		} else {
-			// can get ids and names from this items array
-			res.send(calendars);
-		}
-	});
-});
+app.get('/calendars', function(req, res) {
+        calendar.calendarList.list({
+            auth: oauth2Client
+        }, function(err, calendars) {
+            if (err) {
+                console.log('error returning user\'s calendars: ' + err);
+                res.send('err');
+            } else {
+                // can get ids and names from this items array
+                res.send(calendars);
+            }
+        });
+    });
 
 // 2. CREATE A NEW CALENDAR
 app.post('/calendars', function (req, res) {
@@ -433,6 +440,7 @@ app.get('/templates', function(req, res) {
 	// res.send('yay you got the templates!')
 })
 
+// create new template
 app.post('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err)
@@ -441,6 +449,16 @@ app.post('/templates', function(req, res) {
 	// res.send('template created with name ' + req.body.name)
 })
 
+
+// create event on given template
+app.post('/dbevents', function(req, res) {
+	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send(resp)	
+	})
+})
+
+// get a list of events on given template
 app.get('/dbevents', function(req, res) {
 	db.get_events(req.query.tmpl_id, function(err, events) {
 		if (err) console.log(err)
@@ -448,11 +466,26 @@ app.get('/dbevents', function(req, res) {
 	})
 })
 
-
-app.post('/dbevents', function(req, res) {
-	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
+// update an event on given template
+app.put('/dbevents', function(req, res) {
+	db.update_event(req.query.event_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
 		if (err) console.log(err)
-		res.status(200).send(resp)	
+		res.status(200).send(resp)
+	})
+})
+
+// remove event on given template
+app.delete('/dbevents', function(req, res) {
+	db.remove_event(req.query.event_id, function(err, resp) {
+		if (err) console.log(err)
+		res.status(200).send('yay')
+	})
+})
+
+app.get('/locations', function(req, res) {
+	db.get_locations(req.query.location, function(err, locations) {
+		if (err) console.log(err)
+		res.status(200).send(locations[0])
 	})
 })
 

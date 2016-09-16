@@ -7,6 +7,7 @@ import { CalendarHeader } from './calendar-header/calendar-header.component';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { TemplateComponent } from './template/template.component';
+import { DayCardComponent } from './day-card/day-card.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 

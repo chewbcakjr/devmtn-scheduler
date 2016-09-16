@@ -30,6 +30,7 @@
     "googleapis": "^13.0.0",
     "massive": "^2.5.0",
     "materialize-css": "^0.97.7",
+    "ng2-modal": "0.0.20",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
     "rxjs": "5.0.0-beta.11",

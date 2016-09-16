@@ -1,7 +1,7 @@
 <div class="p-0 col s12 m8 l10"> <!-- Note that "m8 l9" was added -->
 
-  <app-location-header></app-location-header>
-  <app-schedule-header></app-schedule-header>
+  <app-location-header *ngIf="router.url!==('/login')"></app-location-header>
+  <app-schedule-header *ngIf="router.url!==('/login')"></app-schedule-header>
   <router-outlet></router-outlet>
   <!-- Teal page content
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleService } from '../google.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private googleService:GoogleService) { }
 
   ngOnInit() {
   }
+
 
 }

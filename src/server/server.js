@@ -448,7 +448,12 @@ app.get('/templates', function(req, res) {
 app.post('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err)
-		res.status(200).send(tmpl)	
+		db.get_one_template(req.body.name, function(err, tmpl) {
+			if (err) console.log(err)
+			console.log(tmpl);
+			res.status(200).send(tmpl)	
+		})
+		
 	})
 	// res.send('template created with name ' + req.body.name)
 })

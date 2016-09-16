@@ -16,7 +16,8 @@ getCalendars():Observable<any> {
   	return this.http.get(`${this.base_url}/calendars`)
   		.map(res => {
   			this.calendars = res.json()
-  			return res.json()})
+  			return res.json()
+  		})
   		
   }
 

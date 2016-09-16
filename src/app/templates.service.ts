@@ -8,21 +8,33 @@ export class TemplatesService {
 
   constructor(private http:Http) { }
 
-  base_url:string = 'http://localhost:9001';
-  curr_tmpl = {};
+  baseUrl:string = 'http://localhost:9001';
+  tmplList:any[] = [];
+  currTmpl = {};
   // this will retrieve a list of the existing templates in the db. templates will be objects with an id and name
   getTmpls():Observable<any> {
-  	return this.http.get(`${this.base_url}/templates`)
-  		.map(res => res.json())
+  	return this.http.get(`${this.baseUrl}/templates`)
+  		.map(res => {
+                this.tmplList = res.json();
+                return res.json()
+              })
   }
 
   // this will create a new template. the id will be auto generated in db
   createTmpl(name:string):Observable<any> {
-  	return this.http.post(`${this.base_url}/templates`, {name: name})
+  	return this.http.post(`${this.baseUrl}/templates`, {name: name})
             .map(res => {
-              this.curr_tmpl = res.json();
+              this.currTmpl = res.json();
               return res.json()
             })
   }
 
 }
+
+// createTmpl(name:string):Observable<any> {
+//     return this.http.post(`${this.baseUrl}/templates`, {name: name})
+//             .map(res => {
+//               this.currTmpl = res.json();
+//               return res.json()
+//             })
+//   }

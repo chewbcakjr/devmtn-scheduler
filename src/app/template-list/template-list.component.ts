@@ -27,10 +27,10 @@ export class TemplateListComponent implements OnInit {
   	// this.eventsService.updateEvent(1, 'updated', '09:00', '10:00', 'me', 'notes notes', 2)
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
   	// this.templatesService.getTmpls()
-  	this.templatesService.createTmpl('q')
+  	this.templatesService.createTmpl('it works!')
   		.subscribe(data => {
   			console.log(data);
-  			console.log(this.templatesService.curr_tmpl)
+  			console.log(this.templatesService.currTmpl)
   			// this.goLiveService.goLive(5,'Provo', new Date())
   			// 	.subscribe(data => console.log(data))
   			// this.tmplList = data;

@@ -32,7 +32,7 @@ export class TemplatesService {
         return this.http.post(`${this.baseUrl}/templates`, {name: name})
             .map(res => {
               console.log('base test', this.baseUrl);
-              this.currTmpl = res.json();
+              this.currTmpl = res.json()[0];
               console.log(this.currTmpl)
               return res.json()
             })

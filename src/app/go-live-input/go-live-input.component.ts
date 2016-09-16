@@ -13,7 +13,7 @@ export class GoLiveInputComponent implements OnInit {
   	this.goLiveService.getLocations()
   		.subscribe(data => {
   			console.log(data)
-  			this.goLiveService.goLive(1,"Dallas", "2016-09-16")
+  			this.goLiveService.goLive(1,"Dallas", new Date())
   		})
   }
 

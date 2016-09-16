@@ -3,14 +3,16 @@ import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { EventsService } from './events.service';
+import { GoogleService } from './google.service';
 
 @Injectable()
 export class GoLiveService {
 
-  constructor(private http:Http, private eventsService:EventsService) { }
+  constructor(private http:Http, private eventsService:EventsService, private googleService:GoogleService) { }
 
   baseUrl:string = 'http://localhost:9001';
   locations:any[] = [];
+  
 
   getLocations():Observable<any> {
     return this.http.get(`${this.baseUrl}/locations`)
@@ -27,37 +29,28 @@ export class GoLiveService {
   	let events = this.eventsService.events;
       // get the address for the chosen location
       let address = this.locations.filter(el => el.location_id == location)[0].address;
+      let calendars = this.googleService.calendars;
+          console.log(calendars)
 
       // copy of the start date so that changing temp doesn't change start_date
   	let temp = new Date(start_date);
 
+	events.map(function(el) {
+          // attach address onto event
+          el.location = address;
+          // adding the day # to the start date so that each event will have the appropriate date in the calendar
+          temp.setDate(start_date.getDate() + el.day_number - 1);
+          let date = temp.toJSON().split('T')[0];
+          el.start_time = `${date}T${el.start_time}`;
 
-  	// return this.http.get(`${this.baseUrl}/locations?location=${location}`)
-  	// 	.map(res =>{
-  	// 		console.log(res.json());
-  	// 		let address = res.json().address;
-  	// 		console.log(address)
-  			// ---------------
-  			events.map(function(el) {
-  		// right now this just slaps on a string, but we need to fetch the address from the db based on the location that jeremy chooses
-	  			
-	  			el.location = address
-	  		
-		  		temp.setDate(start_date.getDate() + el.day_number - 1)
-		  		let date = temp.toJSON().split('T')[0];
-		  		el.start_time = `${date}T${el.start_time}`;
 
-	  		// need to add calendar id
+
+	  	// need to add calendar id
 	  		// need to add attendees
 	  		// need to add calendar timeZone
-	  			})
-	  		console.log(events);
-        return events
-	  		// ---------------
-
-  		// 	return res.json();
-  		// })
-  	
+	})
+	console.log(events);
+      return events;
   }
 
 }

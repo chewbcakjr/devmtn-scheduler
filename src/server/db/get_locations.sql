@@ -1,2 +1,2 @@
 select address from location
-where location = $1;
+where location_id = $1;

@@ -9,19 +9,34 @@ export class GoLiveService {
 
   constructor(private http:Http, private eventsService:EventsService) { }
 
-  base_url:string = 'http://localhost:9001';
+  baseUrl:string = 'http://localhost:9001';
+  locations:any[] = [];
+
+  getLocations():Observable<any> {
+    return this.http.get(`${this.baseUrl}/locations`)
+    .map(res => {
+        this.locations = res.json();
+        return res.json()
+      })
+  }
+
   // when this is invoked, the template Jeremy was on will go live. he will be prompted for what calendar to post it in (and I think we can use this for the Location (provo, SLC, dallas) as well as to grab the address from the db to slap on the api call). He will also be prompted for a start date. 
 
-    goLive(tmpl_id:number, location:string, start_date):Observable<any> {
+    goLive(tmpl_id:number, location:string, start_date) {
   	// get the events stored in the service
   	let events = this.eventsService.events;
+      // get the address for the chosen location
+      let address = this.locations.filter(el => el.location_id == location)[0].address;
+
+      // copy of the start date so that changing temp doesn't change start_date
   	let temp = new Date(start_date);
 
-  	return this.http.get(`${this.base_url}/locations?location=${location}`)
-  		.map(res =>{
-  			console.log(res.json());
-  			let address = res.json().address;
-  			console.log(address)
+
+  	// return this.http.get(`${this.baseUrl}/locations?location=${location}`)
+  	// 	.map(res =>{
+  	// 		console.log(res.json());
+  	// 		let address = res.json().address;
+  	// 		console.log(address)
   			// ---------------
   			events.map(function(el) {
   		// right now this just slaps on a string, but we need to fetch the address from the db based on the location that jeremy chooses
@@ -37,10 +52,11 @@ export class GoLiveService {
 	  		// need to add calendar timeZone
 	  			})
 	  		console.log(events);
+        return events
 	  		// ---------------
 
-  			return res.json();
-  		})
+  		// 	return res.json();
+  		// })
   	
   }
 

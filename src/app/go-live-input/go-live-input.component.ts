@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GoLiveService } from '../go-live.service';
 @Component({
   selector: 'app-go-live-input',
   templateUrl: './go-live-input.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoLiveInputComponent implements OnInit {
 
-  constructor() { }
+  constructor(private goLiveService:GoLiveService) { }
 
   ngOnInit() {
+  	this.goLiveService.getLocations()
+  		.subscribe(data => {
+  			console.log(data)
+  			this.goLiveService.goLive(1,"Dallas", "2016-09-16")
+  		})
   }
 
 }

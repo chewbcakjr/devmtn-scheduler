@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoogleService } from '../google.service';
 
 @Component({
@@ -6,17 +6,12 @@ import { GoogleService } from '../google.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
+export class LoginPageComponent implements OnInit {
 
   constructor(private googleService:GoogleService) { }
 
   ngOnInit() {
   }
 
-  ngOnDestroy() {
-  	console.log('destroying login component')
-  	this.googleService.getCalendars()
-  		.subscribe(data => console.log(data))
-  }
 
 }

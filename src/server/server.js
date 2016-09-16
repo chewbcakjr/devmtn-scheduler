@@ -69,8 +69,8 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
 	// Successful authentication, redirect home. switch the res.redirect (comment/uncomment once we build/bundle)
 	// res.redirect('/');
-	// res.redirect('http://localhost:4200')
-	res.redirect('/calendars/')
+	res.redirect('http://localhost:4200')
+	// res.redirect('/calendars/')
 });
 
 app.get('/auth/me', function(req, res) {
@@ -92,10 +92,10 @@ app.get('/calendars/', function(req, res) {
                 res.send('err');
             } else {
                 // can get ids and names from this items array
-                // res.send(calendars);
-                req.user.calendars = calendars;
-                console.log(req.user.calendars)
-                res.redirect('http://localhost:4200')
+                res.json(calendars.items);
+                // req.user.calendars = calendars;
+                // console.log(req.user.calendars)
+                // res.redirect('http://localhost:4200')
             }
         });
     });

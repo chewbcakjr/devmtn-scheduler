@@ -486,9 +486,9 @@ app.delete('/dbevents', function(req, res) {
 })
 
 app.get('/locations', function(req, res) {
-	db.get_locations(req.query.location, function(err, locations) {
+	db.get_locations(function(err, locations) {
 		if (err) console.log(err)
-		res.status(200).send(locations[0])
+		res.status(200).send(locations)
 	})
 })
 

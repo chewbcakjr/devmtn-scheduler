@@ -15,7 +15,8 @@ export class GoogleService {
 getCalendars():Observable<any> {
   	return this.http.get(`${this.base_url}/calendars`)
   		.map(res => {
-  			this.calendars = res.json()
+  			this.calendars = res.json();
+                  console.log(this.calendars)
   			return res.json()
   		})
   		

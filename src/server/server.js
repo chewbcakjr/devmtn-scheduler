@@ -70,6 +70,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 	// Successful authentication, redirect home. switch the res.redirect (comment/uncomment once we build/bundle)
 	// res.redirect('/');
 	res.redirect('http://localhost:4200')
+	// res.redirect('/calendars/')
 });
 
 app.get('/auth/me', function(req, res) {
@@ -82,7 +83,7 @@ app.get('/auth/me', function(req, res) {
 
 // -------------------------------CALENDARS-------------------------------- //
 // 1. GET A LIST OF THE USER'S CALENDARS
-app.get('/calendars', function(req, res) {
+app.get('/calendars/', function(req, res) {
         calendar.calendarList.list({
             auth: oauth2Client
         }, function(err, calendars) {
@@ -91,7 +92,10 @@ app.get('/calendars', function(req, res) {
                 res.send('err');
             } else {
                 // can get ids and names from this items array
-                res.send(calendars);
+                res.json(calendars.items);
+                // req.user.calendars = calendars;
+                // console.log(req.user.calendars)
+                // res.redirect('http://localhost:4200')
             }
         });
     });
@@ -444,7 +448,12 @@ app.get('/templates', function(req, res) {
 app.post('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err)
-		res.status(200).send(tmpl)	
+		db.get_one_template(req.body.name, function(err, tmpl) {
+			if (err) console.log(err)
+			console.log(tmpl);
+			res.status(200).send(tmpl)	
+		})
+		
 	})
 	// res.send('template created with name ' + req.body.name)
 })

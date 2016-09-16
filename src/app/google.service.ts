@@ -11,17 +11,21 @@ export class GoogleService {
   base_url:string = 'http://localhost:9001';
   logged_in:boolean = false;
 
-  getCalendars():Observable<any> {
+  // getCalendars():Observable<any> {
   	
-  	return this.http.get(`${this.base_url}/auth/me`)
-  		.map(res => {
-  			if (!res.json().credentials.access_token) {
-  			// above if statement used just in development. below statement used once we build/bundle and serve our files with express/node
-  			// if (!res.json().user) {	
-  				window.location.href='http://localhost:9001/auth/google'
-  			}
-  		})
+  // 	return this.http.get(`${this.base_url}/auth/me`)
+  // 		.map(res => {
+  // 			if (!res.json().credentials.access_token) {
+  // 			// above if statement used just in development. below statement used once we build/bundle and serve our files with express/node
+  // 			// if (!res.json().user) {	
+  // 				window.location.href='http://localhost:9001/auth/google'
+  // 			}
+  // 		})
+  // }
+  
+getCalendars():Observable<any> {
+  	return this.http.get(`${this.base_url}/calendars`)
+  		.map(res => res.json())
   }
+
 }
-
-

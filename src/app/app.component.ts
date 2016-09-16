@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private googleService:GoogleService) { }
 
   ngOnInit(): void {
-  	this.googleService.getCalendars()
-  		.subscribe(data => console.log(data))
+  	// this.googleService.getCalendars()
+  		// .subscribe(data => console.log(data))
   }
 
 }

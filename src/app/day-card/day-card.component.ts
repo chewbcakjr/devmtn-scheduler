@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ModalModule} from "ng2-modal";
 
 @Component({
   selector: 'app-day-card',

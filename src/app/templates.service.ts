@@ -21,13 +21,23 @@ export class TemplatesService {
   }
 
   // this will create a new template. the id will be auto generated in db
-  createTmpl(name:string):Observable<any> {
-  	return this.http.post(`${this.baseUrl}/templates`, {name: name})
-            .map(res => {
-              this.currTmpl = res.json();
-              return res.json()
-            })
+  createTmpl(name:string) {
+      let exists = this.tmplList.filter(el => el.name == name);
+      if (exists.length == 0) {
+        return this.http.post(`${this.baseUrl}/templates`, {name: name})
+            // .map(res => {
+            //   this.currTmpl = res.json();
+            //   return res.json()
+            // })
+            .subscribe(res => {
+              this.currTmpl = res.json()
+              console.log('set currTmpl');})
+          } else {
+            alert('name not available')
+          }
+  	
   }
+
 
 }
 

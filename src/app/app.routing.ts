@@ -10,6 +10,7 @@ import { TemplateComponent } from './template/template.component';
 import { DayCardComponent } from './day-card/day-card.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { GoLiveInputComponent } from './go-live-input/go-live-input.component';
 
 const appRoutes:Routes = [
 	{
@@ -27,8 +28,13 @@ component: LoginPageComponent
 		path: 'template',
 		component: TemplateComponent
 	},
-	{ path: 'schedule',
-	component: ScheduleComponent
+	{
+		path: 'golive',
+		component: GoLiveInputComponent
+	},
+	{	 
+		path: 'schedule',
+		component: ScheduleComponent
 	},
 	{
 		path: '',

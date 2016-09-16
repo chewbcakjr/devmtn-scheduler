@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventsService } from '../events.service';
 import { TemplatesService } from '../templates.service';
 
@@ -11,11 +11,9 @@ export class CreateEventComponent implements OnInit {
 
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
-  // this.templatesService.currTmpl.template_id,
-
   ngOnInit():void {
-    console.log('hit');
-    this.eventsService.createEvent(5,'Evan is awesome','now', 'never', 'me', 'nuff said', 1)
+    console.log(this.templatesService.currTmpl);
+    this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah is super awesome','now', 'never', 'me', 'nuff not said', 1)
     .subscribe(data => {
       console.log(data);
     })

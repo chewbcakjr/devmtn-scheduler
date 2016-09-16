@@ -19,7 +19,7 @@ export class EventsService {
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
-  	
+
   	var obj = {
   		tmpl_id: tmpl_id,
   		name: name,
@@ -31,6 +31,7 @@ export class EventsService {
   	};
 
   	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
+      .map(res => res.json())
   }
 
   // update an event

@@ -32,7 +32,7 @@ export class TemplateListComponent implements OnInit {
 
   		.subscribe(data => {
   			console.log(data);
-  			this.templatesService.createTmpl('unique')
+  			this.templatesService.createTmpl('mmmmmm')
   			// this.goLiveService.goLive(5,'Provo', new Date())
   				// .subscribe(data => console.log(data))
   			// this.tmplList = data;

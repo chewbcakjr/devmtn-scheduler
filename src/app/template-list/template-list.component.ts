@@ -3,6 +3,7 @@ import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 import { GoLiveService } from '../go-live.service';
 import { GoogleService } from '../google.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-template-list',
@@ -12,7 +13,7 @@ import { GoogleService } from '../google.service';
 export class TemplateListComponent implements OnInit {
 
   constructor(private templatesService:TemplatesService,
-              private eventsService:EventsService, private goLiveService:GoLiveService, private googleService:GoogleService) { }
+              private eventsService:EventsService, private goLiveService:GoLiveService, private googleService:GoogleService, private router: Router) { }
 
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
@@ -55,6 +56,12 @@ export class TemplateListComponent implements OnInit {
   			// this.newTmpl = data;
   		// })
   }
+	navigateCreateTemplate() {
+		this.router.navigate(['/createTemplate']);
+	}
+	navigateCreateEvent() {
+		this.router.navigate(['/createEvent']);
+	}
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {

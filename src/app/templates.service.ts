@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TemplatesService {
 
-  constructor(private http:Http) { }
+  constructor(private http:Http, private router:Router) { }
 
   baseUrl:string = 'http://localhost:9001';
   tmplList:any[] = [];
@@ -36,10 +37,8 @@ export class TemplatesService {
             })
             .subscribe(res => {
               console.log(res)
-              // this.currTmpl = res.json()[0]
-              return res;
-              // console.log(this.currTmpl)
-              // console.log('set currTmpl');
+              // this will redirect to the create event page. but right now it does it instantly because the functions are running onInit, so I commented it out.
+              // this.router.navigate(['/event'])
             })
           // } else {
           //   alert('name not available')

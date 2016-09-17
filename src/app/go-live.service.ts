@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { EventsService } from './events.service';
 import { GoogleService } from './google.service';
+import 'rxjs/add/observable/forkJoin';
 
 @Injectable()
 export class GoLiveService {
@@ -39,7 +40,8 @@ export class GoLiveService {
       // copy of the start date so that changing temp doesn't change start_date
   	let temp = new Date(start_date);
 
-	events.map(function(el) {
+	events.map(el =>{
+      console.log(this.baseUrl)
           // attach address onto event
           el.location = address;
           // adding the day # to the start date so that each event will have the appropriate date in the calendar
@@ -53,11 +55,8 @@ export class GoLiveService {
           el.calendarId = 'primary';
           el.timeZone = 'UTC';
 
-	  	// need to add calendar id
-	  		// need to add attendees
-	  		// need to add calendar timeZone
 	})
-	console.log(events);
+	
       return events;
   }
 

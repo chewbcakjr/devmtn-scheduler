@@ -11,6 +11,7 @@ import { DayCardComponent } from './day-card/day-card.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { GoLiveInputComponent } from './go-live-input/go-live-input.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 const appRoutes:Routes = [
 	{
@@ -35,6 +36,10 @@ component: LoginPageComponent
 	{	 
 		path: 'schedule',
 		component: ScheduleComponent
+	},
+	{	 
+		path: 'editevent',
+		component: EditEventComponent
 	},
 	{
 		path: '',

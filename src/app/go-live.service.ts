@@ -47,8 +47,11 @@ export class GoLiveService {
           let date = temp.toJSON().split('T')[0];
           el.start_time = `${date}T${el.start_time}`;
 
-          el.calendarId = calendarProps.id;
-          el.timeZone = calendarProps.timeZone;
+          // this is the correct logic for when we're ready for Jeremy to use it. but so everyone can test, I have hard coded these things for now.
+          // el.calendarId = calendarProps.id;
+          // el.timeZone = calendarProps.timeZone;
+          el.calendarId = 'primary';
+          el.timeZone = 'UTC';
 
 	  	// need to add calendar id
 	  		// need to add attendees

@@ -15,7 +15,7 @@ export class EventsService {
   getEvents(tmpl_id:number):Observable<any> {
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
   		.map(res => {
-                this.getEvents = res.json();
+                this.events = res.json();
                 return res.json()
               })
   }

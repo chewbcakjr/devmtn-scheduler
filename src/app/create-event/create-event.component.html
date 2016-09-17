@@ -2,21 +2,59 @@
 <a routerLink="/dashboard" routerLinkActive="active">Test 1</a>
 <a routerLink="/event" routerLinkActive="active">Test 2</a>
 <main class="container">
-<div class="row">
-	<div class="col s12 m8 l9 offset-m2">
-		<div class="card blue-grey darken-1">
-			<div class="card-content white-text">
-				<span class="card-title">Card Title</span>
-				<input class="input-field" placeholder="task priority">
-				<input class="input-field" placeholder="task title">
-				<input class="input-field" placeholder="add poeople to task">
-			</div>
-			<div >
-				<button type="submit" class="btn"><a href="#">Create Task</a></button>
-				<button type="submit" class="btn"><a href="#">Import Tasks</a></button>
-				<button type="submit" class="btn"><a href="#">Next</a></button>
+	<div class="row">
+		<div class="col s12 m8 l9 offset-m2">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+
+					<form [formGroup]="form" (ngSubmit)="save()">
+						<legend>
+							Event
+						</legend>
+
+						<div class="form-group">
+							<label>Name</label>
+							<input [(ngModel)]="event.name" name="name" #name formControlName="name" type="text" class="form-control">
+
+						</div>
+
+						<div class="form-group">
+							<label>Number</label>
+							<input [(ngModel)]="event.number" name="number" #number formControlName="number" type="text" class="form-control">
+
+						</div>
+
+						<div class="form-group">
+							<label>Default Instructor</label>
+							<!-- //this isn't working currently for some reason - trying to debug -->
+							<!-- <select name="instructor" [(ngModel)]="event.instructor" #instructor formControlName="instructor">
+								<option *ngFor="#instructor of instructors">
+									{{instructor}}
+								</option>
+							</select>  -->
+							<input [(ngModel)]="event.default_instructor" formControlName="default_instructor" type="text" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label>Notes</label>
+							<input [(ngModel)]="event.notes" name="notes" #notes formControlName="notes" type="text" class="form-control">
+						</div>
+
+						<div>
+
+							<button (click) = "save()" type="submit" class="btn">Create Event</button>
+							<button class="btn">
+								<a href="#">Import Tasks</a>
+							</button>
+							<button class="btn">
+								<a href="#">Next</a>
+							</button>
+
+						</div>
+
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </main>

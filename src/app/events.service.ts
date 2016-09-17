@@ -28,7 +28,7 @@ export class EventsService {
   		name: name,
   		start_time: start_time,
   		end_time: end_time,
-  		attendees: default_instructor,
+  		default_instructor: default_instructor,
   		notes: notes,
   		day_number: day_number
   	};
@@ -47,7 +47,7 @@ export class EventsService {
   		name: name,
   		start_time: start_time,
   		end_time: end_time,
-  		attendees: default_instructor,
+  		default_instructor: default_instructor,
   		notes: notes,
   		day_number: day_number
   	};

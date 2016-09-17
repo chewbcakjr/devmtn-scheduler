@@ -184,7 +184,7 @@ app.post('/events', function (req, res) {
 
 	// put this in the service or something
 	var attendees = [];
-	req.body.attendees.forEach( function(email) {
+	req.body.default_instructor.forEach( function(email) {
 		attendees.push({email: email})
 	});
 

@@ -11,8 +11,8 @@ export class GoogleService {
   constructor(private http:Http) { }
 
   base_url:string = 'http://localhost:9001';
-  // calendars:any[] = [];
-  calendars = {};
+  calendars:any[] = [];
+  // calendars = {};
   
 getCalendars():Observable<any> {
   	return this.http.get(`${this.base_url}/calendars`)

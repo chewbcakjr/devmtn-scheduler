@@ -10,10 +10,11 @@ export class GoLiveInputComponent implements OnInit {
   constructor(private goLiveService:GoLiveService) { }
 
   ngOnInit() {
+  	this.goLiveService.getCalendars()
   	this.goLiveService.getLocations()
   		.subscribe(data => {
   			console.log(data)
-  			this.goLiveService.goLive(1,"Dallas", new Date())
+  			this.goLiveService.goLive(1,"Dallas", new Date(), 'NewTestCal6')
   		})
   }
 

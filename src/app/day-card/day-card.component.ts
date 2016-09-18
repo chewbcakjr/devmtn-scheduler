@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+
+declare var $:any;
 
 @Component({
   selector: 'app-day-card',
@@ -6,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./day-card.component.scss']
 })
 export class DayCardComponent implements OnInit {
+//  @ViewChild('selectElem') el:ElementRef;
+
+  ngAfterViewInit() {
+        $('.modal-trigger').leanModal();
+    }
 
   constructor() { }
 

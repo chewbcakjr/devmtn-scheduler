@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import {ModalModule} from "ng2-modal";
 
 import { AppComponent } from './app.component';
 import { Sidebar } from './sidebar/sidebar.component';
@@ -53,7 +52,6 @@ import { CreateTemplateComponent } from './create-template/create-template.compo
     BrowserModule,
     FormsModule,
     HttpModule,
-    ModalModule,
     routing
   ],
   providers: [

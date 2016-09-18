@@ -2,7 +2,8 @@
   <div class="card-content ">
     <header class="header">
       <div class="num">1</div>
-      <div class="edit"><a (click)="modal1.open()" class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
+
+      <div class="edit"><a class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
       </div>
     </header>
     <div class="divider"></div>
@@ -64,3 +65,7 @@
             <button class="btn btn-primary" (click)="myModal.close()">close</button>
         </modal-footer>
     </modal>
+
+    <script type="text/javascript">
+      $('#modal1').openModal();
+    </script>

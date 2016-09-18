@@ -14,12 +14,15 @@ export class EventsService {
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
-  		.map(res => res.json())
+  		.map(res => {
+                this.events = res.json();
+                return res.json()
+              })
   }
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
-  	
+
   	var obj = {
   		tmpl_id: tmpl_id,
   		name: name,
@@ -31,6 +34,11 @@ export class EventsService {
   	};
 
   	return this.http.post(`${this.base_url}/dbevents?tmpl_id=${obj.tmpl_id}`, obj)
+      .map(res => {
+        this.events.push(res.json()[0])
+        console.log(this.events)
+        return res.json()
+      })
   }
 
   // update an event

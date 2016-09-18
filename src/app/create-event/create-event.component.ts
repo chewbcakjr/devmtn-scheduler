@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { EventsService } from '../events.service';
+import { TemplatesService } from '../templates.service';
 
 @Component({
   selector: 'app-create-event',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
+    console.log(this.templatesService.currTmpl);
+    this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah','now', 'never', 'you', 'nuff not said', 1)
+    .subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

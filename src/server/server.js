@@ -115,7 +115,7 @@ app.post('/calendars', function (req, res) {
 			// return;
 			res.send('err');
 		}
-		// can get id and name from this 
+		// can get id and name from this
 		res.send(calendar);
 	});
 });
@@ -123,7 +123,7 @@ app.post('/calendars', function (req, res) {
 // 3. MODIFY A CALENDAR
 app.put('/calendars', function(req, res) {
 	var modifiedCalendar = {
-		summary: req.body.summary, 
+		summary: req.body.summary,
 		description: req.body.description,
 		location: req.body.location,
 		timeZone: req.body.timeZone
@@ -181,10 +181,10 @@ app.get('/events', function(req, res) {
 
 // 6. CREATE A NEW EVENT
 app.post('/events', function (req, res) {
-	
+
 	// put this in the service or something
 	var attendees = [];
-	req.body.attendees.forEach( function(email) {
+	req.body.default_instructor.forEach( function(email) {
 		attendees.push({email: email})
 	});
 
@@ -370,7 +370,7 @@ app.get('/tasks', function (req, res) {
 	});
 });
 
-// 14. CREATE NEW TASK 
+// 14. CREATE NEW TASK
 app.post('/tasks', function (req, res) {
 	// params: completed, due, notes, status, title
 	var newTask = {
@@ -394,9 +394,9 @@ app.post('/tasks', function (req, res) {
 });
 
 // 15. MODIFY TASK
-app.put('/tasks', function(req, res) {	
+app.put('/tasks', function(req, res) {
 	var modifiedTask = {
-		title: req.body.name, 
+		title: req.body.name,
 		notes: req.body.notes,
 		due: req.body.due,
 		status: req.body.status
@@ -448,22 +448,16 @@ app.get('/templates', function(req, res) {
 app.post('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err)
-		db.get_one_template(req.body.name, function(err, tmpl) {
-			if (err) console.log(err)
-			console.log(tmpl);
-			res.status(200).send(tmpl)	
-		})
-		
+		console.log(tmpl);
+		res.status(200).send(tmpl)
 	})
-	// res.send('template created with name ' + req.body.name)
 })
-
 
 // create event on given template
 app.post('/dbevents', function(req, res) {
 	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {
 		if (err) console.log(err)
-		res.status(200).send(resp)	
+		res.status(200).send(resp)
 	})
 })
 
@@ -471,7 +465,7 @@ app.post('/dbevents', function(req, res) {
 app.get('/dbevents', function(req, res) {
 	db.get_events(req.query.tmpl_id, function(err, events) {
 		if (err) console.log(err)
-		res.status(200).send(events)	
+		res.status(200).send(events)
 	})
 })
 
@@ -492,9 +486,9 @@ app.delete('/dbevents', function(req, res) {
 })
 
 app.get('/locations', function(req, res) {
-	db.get_locations(req.query.location, function(err, locations) {
+	db.get_locations(function(err, locations) {
 		if (err) console.log(err)
-		res.status(200).send(locations[0])
+		res.status(200).send(locations)
 	})
 })
 

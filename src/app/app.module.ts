@@ -26,6 +26,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { GoLiveInputComponent } from './go-live-input/go-live-input.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { CreateTemplateComponent } from './create-template/create-template.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     LoginPageComponent,
     GoLiveInputComponent,
     EditEventComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    CreateTemplateComponent
   ],
   imports: [
     BrowserModule,

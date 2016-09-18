@@ -21,18 +21,20 @@ export class TemplateListComponent implements OnInit {
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
 
-  	// this.googleService.getCalendars()
+  	this.googleService.getCalendars().subscribe(data => console.log(data))
  	// this.eventsService.removeEvent(4)
   	// this.eventsService.getEvents(5)
   	// this.eventsService.updateEvent(1, 'updated', '09:00', '10:00', 'me', 'notes notes', 2)
+
   	// this.eventsService.createEvent(5,'candice is awesome','now', 'never', 'me', 'nuff said', 1)
-  	// this.templatesService.getTmpls()
-  	this.templatesService.createTmpl('q')
+  	this.templatesService.getTmpls()
+  	// this.templatesService.createTmpl('it works!')
+
   		.subscribe(data => {
   			console.log(data);
-  			console.log(this.templatesService.curr_tmpl)
+  			this.templatesService.createTmpl('mmmmmm')
   			// this.goLiveService.goLive(5,'Provo', new Date())
-  			// 	.subscribe(data => console.log(data))
+  				// .subscribe(data => console.log(data))
   			// this.tmplList = data;
   		})
   	// this.eventsService.createEvent(5,'did it work?','now', 'never', 'me', 'nuff said', 1)
@@ -48,10 +50,10 @@ export class TemplateListComponent implements OnInit {
   // should it also push to the tmplList so as to not do another db call? would that cause issues with anything?
   createTmpl(name:string) {
   	this.templatesService.createTmpl(name)
-  		.subscribe(data => {
-  			console.log(data);
-  			this.newTmpl = data;
-  		})
+  		// .subscribe(data => {
+  			// console.log(data);
+  			// this.newTmpl = data;
+  		// })
   }
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data

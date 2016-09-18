@@ -33,16 +33,22 @@ component: LoginPageComponent
 		path: 'golive',
 		component: GoLiveInputComponent
 	},
-	{	 
+	{
 		path: 'schedule',
 		component: ScheduleComponent
 	},
-	{	 
+	{
 		path: 'editevent',
 		component: EditEventComponent
 	},
 	{
 		path: '',
+		redirectTo: '/dashboard',
+		pathMatch: 'full'
+	},
+	{
+		//error 404 path page
+		path: '**',
 		redirectTo: '/dashboard',
 		pathMatch: 'full'
 	}

@@ -15,6 +15,19 @@
   background-color: #fff;
 }
 
+form {
+  display: flex;
+  flex-flow: row;
+}
+
+.left {
+  flex: 2 0 0;
+}
+
+.right {
+  flex: 1 0 0;
+}
+
 button.btn {
 	border-radius: 20px;
   box-shadow: none;

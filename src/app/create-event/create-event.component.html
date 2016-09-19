@@ -5,19 +5,30 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="card-title">Create Event</div>
-						<form (ngSubmit)="createTmpl(title.value)" #templateTitleForm="ngForm" class="create-template">
-							<div class="input-field col s12 l6">
-								<i class="material-icons prefix">event</i>
-								<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required autofocus>
-								<label for="template-title">Event Title</label>
+						<form (ngSubmit)="createTmpl(title.value)" #eventTitleForm="ngForm" class="create-event">
+							<div class="left">
 							</div>
-							<div class="input-field col s12 l6">
-								<i class="material-icons prefix">school</i>
-								<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required>
-								<label for="template-title">Instructor</label>
+							<div class="right">
+								<div class="input-field col s12 l6">
+									<i class="material-icons prefix">event</i>
+									<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="event-name" value="" required autofocus>
+									<label for="event-title">Event Title</label>
+								</div>
+								<div class="input-field col s12 l6">
+									<i class="material-icons prefix">school</i>
+									<input #title id="icon_prefix" class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
+									<label for="instructor-title">Instructor</label>
+								</div>
+								<div class="input-field col s12 l12">
+									<i class="material-icons prefix">insert link</i>
+									<input #title id="icon_prefix" class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="" required>
+									<label for="relevant-links">Relevant Links</label>
+								</div>
+								<div class="submit-buttons">
+									<button type="submit" class="btn waves-effect waves-green">Create Event</button>
+									<button type="submit" class="btn waves-effect waves-green">Done</button>
+								</div>
 							</div>
-							<button type="submit" class="btn waves-effect waves-green">Create Event</button>
-							<button type="submit" class="btn waves-effect waves-green">Done</button>
 						</form>
 				</div>
 			</div>

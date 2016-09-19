@@ -38,7 +38,7 @@ export class TemplatesService {
             .subscribe(res => {
               console.log(res)
               // this will redirect to the create event page. but right now it does it instantly because the functions are running onInit, so I commented it out.
-              // this.router.navigate(['/event'])
+              this.router.navigate(['/event'])
             })
           // } else {
           //   alert('name not available')

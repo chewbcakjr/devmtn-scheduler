@@ -16,6 +16,7 @@ export class ScheduleHeader {
     }
 
   onSubmit(template) {
+    console.log('calvin + hobbes');
     console.log(template);
   }
 

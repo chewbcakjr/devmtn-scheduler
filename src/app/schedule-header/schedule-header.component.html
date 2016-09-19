@@ -17,8 +17,11 @@
   <div class="modal-content">
 		<h4>Yaay you're making a new template Jeremy! :D</h4>
     <form (ngSubmit)="onSubmit(templateTitleForm.value)" #templateTitleForm="ngForm" class="create-template">
-			<label for="template-title">Temaplte Title</label>
-			<input type="text" name="name" value="" required autofocus>
+			<div class="input-field col s12 l6">
+				<i class="material-icons prefix">mood</i>
+				<input id="icon_prefix" class="validate" type="text" name="name" value="" required autofocus>
+				<label for="template-title">Temaplte Title</label>
+			</div>
     </form>
   </div>
   <div class="modal-footer">

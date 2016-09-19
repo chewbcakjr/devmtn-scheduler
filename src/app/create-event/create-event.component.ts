@@ -14,7 +14,10 @@ export class CreateEventComponent implements OnInit {
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
   ngAfterViewInit() {
-        $('.modal-trigger').leanModal();
+    $('#timepicker').pickatime({
+      autoclose: false,
+      twelvehour: false
+    });
   }
 
   ngOnInit():void {

@@ -16,7 +16,7 @@
 <div id="create-template" class="modal bottom-sheet">
   <div class="modal-content">
 		<h4>Yay you're making a new template Jeremy! :D</h4>
-    <form (ngSubmit)="onSubmit(title.value)" #templateTitleForm="ngForm" class="create-template">
+    <form (ngSubmit)="createTmpl(title.value)" #templateTitleForm="ngForm" class="create-template">
 			<div class="input-field col s12 l6">
 				<i class="material-icons prefix">mood</i>
 				<input #title id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>

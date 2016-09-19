@@ -5,3 +5,10 @@
   background-color: #E1E6E0;
   padding-top: 30px;
 }
+
+.modal .modal-footer .btn-flat.modal-close {
+  float: left;
+  background-color: $borderColor;
+  border-radius: 20px;
+  color: #fff;
+}

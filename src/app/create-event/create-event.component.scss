@@ -1,1 +1,12 @@
 @import 'src/sass/components/_variables.scss';
+
+.card {
+  background-color: #fff;
+  height: 210px;
+  position: relative;
+  margin-right: 20px;
+	width: 300px;
+  overflow: hidden;
+  text-align: center;
+  transition: all .3s ease-in-out;
+}

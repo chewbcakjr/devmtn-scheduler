@@ -6,8 +6,25 @@
 
 
 <ul class="show-hide-add">
-	<li class=""><a class="add-icon btn-med waves-effect waves-circle"></a></li>
+	<li class=""><a href="#create-template" class="modal-trigger add-icon btn-med waves-effect waves-circle tooltipped" data-position="left" data-delay="50" data-tooltip="Click me to create a new template! ;D"></a></li>
 	<li class=""><a class="up-circle btn-med waves-effect waves-circle"></a></li>
 </ul>
 </main>
 <div class="divider"></div>
+
+
+<div id="create-template" class="modal bottom-sheet">
+  <div class="modal-content">
+		<h4>Yaay you're making a new template Jeremy! :D</h4>
+    <form (ngSubmit)="onSubmit(templateTitleForm.value)" #templateTitleForm="ngForm" class="create-template">
+			<div class="input-field col s12 l6">
+				<i class="material-icons prefix">mood</i>
+				<input id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
+				<label for="template-title">Temaplte Title</label>
+			</div>
+			<div class="modal-footer">
+		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+		  </div>
+    </form>
+  </div>
+</div>

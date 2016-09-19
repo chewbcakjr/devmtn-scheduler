@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+
+declare var $:any;
 
 @Component({
   selector: 'app-schedule-header',
@@ -9,6 +11,13 @@ export class ScheduleHeader {
 
   constructor() { }
 
+  ngAfterViewInit() {
+        $('.modal-trigger').leanModal();
+    }
 
+  onSubmit(template) {
+    console.log('calvin + hobbes');
+    console.log(template);
+  }
 
 }

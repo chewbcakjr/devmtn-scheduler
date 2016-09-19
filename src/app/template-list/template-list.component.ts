@@ -32,7 +32,7 @@ export class TemplateListComponent implements OnInit {
 
   		.subscribe(data => {
   			console.log(data);
-  			this.templatesService.createTmpl('mmmmmm')
+  			// this.templatesService.createTmpl('mmmmmm')
   			// this.goLiveService.goLive(5,'Provo', new Date())
   				// .subscribe(data => console.log(data))
   			// this.tmplList = data;
@@ -46,15 +46,7 @@ export class TemplateListComponent implements OnInit {
 
   }
 
-  // this should be invoked when Jeremy selects "create a new template" and then hits save
-  // should it also push to the tmplList so as to not do another db call? would that cause issues with anything?
-  createTmpl(name:string) {
-  	this.templatesService.createTmpl(name)
-  		// .subscribe(data => {
-  			// console.log(data);
-  			// this.newTmpl = data;
-  		// })
-  }
+  
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {

@@ -6,7 +6,7 @@
 
 
 <ul class="show-hide-add">
-	<li class=""><a href="#create-template" class="modal-trigger add-icon btn-med waves-effect waves-circle"></a></li>
+	<li class=""><a href="#create-template" class="modal-trigger add-icon btn-med waves-effect waves-circle tooltipped" data-position="left" data-delay="50" data-tooltip="Click me to create a new template! ;D"></a></li>
 	<li class=""><a class="up-circle btn-med waves-effect waves-circle"></a></li>
 </ul>
 </main>
@@ -15,6 +15,7 @@
 
 <div id="create-template" class="modal bottom-sheet">
   <div class="modal-content">
+		<h4>Yaay you're making a new template Jeremy! :D</h4>
     <form (ngSubmit)="onSubmit(templateTitleForm.value)" #templateTitleForm="ngForm" class="create-template">
 			<label for="template-title">Temaplte Title</label>
 			<input type="text" name="name" value="" required autofocus>

@@ -5,32 +5,20 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="card-title">Create Event</div>
-					<div class="row">
-						<div class="input-field col s12 l6">
-							<i class="material-icons prefix">event</i>
-							<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required autofocus>
-							<label for="template-title">Event Title</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12 l6">
-							<i class="material-icons prefix">event</i>
-							<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required autofocus>
-							<label for="template-title">Instructor</label>
-						</div>
-					</div>
-					<input class="input-field" placeholder="task title">
-					<input class="input-field" placeholder="add poeople to task">
-					<form (ngSubmit)="createTmpl(title.value)" #templateTitleForm="ngForm" class="create-template">
-						<div class="input-field col s12 l6">
-							<i class="material-icons prefix">mood</i>
-							<input #title id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
-							<label for="template-title">Template Title</label>
-						</div>
-						<div class="modal-footer">
-					    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
-					  </div>
-			    </form>
+						<form (ngSubmit)="createTmpl(title.value)" #templateTitleForm="ngForm" class="create-template">
+							<div class="input-field col s12 l6">
+								<i class="material-icons prefix">event</i>
+								<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required autofocus>
+								<label for="template-title">Event Title</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<i class="material-icons prefix">school</i>
+								<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="name" value="" required>
+								<label for="template-title">Instructor</label>
+							</div>
+							<button type="submit" class="btn waves-effect waves-green">Create Event</button>
+							<button type="submit" class="btn waves-effect waves-green">Done</button>
+						</form>
 				</div>
 			</div>
 		</div>

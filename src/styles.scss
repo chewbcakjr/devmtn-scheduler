@@ -15,6 +15,14 @@
   background-color: #fff;
 }
 
+button.btn {
+	border-radius: 20px;
+  box-shadow: none;
+	background-color: $borderColor;
+	margin: 0 15px;
+	font-size: 14px;
+}
+
 .modal .modal-footer .btn-flat.modal-close {
   float: left;
   background-color: $borderColor;

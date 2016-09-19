@@ -16,7 +16,7 @@ export class TemplateListComponent implements OnInit {
 
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
-  newTmpl:string = '';
+  // newTmpl:string = '';
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
@@ -31,7 +31,16 @@ export class TemplateListComponent implements OnInit {
   	// this.templatesService.createTmpl('it works!')
 
   		.subscribe(data => {
-  			console.log(data);
+                  this.tmplList = this.templatesService.tmplList;
+  			this.tmplList.forEach(tmpl => {
+                      if (tmpl.name.toLowerCase().includes('ios')) {
+                        tmpl.img = "../assets/courses-ios.png";
+                      } else {
+                        tmpl.img = "../assets/courses-web.png";
+                      }
+                  })
+
+                  console.log(this.tmplList);
   			// this.templatesService.createTmpl('mmmmmm')
   			// this.goLiveService.goLive(5,'Provo', new Date())
   				// .subscribe(data => console.log(data))

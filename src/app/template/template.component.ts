@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TemplatesService } from '../templates.service';
 
 @Component({
   selector: 'app-template',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private templatesService:TemplatesService) { }
 
   ngOnInit() {
+  	console.log(this.templatesService.currTmpl)
   }
 
 }

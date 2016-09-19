@@ -15,8 +15,10 @@
 
 <div id="modal1" class="modal bottom-sheet">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
+    <form (ngSubmit)="onSubmit(templateTitleForm.value)" #templateTitleForm="ngForm" class="create-template">
+			<label for="template-title">Temaplte Title</label>
+			<input type="text" name="name" value="" required autofocus>
+    </form>
   </div>
   <div class="modal-footer">
     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

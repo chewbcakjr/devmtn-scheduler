@@ -9,6 +9,8 @@ export class ScheduleHeader {
 
   constructor() { }
 
-
+  onSubmit(template) {
+    console.log(template);
+  }
 
 }

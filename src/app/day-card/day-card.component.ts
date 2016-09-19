@@ -15,6 +15,10 @@ export class DayCardComponent implements OnInit {
         $('.modal-trigger').leanModal();
     }
 
+    clickConsole() {
+      console.log('hoo yeeaa');
+    }
+
   constructor() { }
 
   ngOnInit() {

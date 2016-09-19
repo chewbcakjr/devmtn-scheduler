@@ -13,8 +13,11 @@ export class ScheduleHeader {
   constructor(private templatesService:TemplatesService) { }
 
   ngAfterViewInit() {
-        $('.modal-trigger').leanModal();
-    }
+    $('#timepicker').pickatime({
+      autoclose: false,
+      twelvehour: false
+    });
+  }
 
   // onSubmit(template) {
   //   console.log('calvin + hobbes');

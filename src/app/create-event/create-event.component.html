@@ -7,6 +7,10 @@
 					<div class="card-title">Create Event</div>
 						<form (ngSubmit)="createTmpl(title.value)" #eventTitleForm="ngForm" class="create-event">
 							<div class="left">
+								<div class="input-field col s12">
+								    <label for="timepicker">Time</label>
+								    <input id="timepicker" class="timepicker" type="time">
+								</div>
 							</div>
 							<div class="right">
 								<div class="input-field col s12 l6">

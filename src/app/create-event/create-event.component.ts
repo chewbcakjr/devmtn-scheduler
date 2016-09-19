@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { EventsService } from '../events.service';
 import { TemplatesService } from '../templates.service';
+
+declare var $:any;
 
 @Component({
   selector: 'app-create-event',
@@ -11,6 +13,10 @@ export class CreateEventComponent implements OnInit {
 
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
+  ngAfterViewInit() {
+        $('.modal-trigger').leanModal();
+  }
+
   ngOnInit():void {
     console.log(this.templatesService.currTmpl);
     this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah','now', 'never', 'you', 'nuff not said', 1)
@@ -18,5 +24,4 @@ export class CreateEventComponent implements OnInit {
       console.log(data);
     })
   }
-
 }

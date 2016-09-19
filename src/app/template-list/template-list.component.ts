@@ -3,6 +3,7 @@ import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 import { GoLiveService } from '../go-live.service';
 import { GoogleService } from '../google.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-template-list',
@@ -12,7 +13,8 @@ import { GoogleService } from '../google.service';
 export class TemplateListComponent implements OnInit {
 
   constructor(private templatesService:TemplatesService,
-              private eventsService:EventsService, private goLiveService:GoLiveService, private googleService:GoogleService) { }
+              private eventsService:EventsService, private goLiveService:GoLiveService, private googleService:GoogleService,
+              private router:Router) { }
 
   // these will not stay as strings. just defining them for now to get the front to back working
   tmplList:any[] = [];
@@ -54,6 +56,11 @@ export class TemplateListComponent implements OnInit {
   	// this.goLiveService.goLive(5,'Provo', '2016-09-14T09:00:00')
 
   }
+
+    chooseTmpl(tmpl) {
+      this.templatesService.currTmpl = tmpl; 
+      this.router.navigate(['template'])
+    }
 
   
 

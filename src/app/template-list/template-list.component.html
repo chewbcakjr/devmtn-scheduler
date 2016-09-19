@@ -1,22 +1,22 @@
 <main class="content-area">
   <!-- probably we'll have this be a container and do an ngFor over all the cards -->
   <!-- you mean here candice :troll: -->
-  <div class="card" *ngFor="let tmpl of tmplList">
-    <div class="card-content ">
-      <!-- the .row would be ngFor with the data populated from db/API -->
-      <div class="card-details">
-        <div class="row event-details">
-          <div class="template-title">
-            {{tmpl.name}}
+  <button *ngFor="let tmpl of tmplList" (click)="chooseTmpl(tmpl)"><div class="card" >
+      <div class="card-content ">
+        <!-- the .row would be ngFor with the data populated from db/API -->
+        <div class="card-details">
+          <div class="row event-details">
+            <div class="template-title">
+              {{tmpl.name}}
+            </div>
           </div>
+        <img class="course-img" src={{tmpl.img}} alt="" />
         </div>
-      <img class="course-img" src={{tmpl.img}} alt="" />
       </div>
-    </div>
-    <div class="card-action">
-      <button type="" class="btn btn-left">Choose Me!</button>
-    </div>
-  </div>
+      <div class="card-action">
+        <button type="button" class="btn btn-left" (click)="chooseTmpl(tmpl)">Choose Me!</button>
+      </div>
+    </div></button>
 
 
   <!-- <div class="card">

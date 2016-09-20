@@ -2,13 +2,17 @@
 @import 'sass/materialize.scss';
 
 .content-area {
-  background-color: #E1E6E0;
+  background-color: #EBEFF0;
   padding-top: 30px;
   display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	padding-left: 50px;
 	padding-right: 50px;
+}
+
+.cursor-point {
+  cursor: pointer;
 }
 
 .card {

@@ -6,7 +6,7 @@
 				<div class="card-content">
 					<div class="card-title">Create Event</div>
 						<form (ngSubmit)="createTmpl(title.value)" #eventTitleForm="ngForm" class="create-event">
-							<div class="day-number">
+							<div class="input-field row day-number">
 								<input #day class="validate" type="text" name="day-number" ngControl="day-number" value="" required autofocus>
 								<label for="day-number">Day Number</label>
 							</div>

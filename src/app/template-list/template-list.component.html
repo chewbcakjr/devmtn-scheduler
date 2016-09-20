@@ -1,9 +1,9 @@
 <main class="content-area">
   <!-- probably we'll have this be a container and do an ngFor over all the cards -->
   <!-- you mean here candice :troll: -->
-  <div class="cursor-point" *ngFor="let tmpl of tmplList" (click)="chooseTmpl(tmpl)">
+  <div class="cursor-point card-container" *ngFor="let tmpl of tmplList" (click)="chooseTmpl(tmpl)">
     <div class="card">
-      <div class="card-content ">
+      <div class="card-content">
         <!-- the .row would be ngFor with the data populated from db/API -->
         <div class="card-details">
           <div class="row event-details">

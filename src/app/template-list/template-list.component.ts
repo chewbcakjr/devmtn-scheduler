@@ -58,11 +58,11 @@ export class TemplateListComponent implements OnInit {
   }
 
     chooseTmpl(tmpl) {
-      this.templatesService.currTmpl = tmpl; 
+      this.templatesService.currTmpl = tmpl;
       this.router.navigate(['template'])
     }
 
-  
+
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {

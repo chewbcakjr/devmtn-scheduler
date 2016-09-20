@@ -2,7 +2,7 @@
 
 .calendar {
 	height: 90px;
-	// border: solid black;	
+	// border: solid black;
 }
 
 .week {
@@ -32,13 +32,6 @@
 	// justify-content: flex-end;
 	justify-content: space-around;
 	width: 100%;
-}
-
-button {
-	border-radius: 20px;
-	background-color: $borderColor;
-	margin: 0 15px;
-	font-size: 14px;
 }
 
 .title {

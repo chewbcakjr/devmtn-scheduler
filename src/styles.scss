@@ -4,6 +4,36 @@
 .content-area {
   background-color: #E1E6E0;
   padding-top: 30px;
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.card {
+  background-color: #fff;
+}
+
+form {
+  display: flex;
+  flex-flow: row;
+}
+
+.left {
+  flex: 2 0 0;
+}
+
+.right {
+  flex: 1 0 0;
+}
+
+button.btn {
+	border-radius: 20px;
+  box-shadow: none;
+	background-color: $borderColor;
+	margin: 0 15px;
+	font-size: 14px;
 }
 
 .modal .modal-footer .btn-flat.modal-close {

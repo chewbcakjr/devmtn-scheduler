@@ -30,7 +30,7 @@ export class GoLiveService {
 
   // when this is invoked, the template Jeremy was on will go live. he will be prompted for what calendar to post it in (and I think we can use this for the Location (provo, SLC, dallas) as well as to grab the address from the db to slap on the api call). He will also be prompted for a start date. 
 
-    goLive(tmpl_id:number, location:string, start_date, calendar:string) {
+    goLive(tmpl_id:number, location:string, start_date, calendar:string):Observable<any> {
   	// get the events stored in the service
   	let events = this.eventsService.events;
       // get the address for the chosen location
@@ -40,24 +40,30 @@ export class GoLiveService {
       // copy of the start date so that changing temp doesn't change start_date
   	let temp = new Date(start_date);
 
-	events.map(el =>{
-      console.log(this.baseUrl)
+      // add the necessary properties to the event so it can hit the gCal API
+      events.map(event =>{
           // attach address onto event
-          el.location = address;
+          event.location = address;
           // adding the day # to the start date so that each event will have the appropriate date in the calendar
-          temp.setDate(start_date.getDate() + el.day_number - 1);
+          temp.setDate(start_date.getDate() + event.day_number - 1);
           let date = temp.toJSON().split('T')[0];
-          el.start_time = `${date}T${el.start_time}`;
+          event.start_time = `${date}T${event.start_time}`;
+          event.end_time = `${date}T${event.end_time}`;
 
           // this is the correct logic for when we're ready for Jeremy to use it. but so everyone can test, I have hard coded these things for now.
-          // el.calendarId = calendarProps.id;
-          // el.timeZone = calendarProps.timeZone;
-          el.calendarId = 'primary';
-          el.timeZone = 'UTC';
-
-	})
-	
-      return events;
+          // event.calendarId = calendarProps.id;
+          // event.timeZone = calendarProps.timeZone;
+          event.calendarId = 'primary';
+          event.timeZone = 'UTC';
+      })
+      
+      // need to convert events into an observable, and then do flatMap so that we can just subscribe to it once (because flatMap puts it all in one observable stream)
+      let results = Observable.from(events).flatMap(event => {
+        console.log(event)
+          return this.http.post(`${this.baseUrl}/events`, event)
+            .map(res=>res.json())
+      })
+      return results;
   }
 
 }

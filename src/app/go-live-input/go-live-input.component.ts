@@ -15,7 +15,7 @@ export class GoLiveInputComponent implements OnInit {
   		.subscribe(data => {
   			console.log(data)
   			this.goLiveService.goLive(1,"Dallas", new Date(), 'NewTestCal6')
-  				// .subscribe(data => console.log(data))
+  				.subscribe(data => console.log(data))
   		})
   }
 

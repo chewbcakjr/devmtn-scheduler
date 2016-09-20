@@ -1,7 +1,7 @@
 <div class="card">
-  <div class="card-content ">
+  <div class="card-content">
     <header class="header">
-      <div class="num">1</div>
+      <div class="num">{{event[0].day_number}}</div>
 
       <div class="edit"><a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
 
@@ -10,31 +10,31 @@
     <div class="divider"></div>
 
     <!-- the .row would be ngFor with the data populated from db/API -->
-    <div class="card-details">
+    <div class="card-details" *ngFor="let thing of event">
       <div class="row event-details">
         <div class="start-time">
-          9:00am
+          {{thing.start_time}}
         </div>
         <div class="event-title">
-          Orientation
+          {{thing.name}}
         </div>
       </div>
-      <div class="row event-details">
+      <!-- <div class="row event-details">
         <div class="start-time">
           11:00am
         </div>
         <div class="event-title">
           Intro to Git
         </div>
-      </div>
-      <div class="row event-details">
+      </div> -->
+      <!-- <div class="row event-details">
         <div class="start-time">
           1:00pm
         </div>
         <div class="event-title">
           Do you read the bible Brent?
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="card-action">

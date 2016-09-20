@@ -16,3 +16,11 @@
 .right .input-field label {
   left: 0;
 }
+
+.submit-buttons {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin-bottom: 20px;
+  }
+}

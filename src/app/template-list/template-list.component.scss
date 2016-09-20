@@ -1,15 +1,6 @@
 @import 'src/sass/components/_variables.scss';
 
-.content-area {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	padding-left: 50px;
-	padding-right: 50px;
-}
-
 .card {
-  background-color: #fff;
   height: 210px;
   position: relative;
   margin-right: 20px;

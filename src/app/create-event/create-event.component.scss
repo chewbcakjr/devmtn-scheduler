@@ -1,0 +1,14 @@
+@import 'src/sass/components/_variables.scss';
+
+.card {
+  background-color: #fff;
+  position: relative;
+  margin-right: 20px;
+  overflow: hidden;
+  text-align: center;
+  transition: all .3s ease-in-out;
+  width: 100%;
+  & label {
+    text-align: left;
+  }
+}

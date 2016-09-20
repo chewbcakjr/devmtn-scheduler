@@ -14,7 +14,7 @@ export class ScheduleHeader {
 
   ngAfterViewInit() {
         $('.modal-trigger').leanModal();
-    }
+  }  
 
   // onSubmit(template) {
   //   console.log('calvin + hobbes');

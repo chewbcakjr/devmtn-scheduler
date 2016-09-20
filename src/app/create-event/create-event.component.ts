@@ -15,8 +15,9 @@ export class CreateEventComponent implements OnInit {
 
   ngAfterViewInit() {
     $('#timepicker').pickatime({
+      default: '12:00',
       autoclose: false,
-      twelvehour: false
+      twelvehour: true
     });
   }
 

@@ -25,11 +25,13 @@ form {
 }
 
 .left {
-  flex: 2 0 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
 }
 
 .right {
-  flex: 1 0 0;
+  min-width: 300px;
 }
 
 button.btn {
@@ -45,4 +47,8 @@ button.btn {
   background-color: $borderColor;
   border-radius: 20px;
   color: #fff;
+}
+
+.picker .picker__date-display {
+  background-color: $secondaryBlueColor;
 }

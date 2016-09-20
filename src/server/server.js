@@ -181,9 +181,11 @@ app.get('/events', function(req, res) {
 
 // 6. CREATE A NEW EVENT
 app.post('/events', function (req, res) {
+	// console.log(req.body)
 
 	// put this in the service or something
 	var attendees = [];
+	req.body.default_instructor = req.body.default_instructor.replace(/\s/g,'').split(',');
 	req.body.default_instructor.forEach( function(email) {
 		attendees.push({email: email})
 	});
@@ -193,12 +195,12 @@ app.post('/events', function (req, res) {
 		location: req.body.location,
 		description: req.body.description,
 		start: {
-			dateTime: req.body.start,
+			dateTime: req.body.start_time,
 			timeZone: req.body.timeZone
 		},
 		guestsCanModify: true,
 		end: {
-			dateTime: req.body.end,
+			dateTime: req.body.end_time,
 			timeZone: req.body.timeZone
 		},
 		attendees: attendees,
@@ -209,7 +211,6 @@ app.post('/events', function (req, res) {
 				minutes: 24 * 60
 			}]
 		},
-		// sequence: 1
 	};
 
 	calendar.events.insert({

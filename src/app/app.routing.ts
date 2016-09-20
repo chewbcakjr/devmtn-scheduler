@@ -38,7 +38,7 @@ component: LoginPageComponent
 		component: ScheduleComponent
 	},
 	{
-		path: 'editevent',
+		path: 'editEvent',
 		component: EditEventComponent
 	},
 	{

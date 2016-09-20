@@ -11,6 +11,7 @@
 .schedule {
 	font-family: $tertiary-font;
 	width: 100%;
+	display: flex;
 }
 
 .schedule li {
@@ -49,6 +50,8 @@
 	color: $secondaryBlueColor;
 }
 .active-bg {
-  background-color: $titleFontColor;
   text-transform: uppercase;
+}
+.active-bg:active {
+	text-transform: underline;
 }

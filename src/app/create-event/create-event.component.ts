@@ -14,7 +14,7 @@ export class CreateEventComponent implements OnInit {
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
   ngAfterViewInit() {
-    $('#timepicker').pickatime({
+    $('#timepicker').clockpicker({
       autoclose: false,
       twelvehour: false
     });

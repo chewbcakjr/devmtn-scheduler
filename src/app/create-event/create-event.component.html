@@ -11,15 +11,20 @@
 								<label for="day-number">Day Number</label>
 							</div>
 							<div class="left">
-								<div class="input-field">
-							    <input id="timepicker" class="timepicker" type="time" name="event-name" ngControl="event-name" value="" required>
-									<label for="timepicker">Time</label>
-								</div>
+
 								<div class="clock-img">
 									<img id="timepicker" class="timepicker" src="assets/clock-picker.svg" alt="clock">
 								</div>
 							</div>
 							<div class="right">
+								<div class="input-field">
+							    <input id="timepicker-start" class="timepicker" type="time" name="start-time" ngControl="start-time" value="" required>
+									<label for="timepicker">Time</label>
+								</div>
+								<div class="input-field">
+							    <input id="timepicker-end" class="timepicker" type="time" name="end-time" ngControl="end-time" value="" required>
+									<label for="timepicker">Time</label>
+								</div>
 								<div class="input-field row">
 									<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required>
 									<label for="event-title">Event Title</label>

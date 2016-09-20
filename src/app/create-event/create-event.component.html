@@ -7,57 +7,25 @@
 					<div class="card-title">Create Event</div>
 						<form (ngSubmit)="createTmpl(title.value)" #eventTitleForm="ngForm" class="create-event">
 							<div class="left">
-								<div class="input-field col s12">
+								<div class="input-field col s12 l6">
 								    <label for="timepicker">Time</label>
 								    <input id="timepicker" class="timepicker" type="time">
-										<div class="clockpicker picker">
-			<div class="picker__holder">
-				<div class="picker__frame">
-					<div class="picker__wrap">
-						<div class="picker__box">
-							<div class="picker__date-display">
-								<div class="clockpicker-display">
-									<div class="clockpicker-display-column">
-										<span class="clockpicker-span-hours text-primary"></span>
-										:
-										<span class="clockpicker-span-minutes"></span>
-									</div>
-									<div class="clockpicker-display-column clockpicker-display-am-pm">
-										<div class="clockpicker-span-am-pm"></div>
-									</div>
-								</div>
-							</div>
-							<div class="picker__calendar-container">
-								<div class="clockpicker-plate">
-									<div class="clockpicker-canvas"></div>
-									<div class="clockpicker-dial clockpicker-hours"></div>
-									<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>
-								</div>
-								<div class="clockpicker-am-pm-block">
-								</div>
-							</div>
-							<div class="picker__footer">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+										<img src="assets/clock-picker.svg" alt="clock">
 								</div>
 							</div>
 							<div class="right">
-								<div class="input-field col s12 l6">
+								<div class="input-field row">
 									<i class="material-icons prefix">event</i>
 									<input #title id="icon_prefix" class="validate" type="text" name="event-name" ngControl="event-name" value="" required autofocus>
 									<label for="event-title">Event Title</label>
 								</div>
-								<div class="input-field col s12 l6">
+								<div class="input-field row">
 									<i class="material-icons prefix">school</i>
 									<input #title id="icon_prefix" class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
 									<label for="instructor-title">Instructor</label>
 								</div>
-								<div class="input-field col s12 l12">
-									<i class="material-icons prefix">insert link</i>
+								<div class="input-field row">
+									<i class="material-icons prefix">link</i>
 									<input #title id="icon_prefix" class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="" required>
 									<label for="relevant-links">Relevant Links</label>
 								</div>

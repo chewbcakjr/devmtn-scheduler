@@ -1,3 +1,50 @@
-<p>
-  edit-event works!
-</p>
+<div class="row">
+		<div class="col s12 m8 l12">
+			<div class="card">
+				<div class="card-content">
+					<div class="card-title">Update Event</div>
+						<form (ngSubmit)="updateEvent(title.value, startTime.value, endTime.value, instructor.value, links.value, day.value)" #eventTitleForm="ngForm" class="create-event">
+							<div class="input-field row day-number">
+								<input #day class="validate" type="text" name="day-number" ngControl="day-number" value="" required autofocus>
+								<label for="day-number">Day Number</label>
+							</div>
+							<div class="flex-section">
+								<div class="left">
+									<div class="clock-img">
+										<img id="timepicker" class="timepicker" src="assets/clock-picker.svg" alt="clock">
+									</div>
+								</div>
+								<div class="right">
+									<div class="input-field">
+								    <input #startTime id="timepicker-start" class="timepicker" type="time" name="start-time" ngControl="start_time" value="" required>
+										<label for="timepicker">Time</label>
+									</div>
+									<div class="input-field">
+								    <input #endTime id="timepicker-end" class="timepicker" type="time" name="end-time" ngControl="end-time" value="" required>
+										<label for="timepicker">Time</label>
+									</div>
+									<div class="input-field row">
+										<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required>
+										<label for="event-title">Event Title</label>
+									</div>
+									<div class="input-field row">
+										<input #instructor class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
+										<label for="instructor-title">Instructor</label>
+									</div>
+									<div class="input-field row">
+										<input #links class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="">
+										<label for="relevant-links">Relevant Links</label>
+									</div>
+									<div class="submit-buttons">
+										<!-- <button *ngIf="ngForm.valid" type="submit" class="btn waves-effect waves-green modal-action modal-close">Update Event</button>
+										<button *ngIf="!ngForm.valid" type="submit" class="btn waves-effect waves-green modal-action modal-close" disabled>Update Event</button> -->
+										<button [disabled]="!eventTitleForm.valid" type="submit" class="btn waves-effect waves-green " disabled>Update Event</button>
+										<!-- <button type="submit" class="btn waves-effect waves-green">Done</button> -->
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>

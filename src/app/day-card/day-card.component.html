@@ -2,53 +2,36 @@
   <div class="card-content">
     <header class="header">
       <div class="num">{{event[0].day_number}}</div>
-
-      <div class="edit"><a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
-
-      </div>
-    </header>
-    <div class="divider"></div>
-
-    <!-- the .row would be ngFor with the data populated from db/API -->
+      <!-- <div class="edit"><a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
+    </div> -->
+  </header>
+  <div class="divider"></div>
+  <!-- the .row would be ngFor with the data populated from db/API -->
     <div class="card-details" *ngFor="let item of event">
       <div class="row event-details">
         <div class="start-time">
           {{item.start_time}}
         </div>
+        <div class="edit">
+          <a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger" (click)="storeCurrEvent(item)"></a>
+        </div>
         <div class="event-title">
           {{item.name}}
         </div>
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+          <app-edit-event [item]="item"></app-edit-event>
+        </div>
+        <!-- <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div> -->
       </div>
-      <!-- <div class="row event-details">
-        <div class="start-time">
-          11:00am
-        </div>
-        <div class="event-title">
-          Intro to Git
-        </div>
-      </div> -->
-      <!-- <div class="row event-details">
-        <div class="start-time">
-          1:00pm
-        </div>
-        <div class="event-title">
-          Do you read the bible Brent?
-        </div>
-      </div> -->
     </div>
   </div>
-  <div class="card-action">
-    <button type="" class="btn btn-left">New Event</button>
-    <button type="" class="btn btn-right">New Task</button>
-  </div>
 </div>
-
-<div id="modal1" class="modal bottom-sheet">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
+<!-- <div class="card-action"> -->
+<!-- <button type="" class="btn btn-left">New Event</button> -->
+<!-- <button type="" class="btn btn-right">New Task</button> -->
+<!-- </div> -->
 </div>
+<!-- <div id="modal1" class="modal bottom-sheet"> -->

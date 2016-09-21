@@ -17,6 +17,8 @@ export class TemplateComponent implements OnInit {
   weeks = [];
 
 	ngOnInit() {
+		// this.eventsService.count = 0
+		console.log('reinitialize template component')
 		// console.log('id', this.templatesService.currTmpl.template_id)
 		this.eventsService.getEvents(this.templatesService.currTmpl.template_id).subscribe(data => {
 			// console.log('got here')

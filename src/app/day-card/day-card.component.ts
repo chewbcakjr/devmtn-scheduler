@@ -1,5 +1,6 @@
 // import { Component, OnInit } from '@angular/core';
 import {Component, OnInit, AfterViewInit, Input} from '@angular/core';
+import { EventsService } from '../events.service';
 
 declare var $:any;
 
@@ -21,7 +22,12 @@ export class DayCardComponent implements OnInit {
       console.log('hoo yeeaa');
     }
 
-  constructor() { }
+    storeCurrEvent(event) {
+      console.log(event)
+      this.eventsService.currEvent = event;
+    }
+
+  constructor(private eventsService:EventsService) { }
 
   ngOnInit() {
 

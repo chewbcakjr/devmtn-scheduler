@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
-import { TemplateComponent } from '../template/template.component'
 import { EventsService } from '../events.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { EventsService } from '../events.service';
 })
 export class CalendarHeader implements OnInit {
 
-	constructor(private templatesService: TemplatesService, private templateComponent: TemplateComponent, private eventsService: EventsService) { }
+	constructor(private templatesService: TemplatesService, private eventsService: EventsService) { }
 
 	currTmpl = {};
 

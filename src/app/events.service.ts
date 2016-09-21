@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { TemplatesService } from './templates.service';
 
 @Injectable()
 export class EventsService {
 
-  constructor(private http:Http, private router:Router) { }
+  constructor(private http:Http, private router:Router, private templatesService:TemplatesService) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
 
@@ -16,6 +17,15 @@ export class EventsService {
   weeks = [];
   count = 0;
   maxWeek = 0;
+  currEvent = {
+    event_id: null,
+    name: null,
+      start_time: null,
+      end_time: null,
+      default_instructor: null,
+      notes: null,
+      day_number: null
+  };
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
@@ -91,8 +101,14 @@ export class EventsService {
   		notes: notes,
   		day_number: day_number
   	};
+
+    
   	return this.http.put(`${this.base_url}/dbevents?event_id=${event_id}`, obj)
   		.map(res => {
+
+              this.getEvents(this.templatesService.currTmpl.template_id).subscribe(data => {
+                console.log('get events inside update')
+                console.log(data)})
   			console.log('updated!');
   			return res.json()
   		})

@@ -5,6 +5,7 @@
   position: relative;
   margin-right: 20px;
   overflow: hidden;
+  padding: 0 10%;
   text-align: center;
   transition: all .3s ease-in-out;
   width: 100%;
@@ -13,7 +14,7 @@
   }
 }
 
-.right .input-field label {
+.input-field label {
   left: 0;
 }
 

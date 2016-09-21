@@ -11,10 +11,12 @@ export class EventsService {
   constructor(private http:Http, private router:Router) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
+
   week = [];
   weeks = [];
   count = 0;
   eventsGrouped = [];
+
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
     this.weeks = [];
@@ -64,6 +66,7 @@ export class EventsService {
     this.week = this.weeks[this.count];
     this.router.navigate(['template',this.count+1])
   }
+
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {

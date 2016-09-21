@@ -36,7 +36,9 @@
 										<label for="relevant-links">Relevant Links</label>
 									</div>
 									<div class="submit-buttons">
-										<button type="submit" class="btn waves-effect waves-green modal-action modal-close">Update Event</button>
+										<!-- <button *ngIf="ngForm.valid" type="submit" class="btn waves-effect waves-green modal-action modal-close">Update Event</button>
+										<button *ngIf="!ngForm.valid" type="submit" class="btn waves-effect waves-green modal-action modal-close" disabled>Update Event</button> -->
+										<button [disabled]="!eventTitleForm.valid" type="submit" class="btn waves-effect waves-green " disabled>Update Event</button>
 										<!-- <button type="submit" class="btn waves-effect waves-green">Done</button> -->
 									</div>
 								</div>

@@ -28,6 +28,7 @@ export class EditEventComponent implements OnInit, OnDestroy {
     this.eventsService.updateEvent(event_id, name, start_time, end_time, default_instructor, notes, day_number)
       .subscribe(() => {
         console.log('updated')
+        // $('#modal1').closeModal();
         this.router.navigate(['/template', weekNum])
       })
   }

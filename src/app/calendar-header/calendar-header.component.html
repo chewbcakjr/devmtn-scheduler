@@ -14,3 +14,20 @@
 		</div>
 	</div>
 </main>
+
+
+<div id="create-template" class="modal bottom-sheet">
+  <div class="modal-content">
+		<h4>Yay you're making a new template Jeremy! :D</h4>
+    <form (ngSubmit)="createTmpl(title.value)" #templateTitleForm="ngForm" class="create-template">
+			<div class="input-field col s12 l6">
+				<i class="material-icons prefix">mood</i>
+				<input #title id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
+				<label for="template-title">Template Title</label>
+			</div>
+			<div class="modal-footer">
+		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+		  </div>
+    </form>
+  </div>
+</div>

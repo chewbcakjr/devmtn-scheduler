@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 
+declare var $:any;
+
 @Component({
 	selector: 'app-calendar-header',
 	templateUrl: './calendar-header.component.html',
@@ -10,6 +12,12 @@ import { EventsService } from '../events.service';
 export class CalendarHeader implements OnInit {
 
 	constructor(private templatesService: TemplatesService, private eventsService: EventsService) { }
+
+	//trigger the go-live modal
+	ngAfterViewInit() {
+				$('.modal-trigger').leanModal();
+	}
+
 
 	currTmpl = {};
 

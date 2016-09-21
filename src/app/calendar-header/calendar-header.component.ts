@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 

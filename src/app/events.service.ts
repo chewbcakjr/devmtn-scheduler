@@ -15,6 +15,7 @@ export class EventsService {
   week = [];
   weeks = [];
   count = 0;
+  maxWeek = 0;
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
@@ -31,8 +32,9 @@ export class EventsService {
           					eventsGrouped.push(mult)
           				}
           			}
-                let maxWeek = Math.ceil(eventsGrouped[eventsGrouped.length - 1][0].day_number / 7);
-                for (let weekNum = 1; weekNum <= maxWeek; weekNum++) {
+                this.maxWeek = Math.ceil(eventsGrouped[eventsGrouped.length - 1][0].day_number / 7);
+                // console.log('maxWeek', this.maxWeek)
+                for (let weekNum = 1; weekNum <= this.maxWeek; weekNum++) {
                   let temp = eventsGrouped.map(day => {
                     return day.filter(event => {
                       return Math.ceil(event.day_number / 7) == weekNum;

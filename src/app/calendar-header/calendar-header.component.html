@@ -4,7 +4,7 @@
 			<p class="week-num"><b>WEEK {{currWeek}}</b></p>
 			<p class="class title">{{currTmpl.name}}</p>
 		</div>
-		<button type="button" class="btn left-chevron" (click)="lastWeek()"></button>
+		<button type="button" class="btn left-chevron" (click)="lastWeek()" [disabled]="currWeek<=1"></button>
 	</div>
 	<div class="buttons">
 		<button type="button" class="btn right-chevron" (click)="nextWeek()"></button>

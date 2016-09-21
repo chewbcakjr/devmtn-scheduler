@@ -20,7 +20,9 @@ export class EventsService {
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
     this.weeks = [];
-
+    this.week = [];
+    this.count = 0;
+    this.eventsGrouped = [];
 
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
   		.map(res => {

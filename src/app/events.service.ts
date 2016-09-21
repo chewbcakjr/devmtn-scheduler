@@ -1,20 +1,30 @@
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { TemplatesService } from './templates.service';
 
 @Injectable()
 export class EventsService {
 
-  constructor(private http:Http, private router:Router) { }
+  constructor(private http:Http, private router:Router, private templatesService:TemplatesService) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
 
   week = [];
   weeks = [];
   count = 0;
+  maxWeek = 0;
+  currEvent = {
+    event_id: null,
+    name: null,
+      start_time: null,
+      end_time: null,
+      default_instructor: null,
+      notes: null,
+      day_number: null
+  };
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
@@ -26,13 +36,14 @@ export class EventsService {
                 let eventsGrouped = []
                 let lastDay = events[events.length-1].day_number;
                 for (let i = 1; i <= lastDay; i++) {
-                               let mult = events.filter(event => event.day_number == i) 
+                               let mult = events.filter(event => event.day_number == i)
           				if (mult.length > 0) {
           					eventsGrouped.push(mult)
           				}
           			}
-                let maxWeek = Math.ceil(eventsGrouped[eventsGrouped.length - 1][0].day_number / 7);
-                for (let weekNum = 1; weekNum <= maxWeek; weekNum++) {
+                this.maxWeek = Math.ceil(eventsGrouped[eventsGrouped.length - 1][0].day_number / 7);
+                // console.log('maxWeek', this.maxWeek)
+                for (let weekNum = 1; weekNum <= this.maxWeek; weekNum++) {
                   let temp = eventsGrouped.map(day => {
                     return day.filter(event => {
                       return Math.ceil(event.day_number / 7) == weekNum;
@@ -89,8 +100,14 @@ export class EventsService {
   		notes: notes,
   		day_number: day_number
   	};
+
+    
   	return this.http.put(`${this.base_url}/dbevents?event_id=${event_id}`, obj)
   		.map(res => {
+
+              this.getEvents(this.templatesService.currTmpl.template_id).subscribe(data => {
+                console.log('get events inside update')
+                console.log(data)})
   			console.log('updated!');
   			return res.json()
   		})

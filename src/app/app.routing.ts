@@ -1,3 +1,4 @@
+
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,7 +27,7 @@ component: LoginPageComponent
 		component: CreateEventComponent
 	},
 	{
-		path: 'template',
+		path: 'template/:weeknum',
 		component: TemplateComponent
 	},
 	{

@@ -10,13 +10,13 @@
     <div class="divider"></div>
 
     <!-- the .row would be ngFor with the data populated from db/API -->
-    <div class="card-details" *ngFor="let thing of event">
+    <div class="card-details" *ngFor="let item of event">
       <div class="row event-details">
         <div class="start-time">
-          {{thing.start_time}}
+          {{item.start_time}}
         </div>
         <div class="event-title">
-          {{thing.name}}
+          {{item.name}}
         </div>
       </div>
       <!-- <div class="row event-details">

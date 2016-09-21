@@ -12,7 +12,12 @@ export class EditEventComponent implements OnInit, OnDestroy {
 
   constructor(private eventsService:EventsService, private router:Router) { }
 
+  currEvent = {};
+
   ngOnInit() {
+    // this doesn't work :/
+    this.currEvent = this.eventsService.currEvent;
+
     
   	// this.eventsService.updateEvent(72,'updating event?', 'yesterday', 'today', 'me','notes here',2)
   	// 	.subscribe(() => {
@@ -22,10 +27,10 @@ export class EditEventComponent implements OnInit, OnDestroy {
   		// })
   }
 
-  updateEvent(event_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {
+  updateEvent(name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {
     console.log(arguments)
     let weekNum = Math.ceil(day_number/7);
-    this.eventsService.updateEvent(event_id, name, start_time, end_time, default_instructor, notes, day_number)
+    this.eventsService.updateEvent(this.eventsService.currEvent.event_id, name, start_time, end_time, default_instructor, notes, day_number)
       .subscribe(() => {
         console.log('updated')
         // $('#modal1').closeModal();

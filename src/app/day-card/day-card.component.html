@@ -13,7 +13,7 @@
           {{item.start_time}}
         </div>
         <div class="edit">
-          <a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger"></a>
+          <a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger" (click)="storeCurrEvent(item)"></a>
         </div>
         <div class="event-title">
           {{item.name}}

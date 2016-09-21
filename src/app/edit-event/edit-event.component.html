@@ -3,7 +3,7 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="card-title">Update Event</div>
-						<form (ngSubmit)="updateEvent(item.event_id, title.value, startTime.value, endTime.value, instructor.value, links.value, day.value)" #eventTitleForm="ngForm" class="create-event">
+						<form (ngSubmit)="updateEvent(title.value, startTime.value, endTime.value, instructor.value, links.value, day.value)" #eventTitleForm="ngForm" class="create-event">
 							<div class="input-field row day-number">
 								<input #day class="validate" type="text" name="day-number" ngControl="day-number" value="" required autofocus>
 								<label for="day-number">Day Number</label>

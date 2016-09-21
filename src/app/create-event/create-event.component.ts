@@ -13,10 +13,14 @@ export class CreateEventComponent implements OnInit {
 
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
-  //show me time
-  showTime(start_time, end_time) {
-    console.log(start_time, end_time);
-    // this.eventsService.showTime(time)
+  createEvent(title:string, start:string, end:string, instructor:string, links:string, day:number) {
+    start = start.concat(":00");
+    end = end.concat(":00");
+    this. eventsService.createEvent(this.templatesService.currTmpl.template_id, title, start, end, instructor, links, day)
+      .subscribe(data => {
+        console.log(data);
+
+      })
   }
 
   ngAfterViewInit() {

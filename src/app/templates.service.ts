@@ -15,6 +15,7 @@ export class TemplatesService {
     template_id: 1,
     name: ''
   };
+  week = [];
 
   // this will retrieve a list of the existing templates in the db. templates will be objects with an id and name
   getTmpls():Observable<any> {

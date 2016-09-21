@@ -23,9 +23,9 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit():void {
     console.log(this.templatesService.currTmpl);
-    this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah','now', 'never', 'you', 'nuff not said', 1)
-    .subscribe(data => {
-      console.log(data);
-    })
+    // this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah','now', 'never', 'you', 'nuff not said', 1)
+    // .subscribe(data => {
+    //   console.log(data);
+    // })
   }
 }

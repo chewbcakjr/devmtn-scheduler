@@ -17,7 +17,15 @@ export class EventsService {
   weeks = [];
   count = 0;
   maxWeek = 0;
-  currEvent = {};
+  currEvent = {
+    event_id: null,
+    name: null,
+      start_time: null,
+      end_time: null,
+      default_instructor: null,
+      notes: null,
+      day_number: null
+  };
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {

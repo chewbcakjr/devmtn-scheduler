@@ -11,6 +11,7 @@ export class EventsService {
   constructor(private http:Http, private router:Router) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
+  day_number: number;
 
   week = [];
   weeks = [];
@@ -27,7 +28,7 @@ export class EventsService {
                 let eventsGrouped = []
                 let lastDay = events[events.length-1].day_number;
                 for (let i = 1; i <= lastDay; i++) {
-                               let mult = events.filter(event => event.day_number == i) 
+                               let mult = events.filter(event => event.day_number == i)
           				if (mult.length > 0) {
           					eventsGrouped.push(mult)
           				}
@@ -79,6 +80,13 @@ export class EventsService {
         console.log(this.events)
         return res.json()
       })
+  }
+  getEventId(event_id:number) {
+    return this.http.get(`${this.base_url}/dbevents?event_id=${event_id}`)
+    .map(res =>{
+      console.log('here is the eventid');
+      return res.json()
+    })
   }
 
   // update an event

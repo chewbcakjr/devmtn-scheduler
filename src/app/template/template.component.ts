@@ -26,6 +26,7 @@ export class TemplateComponent implements OnInit {
 			// 		this.events.push(mult)
 			// 	}
 			// }
+			console.log(data);
 
 			this.route.params.forEach((params: Params) => {
       let weeknum = +params['weeknum'];

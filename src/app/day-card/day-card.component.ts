@@ -1,5 +1,7 @@
 // import { Component, OnInit } from '@angular/core';
 import {Component, OnInit, AfterViewInit, Input} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from '../events.service';
 
 declare var $:any;
 
@@ -21,10 +23,14 @@ export class DayCardComponent implements OnInit {
       console.log('hoo yeeaa');
     }
 
-  constructor() { }
+  constructor(private router: Router, private eventsService: EventsService) { }
 
   ngOnInit() {
+		this.eventsService.getEventId()
 
   }
+	redirectToEditEvent() {
+		this.router.navigate(['editevent'])
+	}
 
 }

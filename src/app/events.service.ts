@@ -15,51 +15,39 @@ export class EventsService {
   week = [];
   weeks = [];
   count = 0;
-  eventsGrouped = [];
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
-    this.weeks = [];
-    this.week = [];
     this.count = 0;
-    this.eventsGrouped = [];
 
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
   		.map(res => {
-                this.events = res.json();
-                // console.log(this.events)
-                let lastDay = this.events[this.events.length-1].day_number;
+                let events = res.json();
+                let eventsGrouped = []
+                let lastDay = events[events.length-1].day_number;
                 for (let i = 1; i <= lastDay; i++) {
-                  // console.log('i',i)
-          				let mult = this.events.filter(event => event.day_number == i)
-                  // console.log('mult',mult)
+                               let mult = events.filter(event => event.day_number == i) 
           				if (mult.length > 0) {
-          					this.eventsGrouped.push(mult)
+          					eventsGrouped.push(mult)
           				}
           			}
-                // console.log(this.eventsGrouped.length)
-                // console.log(this.eventsGrouped)
-                let maxWeek = Math.ceil(this.eventsGrouped[this.eventsGrouped.length - 1][0].day_number / 7);
-                // console.log(maxWeek)
+                let maxWeek = Math.ceil(eventsGrouped[eventsGrouped.length - 1][0].day_number / 7);
                 for (let weekNum = 1; weekNum <= maxWeek; weekNum++) {
-                  let temp = this.eventsGrouped.map(day => {
+                  let temp = eventsGrouped.map(day => {
                     return day.filter(event => {
                       return Math.ceil(event.day_number / 7) == weekNum;
                     });
                   });
-                  // console.log(temp)
                   this.weeks[weekNum - 1] = temp.filter(item => {
                     return item.length > 0;
                   });
                 }
                 this.week = this.weeks[this.count];
-                // console.log(this.weeks)
                 return this.week
               })
   }
   increment() {
     this.count++;
-    // console.log(this.count)
     this.week = this.weeks[this.count];
     this.router.navigate(['template',this.count+1])
   }

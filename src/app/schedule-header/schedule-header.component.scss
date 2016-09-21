@@ -9,6 +9,7 @@
 }
 
 .schedule {
+	display: flex;
 	font-family: $tertiary-font;
 	width: 100%;
 }
@@ -26,6 +27,11 @@
 	display: flex;
 	justify-content: flex-end;
 	width: 100%;
+}
+.schedule li a:active{
+	text-decoration: underline;
+	color: $primaryTealColor;
+	text-decoration-color: $secondaryBlueColor;
 }
 
 .show-hide-add li {
@@ -48,7 +54,7 @@
 .show-hide-add li:last-child a{
 	color: $secondaryBlueColor;
 }
-.active-bg {
-  background-color: $titleFontColor;
+.schedule-active-bg a:visited {
+	color: $primaryTealColor;
   text-transform: uppercase;
 }

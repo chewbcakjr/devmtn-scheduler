@@ -5,7 +5,7 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="card-title">Create Event</div>
-						<form (ngSubmit)="createTmpl(title.value)" #eventTitleForm="ngForm" class="create-event">
+						<form (ngSubmit)="createEvent(f.value)" #f="ngForm" class="create-event">
 							<div class="left">
 								<div class="input-field">
 							    <input id="timepicker" class="timepicker" type="time" name="event-name" ngControl="event-name" value="" required>
@@ -17,8 +17,8 @@
 							</div>
 							<div class="right">
 								<div class="input-field row">
-									<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required autofocus>
-									<label for="event-title">Event Title</label>
+									<input #title class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
+									<label for="name">Event Title</label>
 								</div>
 								<div class="input-field row">
 									<input #instructor class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
@@ -29,7 +29,7 @@
 									<label for="relevant-links">Relevant Links</label>
 								</div>
 								<div class="submit-buttons">
-									<button type="submit" class="btn waves-effect waves-green">Create Event</button>
+									<button type="submit" (click) = "creatEvent(f.value)" class="btn waves-effect waves-green">Create Event</button>
 									<button type="submit" class="btn waves-effect waves-green">Done</button>
 								</div>
 							</div>

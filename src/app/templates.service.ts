@@ -43,7 +43,6 @@ export class TemplatesService {
           // } else {
           //   alert('name not available')
           // }
-
   }
 
 

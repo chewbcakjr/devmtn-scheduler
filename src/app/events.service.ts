@@ -6,10 +6,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EventsService {
+	event_id: number;
 
   constructor(private http:Http) { }
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
+	tmpl_id;
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
@@ -19,9 +21,25 @@ export class EventsService {
                 return res.json()
               })
   }
-	// getEventId(event_id:number):Observable<any> {
-	// 	return this.http.get
-	// }
+	getEventId(event_id:number):Observable<any> {
+		return this.http.get(`${this.base_url}/dbevents?event_id=${event_id}`)
+		.map(res => {
+			console.log(this.event_id);
+			return res.json()
+		});
+	}
+// 	getTemplateId(template_id):Observable<any> {
+// 		return this.http.get(this.getTemplateUrl(template_id))
+// 		.map(res => {
+// 			return res.json();
+// 	})
+// }
+
+private getTemplateUrl(tmpl_id:number){
+	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
+	}
+
+
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
@@ -60,6 +78,7 @@ export class EventsService {
   			return res.json()
   		})
   }
+
 
   // remove an event
   removeEvent(event_id:number):Observable<any> {

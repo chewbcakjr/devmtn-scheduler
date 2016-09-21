@@ -35,11 +35,12 @@
           Do you read the bible Brent?
         </div>
       </div> -->
-
+			<a [routerLink] = "['/editEvent', thing.event_id]">Edit event</a>
+			<button (click) = "goToEditEvent()">Edit event</button>
     </div>
   </div>
   <div class="card-action">
-    <button type="" class="btn btn-left">New Event</button>
+    <button (click) = "goToEditEvent()" class="btn btn-left">Edit EVent</button>
     <button type="" class="btn btn-right">New Task</button>
 		<!-- <a [routerLink]  = "['/editEvent', thing.event_id]"><button type = "" >Edit Event</button></a> -->
   </div>

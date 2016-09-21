@@ -5,10 +5,10 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="card-title">Edit Event</div>
-						<form (ngSubmit)="updateEvent()" #eventTitleForm="ngForm" class="create-event">
+						<form (ngSubmit)="updateEvent(form.value)" #form="ngForm" class="create-event">
 							<div class="left">
 								<div class="input-field">
-							    <input id="timepicker" class="timepicker" type="time" name="event-name" ngControl="event-name" value="" required>
+							    <!-- <input id="timepicker" class="timepicker" type="time" name="event-name" ngControl="event-name" value="" required> -->
 									<label for="timepicker">Time</label>
 								</div>
 								<div class="clock-img">
@@ -17,7 +17,8 @@
 							</div>
 							<div class="right">
 								<div class="input-field row">
-									<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required autofocus>
+									<!-- <input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required autofocus> -->
+									<input #title class = "validate" type = "text" [(ngModel)] = "title" ngControl = "title" value = "" />
 									<label for="event-title">Event Title</label>
 								</div>
 								<div class="input-field row">

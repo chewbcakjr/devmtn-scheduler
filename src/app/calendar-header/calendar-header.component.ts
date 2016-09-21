@@ -35,13 +35,17 @@ export class CalendarHeader implements OnInit {
 
 
 	// currWeek = this.weeks[0];
-
+	currWeek:number = 1;
+	// maxWeek:number = 1;
 
 	ngOnInit() {
 		this.currTmpl = this.templatesService.currTmpl;
 		this.route.params.forEach((params: Params) => {
-      	this.currWeek = +params['weeknum'];
-    })
+      		this.currWeek = +params['weeknum'];
+    		})
+		// this.maxWeek = this.eventsService.maxWeek;
+		console.log(this.currWeek)
+		// console.log(this.maxWeek)
 	}
 
 	nextWeek() {

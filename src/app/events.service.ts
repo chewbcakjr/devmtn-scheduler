@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
@@ -27,7 +26,7 @@ export class EventsService {
                 let eventsGrouped = []
                 let lastDay = events[events.length-1].day_number;
                 for (let i = 1; i <= lastDay; i++) {
-                               let mult = events.filter(event => event.day_number == i) 
+                               let mult = events.filter(event => event.day_number == i)
           				if (mult.length > 0) {
           					eventsGrouped.push(mult)
           				}

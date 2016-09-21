@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { EventsService } from '../events.service';
 import { TemplatesService } from '../templates.service';
+import { Router } from '@angular/router';
 
 declare var $:any;
 
@@ -11,14 +12,16 @@ declare var $:any;
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
+  constructor(private eventsService:EventsService, private templatesService:TemplatesService, private router:Router) { }
 
   createEvent(title:string, start:string, end:string, instructor:string, links:string, day:number) {
     start = start.concat(":00");
     end = end.concat(":00");
+    let weekNum = Math.ceil(day/7);
     this. eventsService.createEvent(this.templatesService.currTmpl.template_id, title, start, end, instructor, links, day)
       .subscribe(data => {
         console.log(data);
+        this.router.navigate(['/template', weekNum])
 
       })
   }
@@ -41,10 +44,5 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit():void {
     console.log(this.templatesService.currTmpl);
-
-    // this.eventsService.createEvent(this.templatesService.currTmpl.template_id,'Blah','now', 'never', 'you', 'nuff not said', 1)
-    // .subscribe(data => {
-    //   console.log(data);
-    // })
   }
 }

@@ -11,6 +11,7 @@ export class EventsService {
   events:any[] = [];
   base_url:string = 'http://localhost:9001';
 
+
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
@@ -19,6 +20,7 @@ export class EventsService {
                 return res.json()
               })
   }
+
 
   // create new event on given template
   createEvent(tmpl_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {

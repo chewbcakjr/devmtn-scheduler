@@ -13,6 +13,12 @@ export class CreateEventComponent implements OnInit {
 
   constructor(private eventsService:EventsService, private templatesService:TemplatesService) { }
 
+  //show me time
+  showTime(start_time, end_time) {
+    console.log(start_time, end_time);
+    // this.eventsService.showTime(time)
+  }
+
   ngAfterViewInit() {
     $('#timepicker-start').pickatime({
       default: '12:00',
@@ -24,6 +30,9 @@ export class CreateEventComponent implements OnInit {
       autoclose: true,
       twelvehour: true
     });
+    $('.timepicker-start').on("hover", function() {
+      console.log($(this).text());
+    });
   }
 
   ngOnInit():void {
@@ -32,5 +41,6 @@ export class CreateEventComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
+
   }
 }

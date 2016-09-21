@@ -1,17 +1,33 @@
 @import 'src/sass/components/_variables.scss';
 
+.content-area .row {
+  flex-grow: 0.15;
+}
+
 .card {
   background-color: #fff;
   position: relative;
   margin-right: 20px;
   overflow: hidden;
-  padding: 0 10%;
+  padding: 0 5%;
   text-align: center;
   transition: all .3s ease-in-out;
-  width: 100%;
   & label {
     text-align: left;
   }
+}
+
+.flex-section {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left {
+  min-width: 300px;
+}
+
+.right {
+  min-width: 300px;
 }
 
 .input-field label {

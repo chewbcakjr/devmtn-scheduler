@@ -11,6 +11,10 @@
 	padding-right: 50px;
 }
 
+.flex-section {
+  display: flex;
+}
+
 .cursor-point {
   cursor: pointer;
 }
@@ -20,16 +24,6 @@
 }
 
 form {
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-}
-
-.right {
-  min-width: 300px;
 }
 
 button.btn {

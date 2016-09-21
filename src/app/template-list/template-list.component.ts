@@ -22,8 +22,6 @@ export class TemplateListComponent implements OnInit {
 
   // this will get the list of templates from the db and load them up and put them onto the data property. this will need to be tweaked probably once there's actually data. maybe not, data would be an object with the template id and template name (program name)
   ngOnInit():void {
-    this.eventsService.eventsGrouped = [];
-    this.eventsService.count = 0;
 
   	this.googleService.getCalendars().subscribe(data => console.log(data))
  	// this.eventsService.removeEvent(4)

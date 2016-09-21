@@ -23,12 +23,12 @@ export class CreateEventComponent implements OnInit {
     $('#timepicker-start').pickatime({
       default: '12:00',
       autoclose: true,
-      twelvehour: true
+      twelvehour: false
     });
     $('#timepicker-end').pickatime({
       default: '12:00',
       autoclose: true,
-      twelvehour: true
+      twelvehour: false
     });
     $('.timepicker-start').on("hover", function() {
       console.log($(this).text());

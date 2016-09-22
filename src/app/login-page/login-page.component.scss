@@ -1,0 +1,54 @@
+@import 'src/sass/components/_variables.scss';
+
+.login-container {
+	background-image: url('../assets/devmtn-group.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	align-content: center;
+}
+
+.login-button {
+		margin: auto;
+		align-self: center;
+		color: white;
+		a {
+			color: white;
+		}
+}
+
+
+.cm-fade-in {
+	opacity: 0;
+	animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+/* KEYFRAMES
+-------------------------------------------------- */
+/* fade in */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-ms-keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

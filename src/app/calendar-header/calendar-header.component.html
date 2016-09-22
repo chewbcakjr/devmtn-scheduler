@@ -21,28 +21,35 @@
 		<h4>Are you suuure you want to go live Jeremy?? D:</h4>
     <form (ngSubmit)="goLive(title.value)" #goLiveForm="ngForm" class="create-template">
 			<div class="input-field col s12 l12">
-				<i class="material-icons prefix">terrain</i>
-				<input #title id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
-				<label for="template-title">Template Title</label>
-			</div>
-			<div class="input-field col s12 l12">
-				<ul class="collection avatar">
-					<li class="collection-item">
-						<i class="material-icons prefix">terrain</i>
-						<span class="title">Title</span>
-						<input #title id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
+				<ul class="collection">
+					<li class="collection-item avatar">
+						<i class="material-icons circle">terrain</i>
 						<p>
 							Put the template ID here
 						</p>
 						<p>
 							Put the start time here
 						</p>
-						<label for="template-title">Template Title</label>
+						<p>
+							Put the calendar name here
+						</p>
+						<!-- dropdown trigger -->
+						<button class="dropdown-button btn" data-activates="dropdown1" data-beloworigin="true">Pick a location</button>
+						<!-- dropdown structure -->
+						<ul id="dropdown1" class="dropdown-content">
+							<li><a href="#!">Provo</a></li>
+							<li class="divider"></li>
+							<li><a href="#!">Salt Lake</a></li>
+							<li class="divider"></li>
+							<li><a href="#!">Dallas</a></li>
+						</ul>
+						<!-- <label for="template-title">Template Title</label> -->
+						<a href="#!"></a>
 					</li>
 				</ul>
 			</div>
 			<div class="modal-footer">
-		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Yes, I'm sure chewbcak jr. &raquo;</button>
 		  </div>
     </form>
   </div>

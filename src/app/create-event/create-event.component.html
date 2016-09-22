@@ -18,12 +18,12 @@
 								</div>
 								<div class="right">
 									<div class="input-field">
-								    <input #startTime id="timepicker-start" class="timepicker" type="time" name="start-time" ngControl="start_time" value="" required>
-										<label for="timepicker">Time</label>
+								    <input #startTime id="timepicker-start" class="timepicker" type="time" name="start-time" ngControl="start_time" value="10:00" required>
+										<label for="timepicker" class="active">Time</label>
 									</div>
 									<div class="input-field">
-								    <input #endTime id="timepicker-end" class="timepicker" type="time" name="end-time" ngControl="end-time" value="" required>
-										<label for="timepicker">Time</label>
+								    <input #endTime id="timepicker-end" class="timepicker" type="time" name="end-time" ngControl="end-time" value="12:30" required>
+										<label for="timepicker" class="active">Time</label>
 									</div>
 									<div class="input-field row">
 										<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required>
@@ -31,7 +31,7 @@
 									</div>
 									<div class="input-field row">
 										<input #instructor class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
-										<label for="instructor-title">Instructor</label>
+										<label for="instructor-title">Instructor Email</label>
 									</div>
 									<div class="input-field row">
 										<input #links class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="">

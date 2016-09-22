@@ -9,7 +9,15 @@ declare var $:any;
   styleUrls: ['./edit-event.component.scss']
 })
 export class EditEventComponent implements OnInit, OnDestroy {
-  @Input() item = {};
+  @Input() item = {
+    event_id: null, 
+    start_time: null, 
+    end_time: null, 
+    default_instructor: null, 
+    notes: null, 
+    name: null, 
+    day_number: null
+  };
 
   constructor(private eventsService:EventsService, private router:Router) { }
 
@@ -18,47 +26,35 @@ export class EditEventComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // this doesn't work :/
     this.currEvent = this.eventsService.currEvent;
-
+    console.log(this.item)
     
-  	// this.eventsService.updateEvent(72,'updating event?', 'yesterday', 'today', 'me','notes here',2)
-  	// 	.subscribe(() => {
-  	// 		console.log('redirect will happen here')
-  			// here's the logic to redirect. when we move it out of ngOnInit, uncomment this.
-  			// this.router.navigate(['/template'])
-  		// })
   }
 
   ngAfterViewInit() {
-    $('#timepicker-start').pickatime({
-      default: '12:00',
+    this.currEvent = this.eventsService.currEvent;
+    console.log(this.currEvent)
+    $("[id=timepicker-start]").pickatime({
+      default: this.item.start_time,
       autoclose: true,
-      twelvehour: false
+      twelvehour: false,
     });
-    $('#timepicker-end').pickatime({
-      default: '12:00',
+    $("[id=timepicker-end]").pickatime({
+      default: this.item.end_time,
       autoclose: true,
-      twelvehour: false
-    });
-    $('.timepicker-start').on("hover", function() {
-      console.log($(this).text());
+      twelvehour: false,
     });
   }
 
   updateEvent(name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number) {
     console.log(arguments)
-    start_time = start_time.concat(":00");
-    end_time = end_time.concat(":00");
+
     let weekNum = Math.ceil(day_number/7);
     this.eventsService.updateEvent(this.eventsService.currEvent.event_id, name, start_time, end_time, default_instructor, notes, day_number)
       .subscribe(() => {
         console.log('updated')
-        $('#modal1').closeModal();
+        $(`#${this.item.event_id}`).closeModal();
         this.router.navigate(['/template', weekNum])
       })
   }
 
-  ngOnDestroy() {
-    console.log('destroyed')
-    this.item = {};
-  }
 }

@@ -9,11 +9,13 @@
 }
 
 .schedule {
+	display: flex;
 	font-family: $tertiary-font;
 	width: 100%;
+	text-transform: uppercase;
 }
 
-.schedule li {
+.schedule li a {
 	color: $titleFontColor;
 	padding: 0 15px;
 }
@@ -48,7 +50,10 @@
 .show-hide-add li:last-child a{
 	color: $secondaryBlueColor;
 }
-.active-bg {
-  background-color: $titleFontColor;
-  text-transform: uppercase;
+
+.schedule-active {
+	a {
+		color: $primaryBlueColor !important;
+		border-bottom: solid;
+	}
 }

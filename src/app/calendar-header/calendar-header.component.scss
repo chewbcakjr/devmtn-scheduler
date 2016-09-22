@@ -44,10 +44,15 @@
 	// justify-content: flex-end;
 	justify-content: space-between;
 	width: 100%;
+	align-items: center;
 }
 
 .title {
 	text-transform: uppercase;
+	font-size: 30px;
+	color: $primaryBlueColor;
+    	// border: solid green 2px;
+    	// padding: 5px 10px;
 }
 
 

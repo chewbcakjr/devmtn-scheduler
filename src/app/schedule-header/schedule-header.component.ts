@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 
 declare var $:any;
+declare var Materialize:any;
 
 @Component({
   selector: 'app-schedule-header',
@@ -26,6 +27,7 @@ export class ScheduleHeader {
   createTmpl(name:string) {
     console.log(name)
     this.templatesService.createTmpl(name)
+    $('#icon_prefix').val('');
       // .subscribe(data => {
         // console.log(data);
         // this.newTmpl = data;

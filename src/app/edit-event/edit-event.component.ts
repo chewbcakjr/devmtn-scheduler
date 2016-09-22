@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { EventsService } from '../events.service';
 import { Router } from '@angular/router';
 declare var $:any;
@@ -8,7 +8,7 @@ declare var $:any;
   templateUrl: './edit-event.component.html',
   styleUrls: ['./edit-event.component.scss']
 })
-export class EditEventComponent implements OnInit, OnDestroy {
+export class EditEventComponent implements OnInit {
   @Input() item = {
     event_id: null, 
     start_time: null, 

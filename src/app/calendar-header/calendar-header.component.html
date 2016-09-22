@@ -2,12 +2,13 @@
 	<div class="week">
 		<div class="info">
 			<p class="week-num"><b>WEEK {{currWeek}}</b></p>
-			<p class="class title">{{currTmpl.name}}</p>
+			
 		</div>
 		<button type="button" class="btn left-chevron" (click)="lastWeek()" [disabled]="currWeek<=1"></button>
 	</div>
 	<div class="buttons">
 		<button type="button" class="btn right-chevron" (click)="nextWeek()"></button>
+		<p class="class title">{{currTmpl.name}}</p>
 		<div>
 			<button type="button" class="btn"><a routerLink="/event" class="white-text">NEW EVENT</a></button>
 			<button type="button" class="btn"><a class="white-text">GO LIVE</a></button>

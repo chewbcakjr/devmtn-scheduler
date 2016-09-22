@@ -1,17 +1,6 @@
 <app-calendar-header></app-calendar-header>
 <main class="content-area">
-	<!-- probably we'll have this be a container and do an ngFor over all the cards -->
-	<!-- you mean here candice :troll: -->
 	<div class="" *ngFor="let event of week">
-		<!-- <div class="" *ngIf="Math.ceil(event.day_number / 7) === 1"> -->
   		<app-day-card [event]="event"></app-day-card>
-  		<!-- <app-day-card></app-day-card>
-      <app-day-card></app-day-card>
-      <app-day-card></app-day-card>
-      <app-day-card></app-day-card>
-      <app-day-card></app-day-card>
-      <app-day-card></app-day-card> -->
-    <!-- </div> -->
 	</div>
 </main>
-<!-- <app-footer></app-footer> -->

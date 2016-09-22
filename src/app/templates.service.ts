@@ -29,7 +29,7 @@ export class TemplatesService {
   // this will create a new template. the id will be auto generated in db
   createTmpl(name:string) {
       let exists = this.tmplList.filter(el => el.name == name);
-      // if (exists.length == 0) {
+      if (exists.length == 0) {
         return this.http.post(`${this.baseUrl}/templates`, {name: name})
             .map(res => {
               this.currTmpl = res.json()[0];
@@ -41,9 +41,9 @@ export class TemplatesService {
               // this will redirect to the create event page. but right now it does it instantly because the functions are running onInit, so I commented it out.
               this.router.navigate(['/event'])
             })
-          // } else {
-          //   alert('name not available')
-          // }
+          } else {
+            alert('name not available')
+          }
 
   }
 

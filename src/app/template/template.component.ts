@@ -33,6 +33,7 @@ export class TemplateComponent implements OnInit {
       let weeknum = +params['weeknum'];
 			// console.log(this.eventsService.weeks)
 			this.week = this.eventsService.weeks[weeknum-1];
+			console.log(this.week)
 			// this.week = this.eventsService.week
     })
 

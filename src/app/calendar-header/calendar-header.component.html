@@ -11,7 +11,54 @@
 		<p class="class title">{{currTmpl.name}}</p>
 		<div>
 			<button type="button" class="btn"><a routerLink="/event" class="white-text">NEW EVENT</a></button>
-			<button type="button" class="btn"><a class="white-text">GO LIVE</a></button>
+			<a class="modal-trigger white-text" href="#go-live"><button type="button" class="btn">GO LIVE</button></a>
 		</div>
 	</div>
 </main>
+
+
+<div id="go-live" class="modal bottom-sheet">
+  <div class="modal-content">
+		<h4>Are you suuure you want to go live Jeremy?? D:</h4>
+    <form (ngSubmit)="goLive(title.value)" #goLiveForm="ngForm" class="create-template">
+			<div class="input-field col s12 l12">
+				<ul class="collection">
+					<li class="collection-item avatar">
+						<i class="material-icons circle">terrain</i>
+						<p>
+							<input type="date" class="datepicker">
+						</p>
+						<div class="row">
+							<div class="input-field col s12">
+								<div class="select-wrapper">
+							    <select>
+							      <option value="" disabled selected>Choose your option</option>
+							      <option value="1">Option 1</option>
+							      <option value="2">Option 2</option>
+							      <option value="3">Option 3</option>
+							    </select>
+								</div>
+						    <label>Materialize Select</label>
+						  </div>
+						</div>
+						<!-- dropdown trigger -->
+						<button class="dropdown-button btn" data-activates="dropdown1" data-beloworigin="true">Pick a location</button>
+						<!-- dropdown structure -->
+						<ul id="dropdown1" class="dropdown-content">
+							<li><a href="#!">Provo</a></li>
+							<li class="divider"></li>
+							<li><a href="#!">Salt Lake</a></li>
+							<li class="divider"></li>
+							<li><a href="#!">Dallas</a></li>
+						</ul>
+						<!-- <label for="template-title">Template Title</label> -->
+						<a href="#!"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Yes, I'm sure chewbcak jr. &raquo;</button>
+		  </div>
+    </form>
+  </div>
+</div>

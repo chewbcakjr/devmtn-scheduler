@@ -13,7 +13,7 @@ export class GoLiveService {
 
   baseUrl:string = 'http://localhost:9001';
   locations:any[] = [];
-  calendars:any[] = [];        
+  calendars:any[] = [];
 
   getLocations():Observable<any> {
     return this.http.get(`${this.baseUrl}/locations`)
@@ -23,12 +23,17 @@ export class GoLiveService {
       })
   }
 
-  getCalendars():void {
-    this.calendars = this.googleService.calendars;
-    console.log(this.calendars)
+  getCalendars() {
+    console.log(this.googleService.calendars)
+    return this.googleService.calendars
+    // console.log(this.calendars)
+    // console.log('finishing get calendars')
+
   }
 
-  // when this is invoked, the template Jeremy was on will go live. he will be prompted for what calendar to post it in (and I think we can use this for the Location (provo, SLC, dallas) as well as to grab the address from the db to slap on the api call). He will also be prompted for a start date. 
+
+
+  // when this is invoked, the template Jeremy was on will go live. he will be prompted for what calendar to post it in (and I think we can use this for the Location (provo, SLC, dallas) as well as to grab the address from the db to slap on the api call). He will also be prompted for a start date.
 
     goLive(tmpl_id:number, location:string, start_date, calendar:string):Observable<any> {
   	// get the events stored in the service
@@ -56,7 +61,7 @@ export class GoLiveService {
           event.calendarId = 'primary';
           event.timeZone = 'UTC';
       })
-      
+
       // need to convert events into an observable, and then do flatMap so that we can just subscribe to it once (because flatMap puts it all in one observable stream)
       let results = Observable.from(events).flatMap(event => {
         console.log(event)

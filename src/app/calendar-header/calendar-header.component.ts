@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 import { ActivatedRoute, Params } from  '@angular/router';
+import { GoLiveService } from '../go-live.service';
+
+declare var $:any;
 
 @Component({
 	selector: 'app-calendar-header',
@@ -10,7 +13,24 @@ import { ActivatedRoute, Params } from  '@angular/router';
 })
 export class CalendarHeader implements OnInit {
 
-	constructor(private templatesService: TemplatesService, private eventsService: EventsService, private route:ActivatedRoute) { }
+	constructor(private goLiveService: GoLiveService, private templatesService: TemplatesService, private eventsService: EventsService, private route:ActivatedRoute) { }
+	goLiveCalendar;
+	//trigger the go-live modal
+	ngAfterViewInit() {
+
+				//modal
+				$('.modal-trigger').leanModal();
+
+				//datepicker
+				$('.datepicker').pickadate({
+			    selectMonths: true, // Creates a dropdown to control month
+			    selectYears: 15 // Creates a dropdown of 15 years to control year
+			  });
+
+				//<select>
+				$('select').material_select();
+	}
+
 
 	currTmpl = {};
 
@@ -46,6 +66,8 @@ export class CalendarHeader implements OnInit {
 		// this.maxWeek = this.eventsService.maxWeek;
 		console.log(this.currWeek)
 		// console.log(this.maxWeek)
+
+		this.goLiveCalendar = this.goLiveService.getCalendars()
 	}
 
 	nextWeek() {
@@ -60,7 +82,8 @@ export class CalendarHeader implements OnInit {
 		// 		}
 		// 	}
 		// }
-		
+		console.log(this.goLiveCalendar)
+
     this.eventsService.increment();
 
 	}

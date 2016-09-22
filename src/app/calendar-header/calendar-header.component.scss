@@ -14,14 +14,14 @@
 }
 
 .info {
-	padding-left: 10px;
+	padding-left: 2vh;
 }
 
 .week-num {
 	font-size: 22px;
 	margin: 0;
 	// padding-left: 10px;
-	font-family: $tertiary-font;
+	font-family: $primary-font;
 }
 
 .left-chevron {
@@ -33,10 +33,11 @@
 }
 
 .class {
-	font-size: 10px;
+	font-size: .85rem;
+	color: $primaryBlueColor;
 	margin: 0;
 	// padding-left: 10px;
-	font-family: $tertiary-font;
+	font-family: $primary-font;
 }
 
 .buttons {

@@ -39,12 +39,12 @@ export class EditEventComponent implements OnInit, OnDestroy {
   ngAfterViewInit() {
     this.currEvent = this.eventsService.currEvent;
     console.log(this.currEvent)
-    $('#timepicker-start').pickatime({
+    $("[id=timepicker-start]").pickatime({
       default: this.item.start_time.slice(0,-3),
       autoclose: true,
       twelvehour: false
     });
-    $('#timepicker-end').pickatime({
+    $("[id=timepicker-end]").pickatime({
       default: this.item.end_time.slice(0,-3),
       autoclose: true,
       twelvehour: false

@@ -5,7 +5,7 @@
 					<div class="card-title">Update Event</div>
 						<form (ngSubmit)="updateEvent(title.value, startTime.value, endTime.value, instructor.value, links.value, day.value)" #eventTitleForm="ngForm" class="create-event">
 							<div class="input-field row day-number">
-								<input #day class="validate" type="text" name="day-number" ngControl="day-number" value="" required autofocus>
+								<input #day class="validate" type="text" name="day-number" ngControl="day-number" value="{{item.day_number}}" required autofocus>
 								<label for="day-number">Day Number</label>
 							</div>
 							<div class="flex-section">
@@ -24,15 +24,15 @@
 										<label for="timepicker">Time</label>
 									</div>
 									<div class="input-field row">
-										<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="" required>
+										<input #title class="validate" type="text" name="event-name" ngControl="event-name" value="{{item.name}}" required>
 										<label for="event-title">Event Title</label>
 									</div>
 									<div class="input-field row">
-										<input #instructor class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="" required>
+										<input #instructor class="validate" type="text" name="instructor-name" ngControl="instructor-name" value="{{item.default_instructor}}" required>
 										<label for="instructor-title">Instructor</label>
 									</div>
 									<div class="input-field row">
-										<input #links class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="">
+										<input #links class="validate" type="text" name="relevant-links" ngControl="relevant-links" value="{{item.notes}}">
 										<label for="relevant-links">Relevant Links</label>
 									</div>
 									<div class="submit-buttons">

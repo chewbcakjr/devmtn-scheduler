@@ -12,6 +12,8 @@ declare var $:any;
 export class DayCardComponent implements OnInit {
 //  @ViewChild('selectElem') el:ElementRef;
 
+  currEvent = {};
+
   @Input() event = [];
 
   ngAfterViewInit() {
@@ -25,6 +27,8 @@ export class DayCardComponent implements OnInit {
     storeCurrEvent(event) {
       console.log(event)
       this.eventsService.currEvent = event;
+      this.currEvent = event;
+      return event;
     }
 
   constructor(private eventsService:EventsService) { }

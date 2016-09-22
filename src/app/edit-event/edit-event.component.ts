@@ -9,7 +9,15 @@ declare var $:any;
   styleUrls: ['./edit-event.component.scss']
 })
 export class EditEventComponent implements OnInit, OnDestroy {
-  @Input() item = {};
+  @Input() item = {
+    event_id: null, 
+    start_time: null, 
+    end_time: null, 
+    default_instructor: null, 
+    notes: null, 
+    name: null, 
+    day_number: null
+  };
 
   constructor(private eventsService:EventsService, private router:Router) { }
 
@@ -18,7 +26,7 @@ export class EditEventComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // this doesn't work :/
     this.currEvent = this.eventsService.currEvent;
-
+    console.log(this.item)
     
   	// this.eventsService.updateEvent(72,'updating event?', 'yesterday', 'today', 'me','notes here',2)
   	// 	.subscribe(() => {
@@ -29,18 +37,17 @@ export class EditEventComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    this.currEvent = this.eventsService.currEvent;
+    console.log(this.currEvent)
     $('#timepicker-start').pickatime({
-      default: '12:00',
+      default: this.item.start_time.slice(0,-3),
       autoclose: true,
       twelvehour: false
     });
     $('#timepicker-end').pickatime({
-      default: '12:00',
+      default: this.item.end_time.slice(0,-3),
       autoclose: true,
       twelvehour: false
-    });
-    $('.timepicker-start').on("hover", function() {
-      console.log($(this).text());
     });
   }
 
@@ -52,13 +59,14 @@ export class EditEventComponent implements OnInit, OnDestroy {
     this.eventsService.updateEvent(this.eventsService.currEvent.event_id, name, start_time, end_time, default_instructor, notes, day_number)
       .subscribe(() => {
         console.log('updated')
-        $('#modal1').closeModal();
+        // $('#modal1').closeModal();
+        $(`#${this.item.event_id}`).closeModal();
         this.router.navigate(['/template', weekNum])
       })
   }
 
   ngOnDestroy() {
-    console.log('destroyed')
-    this.item = {};
+    // console.log('destroyed')
+    // this.item = {};
   }
 }

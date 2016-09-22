@@ -13,14 +13,23 @@
           {{item.start_time}}
         </div>
         <div class="edit">
-          <a href="#modal1" class="edit-icon btn-med waves-effect waves-circle modal-trigger" (click)="storeCurrEvent(item)"></a>
+          <a [href]="'#' + item.event_id" class="edit-icon btn-med waves-effect waves-circle modal-trigger" (click)="storeCurrEvent(item)"></a>
         </div>
         <div class="event-title">
           {{item.name}}
         </div>
-        <div id="modal1" class="modal">
+        <div [id]="item.event_id" class="modal">
           <div class="modal-content">
           <app-edit-event [item]="item"></app-edit-event>
+          
+
+
+
+
+
+
+
+
         </div>
         <!-- <div class="modal-footer">
           <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

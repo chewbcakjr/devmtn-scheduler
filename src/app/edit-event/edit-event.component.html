@@ -36,7 +36,7 @@
 										<label for="relevant-links" class="active">Relevant Links</label>
 									</div>
 									<div class="submit-buttons">
-										<button [disabled]="!eventTitleForm.valid" type="submit" class="btn waves-effect waves-green " disabled>Update Event</button>
+										<button [disabled]="!eventTitleForm.valid || endTime.value < startTime.value" type="submit" class="btn waves-effect waves-green">Update Event</button>
 									</div>
 								</div>
 							</div>

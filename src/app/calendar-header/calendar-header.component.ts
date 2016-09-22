@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TemplatesService } from '../templates.service';
 import { EventsService } from '../events.service';
 import { ActivatedRoute, Params } from  '@angular/router';
+import { GoLiveService } from '../go-live.service';
 
 declare var $:any;
 
@@ -12,8 +13,8 @@ declare var $:any;
 })
 export class CalendarHeader implements OnInit {
 
-	constructor(private templatesService: TemplatesService, private eventsService: EventsService, private route:ActivatedRoute) { }
-
+	constructor(private goLiveService: GoLiveService, private templatesService: TemplatesService, private eventsService: EventsService, private route:ActivatedRoute) { }
+	goLiveCalendar;
 	//trigger the go-live modal
 	ngAfterViewInit() {
 
@@ -25,6 +26,9 @@ export class CalendarHeader implements OnInit {
 			    selectMonths: true, // Creates a dropdown to control month
 			    selectYears: 15 // Creates a dropdown of 15 years to control year
 			  });
+
+				//<select>
+				$('select').material_select();
 	}
 
 
@@ -62,6 +66,8 @@ export class CalendarHeader implements OnInit {
 		// this.maxWeek = this.eventsService.maxWeek;
 		console.log(this.currWeek)
 		// console.log(this.maxWeek)
+
+		this.goLiveCalendar = this.goLiveService.getCalendars()
 	}
 
 	nextWeek() {
@@ -76,6 +82,7 @@ export class CalendarHeader implements OnInit {
 		// 		}
 		// 	}
 		// }
+		console.log(this.goLiveCalendar)
 
     this.eventsService.increment();
 

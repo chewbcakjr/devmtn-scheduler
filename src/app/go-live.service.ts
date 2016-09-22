@@ -47,8 +47,8 @@ export class GoLiveService {
           // adding the day # to the start date so that each event will have the appropriate date in the calendar
           temp.setDate(start_date.getDate() + event.day_number - 1);
           let date = temp.toJSON().split('T')[0];
-          event.start_time = `${date}T${event.start_time}`;
-          event.end_time = `${date}T${event.end_time}`;
+          event.start_time = `${date}T${event.start_time}:00`;
+          event.end_time = `${date}T${event.end_time}:00`;
 
           // this is the correct logic for when we're ready for Jeremy to use it. but so everyone can test, I have hard coded these things for now.
           // event.calendarId = calendarProps.id;

@@ -1,4 +1,7 @@
 @import 'src/sass/components/_variables.scss';
+body {
+	background-color: black;
+}
 
 .content-area .row {
   flex-grow: 0.15;

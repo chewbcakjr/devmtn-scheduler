@@ -14,7 +14,7 @@
 }
 
 .info {
-	padding-left: 2vw;
+	padding-left: 2vh;
 }
 
 .week-num {
@@ -34,7 +34,8 @@
 }
 
 .class {
-	font-size: 10px;
+	font-size: .85rem;
+	color: $primaryBlueColor;
 	margin: 0;
 	// padding-left: 10px;
 	font-family: $primary-font;

@@ -32,6 +32,7 @@ export class EventsService {
 
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
   		.map(res => {
+                this.events = res.json();
                 let events = res.json();
                 let eventsGrouped = []
                 let lastDay = events[events.length-1].day_number;

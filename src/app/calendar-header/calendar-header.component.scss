@@ -51,10 +51,13 @@
 	text-transform: uppercase;
 	font-size: 30px;
 	color: $primaryBlueColor;
-    	// border: solid green 2px;
-    	// padding: 5px 10px;
 }
 
+.modal { 
+	max-height: 90% !important; 
+	height: 100% !important; 
+	top: 5% !important;
+}
 
 .dropdown-button.btn {
   border-radius: 0;
@@ -63,4 +66,12 @@
 
 .collection {
   overflow: visible;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: center;
+	button {
+		background-color: $primaryBlueColor;
+	}
 }

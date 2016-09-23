@@ -1,8 +1,9 @@
 @import 'src/sass/components/_variables.scss';
 
 .calendar {
-	height: 90px;
+	height: 10vh;
 	// border: solid black;
+	margin-bottom: 0 !important;
 }
 
 .week {
@@ -53,9 +54,9 @@
 	color: $primaryBlueColor;
 }
 
-.modal { 
-	max-height: 90% !important; 
-	height: 100% !important; 
+.modal {
+	max-height: 90% !important;
+	height: 100% !important;
 	top: 5% !important;
 }
 

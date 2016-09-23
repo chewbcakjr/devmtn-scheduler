@@ -28,7 +28,7 @@ export class EventsService {
 
   // return a list of events associated with a specified template.
   getEvents(tmpl_id:number):Observable<any> {
-    this.count = 0;
+    // this.count = 0;
 
   	return this.http.get(`${this.base_url}/dbevents?tmpl_id=${tmpl_id}`)
   		.map(res => {
@@ -64,8 +64,10 @@ export class EventsService {
     this.router.navigate(['template',this.count+1])
   }
   decrement() {
+    console.log(this.count)
     this.count--;
     this.week = this.weeks[this.count];
+    console.log('going to ', this.count +1)
     this.router.navigate(['template',this.count+1])
   }
 

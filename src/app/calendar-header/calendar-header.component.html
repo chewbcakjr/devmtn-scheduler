@@ -17,47 +17,61 @@
 </main>
 
 
-<div id="go-live" class="modal bottom-sheet">
+<div id="go-live" class="modal">
   <div class="modal-content">
-		<h4>Are you suuure you want to go live Jeremy?? D:</h4>
-    <form (ngSubmit)="goLive(title.value)" #goLiveForm="ngForm" class="create-template">
+		<h4>Are you suuure you want to go live, Jeremy?? :D</h4>
+    <form (ngSubmit)="goLive(selectedLocation.value, startDate.value, selectedCalendar.value)" #goLiveForm="ngForm" class="create-template">
 			<div class="input-field col s12 l12">
 				<ul class="collection">
 					<li class="collection-item avatar">
 						<i class="material-icons circle">terrain</i>
 						<p>
-							<input type="date" class="datepicker">
+							<input #startDate type="date" class="datepicker" placeholder="Choose a startdate">
 						</p>
+
+<!-- for some really dumb, non-intelligible reason, this one isn't working. :( :( :(  -->
+				<!-- 		<div class="row">
+							<div class="input-field col s12">
+								<div class="select-wrapper">
+							    <select #selectedLocation>
+							      <option *ngFor="let location of locations" [value]="location.location_id">{{location.location_id}}</option>
+							    </select>
+								</div>
+						    <label>Choose a location</label>
+						  </div>
+						</div> -->
+
 						<div class="row">
 							<div class="input-field col s12">
 								<div class="select-wrapper">
-							    <select>
-							      <option value="" disabled selected>Choose your option</option>
-							      <option value="1">Option 1</option>
-							      <option value="2">Option 2</option>
-							      <option value="3">Option 3</option>
+							    <select #selectedLocation>
+							      <option value="Provo">Provo</option>
+							      <option value="Salt Lake">Salt Lake</option>
+							      <option value="Dallas">Dallas</option>
 							    </select>
 								</div>
-						    <label>Materialize Select</label>
+						    <label>Choose a Location</label>
 						  </div>
 						</div>
-						<!-- dropdown trigger -->
-						<button class="dropdown-button btn" data-activates="dropdown1" data-beloworigin="true">Pick a location</button>
-						<!-- dropdown structure -->
-						<ul id="dropdown1" class="dropdown-content">
-							<li><a href="#!">Provo</a></li>
-							<li class="divider"></li>
-							<li><a href="#!">Salt Lake</a></li>
-							<li class="divider"></li>
-							<li><a href="#!">Dallas</a></li>
-						</ul>
-						<!-- <label for="template-title">Template Title</label> -->
-						<a href="#!"></a>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<div class="select-wrapper">
+							    <select #selectedCalendar>
+							      <option *ngFor="let calendar of calendars" [value]="calendar.name">{{calendar.name}}</option>
+							    </select>
+								</div>
+						    <label>Choose a Calendar</label>
+						  </div>
+						</div>
+
+					
+						
 					</li>
 				</ul>
 			</div>
 			<div class="modal-footer">
-		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Yes, I'm sure chewbcak jr. &raquo;</button>
+		    <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" [disabled]="!goLiveForm.valid">Yes, I'm sure chewbcak jr. &raquo;</button>
 		  </div>
     </form>
   </div>

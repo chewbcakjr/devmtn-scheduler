@@ -59,6 +59,8 @@ export class CalendarHeader implements OnInit {
 	}
 	
 	lastWeek() {
+		this.eventsService.count = this.currWeek - 1;
+		console.log(this.eventsService.count)
 	    this.eventsService.decrement();
 	}
 

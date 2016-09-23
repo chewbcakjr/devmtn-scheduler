@@ -44,7 +44,7 @@ component: LoginPageComponent
 	},
 	{
 		path: '',
-		redirectTo: '/dashboard',
+		redirectTo: '/login',
 		pathMatch: 'full'
 	},
 	{

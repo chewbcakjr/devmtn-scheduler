@@ -69,7 +69,7 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
 	// Successful authentication, redirect home. switch the res.redirect (comment/uncomment once we build/bundle)
 	// res.redirect('/');
-	res.redirect('http://localhost:4200')
+	res.redirect('http://localhost:4200/dashboard')
 	// res.redirect('/calendars/')
 });
 

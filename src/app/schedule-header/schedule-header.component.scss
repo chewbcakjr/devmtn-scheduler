@@ -1,11 +1,11 @@
 @import 'src/sass/components/_variables.scss';
 
 .top-header {
-	margin-left: 30px;
+	padding-left: 30px;
 }
 
 .schedule-container {
-	height: 10vh;
+	background-color: $primary-color;
 }
 
 .schedule {

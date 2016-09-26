@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'sass/materialize.scss';
 
+.mbot-0 {
+  background: $primary-color;
+  margin-bottom: 0;
+}
+
 .content-area {
-  background-color: #EBEFF0;
+  background-color: $primary-color;
   padding-top: 30px;
   display: flex;
 	flex-wrap: wrap;

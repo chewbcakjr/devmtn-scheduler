@@ -1,6 +1,6 @@
 <app-calendar-header></app-calendar-header>
 <main class="content-area">
-	<div class="" *ngFor="let event of week">
+	<div class="card-container" *ngFor="let event of week">
   		<app-day-card [event]="event"></app-day-card>
 	</div>
 </main>

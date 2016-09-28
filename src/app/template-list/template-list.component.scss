@@ -64,10 +64,6 @@
 	padding: 10px 0 20px 0;
 }
 
-.course-img {
-  height: 70px;
-}
-
 .card .card-action {
   background-color: transparent;
   border-top: none;
@@ -78,6 +74,11 @@
   font-size: 1.5em;
   text-align: center;
   text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.course-img {
+  height: 50px;
 }
 
 .btn {

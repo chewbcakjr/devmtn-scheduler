@@ -17,11 +17,12 @@ export class TemplateComponent implements OnInit {
   weeks = [];
 
 	ngOnInit() {
+		console.log(this.templatesService.currTmpl)
 		// this.eventsService.count = 0
 		console.log('reinitialize template component')
-		// console.log('id', this.templatesService.currTmpl.template_id)
+		console.log('id', this.templatesService.currTmpl.template_id)
 		this.eventsService.getEvents(this.templatesService.currTmpl.template_id).subscribe(data => {
-			// console.log('got here')
+			console.log(data)
 			// for (let i = 1; i <= data.length; i++) {
 			// 	let mult = data.filter(event => event.day_number == i)
 			// 	if (mult.length > 0) {

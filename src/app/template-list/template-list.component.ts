@@ -64,6 +64,9 @@ export class TemplateListComponent implements OnInit {
       this.router.navigate(['template',1])
     }
 
+    
+    
+
 
 
   // this needs to live somewhere else, but i don't know where yet. and it needs to actually do something besides log the data

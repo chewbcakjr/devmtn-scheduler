@@ -30,21 +30,21 @@
 						</p>
 
 <!-- for some really dumb, non-intelligible reason, this one isn't working. :( :( :(  -->
-				<!-- 		<div class="row">
-							<div class="input-field col s12">
-								<div class="select-wrapper">
-							    <select #selectedLocation>
-							      <option *ngFor="let location of locations" [value]="location.location_id">{{location.location_id}}</option>
-							    </select>
-								</div>
-						    <label>Choose a location</label>
-						  </div>
-						</div> -->
-
 						<div class="row">
 							<div class="input-field col s12">
 								<div class="select-wrapper">
-							    <select #selectedLocation>
+							    <select class="browser-default" id="location" #selectedLocation>
+							      <option *ngFor="let location of locations" [value]="location.location_id">{{location.location_id}}</option>
+							    </select>
+								</div>
+						    <label>Choose a Location</label>
+						  </div>
+						</div>
+
+						<!-- <div class="row">
+							<div class="input-field col s12">
+								<div class="select-wrapper">
+							    <select id="location" #selectedLocation>
 							      <option value="Provo">Provo</option>
 							      <option value="Salt Lake">Salt Lake</option>
 							      <option value="Dallas">Dallas</option>
@@ -52,12 +52,12 @@
 								</div>
 						    <label>Choose a Location</label>
 						  </div>
-						</div>
+						</div> -->
 
 						<div class="row">
 							<div class="input-field col s12">
 								<div class="select-wrapper">
-							    <select #selectedCalendar>
+							    <select id="calendar" #selectedCalendar>
 							      <option *ngFor="let calendar of calendars" [value]="calendar.name">{{calendar.name}}</option>
 							    </select>
 								</div>

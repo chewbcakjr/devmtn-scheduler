@@ -13,8 +13,16 @@ export class ScheduleHeader {
 
   constructor(private templatesService:TemplatesService) { }
 
+  tmplList:any[] = [];
+
   ngAfterViewInit() {
+    this.templatesService.getTmpls()
+      .subscribe(data => {
+        this.tmplList = data
+        $('#tmpl_select').material_select();
+      })
         $('.modal-trigger').leanModal();
+        
   }  
 
   // onSubmit(template) {
@@ -33,5 +41,13 @@ export class ScheduleHeader {
         // this.newTmpl = data;
       // })
   }
+
+  copyTmpl(newName:string, existingTmpl_id) {
+    console.log(newName)
+    console.log(existingTmpl_id);
+      // this.tmplList = this.templatesService.getTmpls
+      $('#tmpl_select').material_select('update');
+      this.templatesService.copyTmpl(newName, existingTmpl_id)
+    }
 
 }

@@ -30,7 +30,9 @@ export class CalendarHeader implements OnInit {
 			  });
 
 				//<select>
-				$('select').material_select();
+				// $('select').material_select();
+				$('#location').material_select();
+				$('#calendar').material_select();
 	}
 
 

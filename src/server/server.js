@@ -436,6 +436,8 @@ app.delete('/tasks', function(req, res) {
 // ---------------------------------TASKS----------------------------------- //
 
 
+
+// -------------------------------DB STUFF--------------------------------- //
 // get list of templates
 app.get('/templates', function(req, res) {
 	db.get_templates(function(err, tmpls) {
@@ -451,6 +453,19 @@ app.post('/templates', function(req, res) {
 		if (err) console.log(err)
 		console.log(tmpl);
 		res.status(200).send(tmpl)
+	})
+})
+
+// copy an existing template (get existing tmpl events, duplicate them and change the tmpl_id to the newly created tmpl)
+app.put('/templates', function(req, res) {
+	db.create_template(req.body.name, function(err, tmpl) {
+		if (err) console.log(err);
+		var newTmpl = tmpl[0].template_id
+		db.copy_template(newTmpl, req.body.template_id, function(err, copied_tmpl) {
+			if (err) console.log(err)
+			res.status(200).send(copied_tmpl)
+		})
+
 	})
 })
 
@@ -486,6 +501,8 @@ app.delete('/dbevents', function(req, res) {
 	})
 })
 
+
+// get locations that are stored in db
 app.get('/locations', function(req, res) {
 	db.get_locations(function(err, locations) {
 		if (err) console.log(err)

@@ -47,6 +47,17 @@ export class TemplatesService {
 
   }
 
+  copyTmpl(newName:string, existingTmpl_id:number) {
+    let obj = {name: newName, template_id:existingTmpl_id};
+    if (obj.name && obj.template_id) {
+      return this.http.put(`${this.baseUrl}/templates`, obj)
+        .map(res => res.json())
+        .subscribe(res => console.log('copied successfully i hope', res))  
+    } else {
+      alert('There was a problem copying the template.')
+    }
+  }
+
 
 }
 

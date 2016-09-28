@@ -460,10 +460,11 @@ app.post('/templates', function(req, res) {
 app.put('/templates', function(req, res) {
 	db.create_template(req.body.name, function(err, tmpl) {
 		if (err) console.log(err);
-		var newTmpl = tmpl[0].template_id
-		db.copy_template(newTmpl, req.body.template_id, function(err, copied_tmpl) {
+		var newTmpl = tmpl[0]
+		db.copy_template(newTmpl.template_id, req.body.template_id, function(err, copied_tmpl) {
 			if (err) console.log(err)
-			res.status(200).send(copied_tmpl)
+			console.log(tmpl[0])
+			res.status(200).send(newTmpl)
 		})
 
 	})

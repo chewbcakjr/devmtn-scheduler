@@ -43,6 +43,8 @@ export class ScheduleHeader {
   }
 
   copyTmpl(newName:string, existingTmpl_id) {
+    console.log(newName)
+    console.log(existingTmpl_id);
       // this.tmplList = this.templatesService.getTmpls
       $('#tmpl_select').material_select('update');
       this.templatesService.copyTmpl(newName, existingTmpl_id)

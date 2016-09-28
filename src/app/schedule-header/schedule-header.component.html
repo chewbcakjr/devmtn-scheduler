@@ -32,21 +32,19 @@
 
 <div id="copy-template" class="modal bottom-sheet">
 	<div class="modal-content">
-	    <form (ngSubmit)="copyTmpl(title.value)" #copyTemplate="ngForm" class="copy-template">
+	    <form (ngSubmit)="copyTmpl(newName.value, selectedTmpl.value)" #copyTemplate="ngForm" class="copy-template">
 			<div class="input-field col s12 l6">
-				<div class="input-field col s12">
+				<!-- <div class="input-field col s12"> -->
+					<i class="material-icons prefix">mood</i>
+				<input #newName id="icon_prefix" class="validate" type="text" name="name" ngControl="name" value="" required autofocus>
 				    <select class="browser-default" id="tmpl_select" #selectedTmpl>
+				    	<option value="" disabled selected>Choose an existing template</option>
 				    	<option *ngFor="let tmpl of tmplList" [value]="tmpl.template_id">{{tmpl.name}}</option>}
-				    	
-					     <!-- <option value="1">Option 1</option>
-					     <option value="2">Option 2</option>
-					     <option value="3">Option 3</option> -->
 					</select>
-					<label>Choose an Existing Template</label>
-				</div>
+				<!-- </div> -->
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+				<button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Copy</button>
 			</div>
 		</form>
 	</div>

@@ -13,7 +13,6 @@
   box-shadow: none;
   position: relative;
 	width: 300px;
-  overflow: hidden;
   text-align: center;
   transition: all .3s ease-in-out;
 }
@@ -38,12 +37,34 @@
   height: 100%;
 }
 
-.card .card-content {
-	padding: 10px 0 20px 0;
+.icon {
+  position: absolute;
+  color: black;
+  background-color: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.45);
+  font-size: 30px;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+  overflow: visible;
+  transition: all 0.2s ease;
 }
 
-.course-img {
-  height: 70px;
+.icon:hover {
+  background-color: $materialize-red-lighten-2;
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+  top: -12px;
+}
+
+.icon .circle {
+
+}
+
+.card .card-content {
+	padding: 10px 0 20px 0;
 }
 
 .card .card-action {
@@ -56,6 +77,11 @@
   font-size: 1.5em;
   text-align: center;
   text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.course-img {
+  height: 50px;
 }
 
 .btn {

@@ -7,7 +7,7 @@
 
 <ul class="show-hide-add">
 	<li class=""><a href="#create-template" class="modal-trigger add-icon btn-med waves-effect waves-circle tooltipped" data-position="left" data-delay="50" data-tooltip="Click me to create a new template! ;D"></a></li>
-	<li class=""><a class="up-circle btn-med waves-effect waves-circle"></a></li>
+	<li class=""><a href="#copy-template" class="modal-trigger up-circle btn-med waves-effect waves-circle tooltipped" data-position="left" data-delay="50" data-tooltip="Click me to copy an existing template! ;D"></a></li>
 </ul>
 </main>
 <div class="divider"></div>
@@ -27,4 +27,27 @@
 		  </div>
     </form>
   </div>
+</div>
+
+
+<div id="copy-template" class="modal bottom-sheet">
+	<div class="modal-content">
+	    <form (ngSubmit)="copyTmpl(title.value)" #copyTemplate="ngForm" class="copy-template">
+			<div class="input-field col s12 l6">
+				<div class="input-field col s12">
+				    <select class="browser-default" id="tmpl_select" #selectedTmpl>
+				    	<option *ngFor="let tmpl of tmplList" [value]="tmpl.template_id">{{tmpl.name}}</option>}
+				    	
+					     <!-- <option value="1">Option 1</option>
+					     <option value="2">Option 2</option>
+					     <option value="3">Option 3</option> -->
+					</select>
+					<label>Choose an Existing Template</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+			</div>
+		</form>
+	</div>
 </div>

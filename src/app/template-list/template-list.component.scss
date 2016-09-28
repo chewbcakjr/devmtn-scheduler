@@ -38,6 +38,24 @@
   height: 100%;
 }
 
+.icon {
+  position: absolute;
+  color: black;
+  border: 1px solid lightgrey;
+  background-color: white;
+  font-size: 30px;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.icon .circle {
+
+}
+
 .card .card-content {
 	padding: 10px 0 20px 0;
 }

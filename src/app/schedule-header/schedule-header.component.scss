@@ -57,3 +57,29 @@
 		border-bottom: solid;
 	}
 }
+
+.copy {
+	background-color: #29DDB9;
+    	border-radius: 20px;
+    	color: #fff;
+    	margin-top: 20px;
+}
+
+#copy-template {
+	display: flex;
+    	justify-content: center !important;
+    	align-items: center !important;
+    	align-content: center !important;
+}
+
+.col-modified {
+	margin: auto !important;
+}
+
+.copy-template {
+	display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+    	align-items: center;
+    	align-content: space-between;
+}

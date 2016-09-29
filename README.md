@@ -6,6 +6,9 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 Don't forget to first run `npm install` before you do `ng serve`  
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+### If you're on Windows
+And you tried installing webpack globally first, and THEN ran 'ng serve' but got an error about missing models/.config or whatever, type 'npm start' and it should work.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.

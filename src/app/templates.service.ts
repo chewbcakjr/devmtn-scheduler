@@ -62,10 +62,14 @@ export class TemplatesService {
         .subscribe(res => {
           console.log('copied successfully i hope', res)
           this.router.navigate(['/template', 1])
-        })  
+        })
     } else {
       alert('There was a problem copying the template.')
     }
+  }
+
+  removeTemplate() {
+    console.log('deleted!');
   }
 
 

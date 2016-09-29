@@ -64,8 +64,10 @@ export class TemplateListComponent implements OnInit {
       this.router.navigate(['template',1])
     }
 
-    
-    
+    removeTemplate() {
+      this.templatesService.removeTemplate();
+    }
+
 
 
 

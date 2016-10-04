@@ -3,7 +3,7 @@
   <!-- you mean here candice :troll: -->
   <div class="cursor-point card-container" *ngFor="let tmpl of tmplList" (click)="chooseTmpl(tmpl)">
     <div class="card">
-      <div class="icon" (click)="removeTemplate()">
+      <div class="icon" (click)="removeTemplate(); $event.stopPropagation()">
         <i class="material-icons">clear</i>
       </div>
       <div class="card-content">

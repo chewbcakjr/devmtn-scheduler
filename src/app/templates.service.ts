@@ -68,10 +68,9 @@ export class TemplatesService {
     }
   }
 
-  removeTemplate() {
+  removeTemplate(tmpl_id: number): Promise<void> {
     console.log('deleted!');
   }
-
 
 }
 

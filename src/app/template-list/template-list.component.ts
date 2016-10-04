@@ -64,8 +64,16 @@ export class TemplateListComponent implements OnInit {
       this.router.navigate(['template',1])
     }
 
-    removeTemplate() {
-      this.templatesService.removeTemplate();
+    removeTemplate(tmpl): void {
+      this.templatesService.currTmpl = tmpl;
+      this.templatesService
+      .removeTemplate(tmpl).
+      then(() => {
+        this.tmplList = this.tmplList.filter(t => t !== tmpl);
+        if(this.currTmpl === tmpl) {
+          this.currTmpl = null;
+        }
+      });
     }
 
 

@@ -38,7 +38,10 @@ export class CalendarHeader implements OnInit {
 
 
 
-	currTmpl = {};
+	currTmpl = {
+		template_id: null,
+		name: null
+	};
 	currWeek:number = 1;
 	locations:any[] = [];
 

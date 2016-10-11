@@ -1,6 +1,9 @@
 <div class="row">
 		<div class="col s12 m8 l12">
 			<div class="card">
+				<div class="icon" (click)="removeEvent(item.event_id)">
+        <i class="material-icons">clear</i>
+      </div>
 				<div class="card-content">
 					<div class="card-title">Update Event</div>
 						<form (ngSubmit)="updateEvent(title.value, startTime.value, endTime.value, instructor.value, links.value, day.value)" #eventTitleForm="ngForm" class="create-event">

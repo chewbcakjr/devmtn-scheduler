@@ -96,6 +96,7 @@ export class EventsService {
   // update an event
   updateEvent(event_id:number, name:string, start_time:string, end_time:string, default_instructor:string, notes:string, day_number:number):Observable<any> {
   	let obj = {
+          event_id: event_id,
   		name: name,
   		start_time: start_time,
   		end_time: end_time,
@@ -104,6 +105,7 @@ export class EventsService {
   		day_number: day_number
   	};
 
+    // this.currEvent = obj;
     
   	return this.http.put(`${this.base_url}/dbevents?event_id=${event_id}`, obj)
   		.map(res => {

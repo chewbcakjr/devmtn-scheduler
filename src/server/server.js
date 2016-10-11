@@ -470,6 +470,17 @@ app.put('/templates', function(req, res) {
 	})
 })
 
+// remove template (first all the events that go with it)
+app.delete('/templates', function(req, res) {
+	db.remove_tmpl_events(req.query.tmpl_id, function(err, resp) {
+		if (err) console.log(err);
+		db.remove_template(req.query.tmpl_id, function(err2, resp2) {
+			if (err2) console.log(err2);
+			res.status(200).send('deleted template and events')
+		})
+	})
+})
+
 // create event on given template
 app.post('/dbevents', function(req, res) {
 	db.create_event(req.query.tmpl_id, req.body.name, req.body.start_time, req.body.end_time, req.body.default_instructor, req.body.notes, req.body.day_number, function(err, resp) {

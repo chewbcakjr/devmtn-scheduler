@@ -53,4 +53,8 @@ export class EditEventComponent implements OnInit {
       })
   }
 
+  removeEvent(event_id:number) {
+    this.eventsService.removeEvent(event_id)
+  }
+
 }

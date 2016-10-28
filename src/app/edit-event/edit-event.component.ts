@@ -24,8 +24,6 @@ export class EditEventComponent implements OnInit {
   currEvent = {};
 
   ngOnInit() {
-    // this doesn't work :/
-    this.currEvent = this.eventsService.currEvent;
     
   }
 
@@ -51,6 +49,12 @@ export class EditEventComponent implements OnInit {
         $(`#${this.item.event_id}`).closeModal();
         this.router.navigate(['/template', weekNum])
       })
+  }
+
+  removeEvent(event_id:number) {
+    console.log('removing id #', event_id)
+    this.eventsService.removeEvent(event_id)
+      .subscribe()
   }
 
 }
